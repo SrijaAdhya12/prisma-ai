@@ -1,24 +1,34 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Calendar, MapPin, Link } from 'lucide-react'
+import { Calendar, MapPin, Link as LinkIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+
 
 const EventCard = ({ event }) => {
 	const getPriceIndicator = (price) => {
 		if (price === 0) {
-			return <Badge className="bg-green-500">Free</Badge>
+			return <Badge className="bg-success">Free</Badge>
 		}
 		if (price < 20) {
-			return <Badge className="bg-blue-500">$</Badge>
+			return <Badge className="bg-info">$</Badge>
 		}
 		if (price < 50) {
-			return <Badge className="bg-yellow-500">$$</Badge>
+			return <Badge className="bg-warning">$$</Badge>
 		}
-		return <Badge className="bg-red-500">$$$</Badge>
+		return <Badge className="bg-destructive">$$$</Badge>
 	}
 
 	return (
 		<Card className="border-border bg-accent">
+			<div>
+				<img
+					src={event.image}
+					alt={event.title}
+					className="max-h-60 w-full object-cover"
+				/>
+			</div>
 			<CardHeader>
 				<CardTitle>{event.title}</CardTitle>
 				<CardDescription>{event.description}</CardDescription>
@@ -41,10 +51,10 @@ const EventCard = ({ event }) => {
 			</CardContent>
 			<CardFooter>
 				<Button asChild className="w-full">
-					<a href={event.link} target="_blank" rel="noopener noreferrer">
-						<Link className="mr-2 h-4 w-4" />
+					<Link to={event.link} target="_blank" rel="noopener noreferrer">
+						<LinkIcon className="mr-2 h-4 w-4" />
 						View Event
-					</a>
+					</Link>
 				</Button>
 			</CardFooter>
 		</Card>
