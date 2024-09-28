@@ -1,34 +1,34 @@
     updated on: 28th September 2024, Saturday
 
 <div align=center>
-    <a href="https://github.com/warmachine028/prisma-ai">
+    <a href="https://github.com/SrijaAdhya12/prisma-ai">
         <img width="200" src="https://img.icons8.com/?size=1000&id=46874" alt="prisma-ai">
     </a>
     <p style="font-family: roboto, calibri; font-size:12pt; font-style:italic"> A good one liner description here </p>
-    <a src="https://github.com/warmachine028/prisma-ai/forks">
-        <img alt="GitHub forks" src="https://img.shields.io/github/forks/warmachine028/prisma-ai">
+    <a src="https://github.com/SrijaAdhya12/prisma-ai/forks">
+        <img alt="GitHub forks" src="https://img.shields.io/github/forks/SrijaAdhya12/prisma-ai">
     </a>
 </div>
 
-# [Prisma Ai](https://github.com/warmachine028/prisma-ai)
+# [Prisma Ai](https://github.com/SrijaAdhya12/prisma-ai)
 
 ![line]
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Developement](#developement)
-- [Tech Stack Used](#tech-stack-used)
-- [Preview](#preview)
-- [Best Contributors](#best-contributors)
-- [License](#license)
+-   [Introduction](#introduction)
+-   [Getting Started](#getting-started)
+-   [Developement](#developement)
+-   [Tech Stack Used](#tech-stack-used)
+-   [Preview](#preview)
+-   [Best Contributors](#best-contributors)
+-   [License](#license)
 
 ![line]
 
 ## Introduction
 
-- A github template to automate basic initial workflows of a project.
+-   A github template to automate basic initial workflows of a project.
 
 ## Getting Started
 
@@ -44,7 +44,7 @@
 
 ### Forking this template
 
-- Run Initializer Action
+-   Run Initializer Action
 
 1. Go to **Actions** tab
 2. Enable workflows by Clicking on **green button** which says `I understand my workflows, go ahead and enable them`.
@@ -52,14 +52,14 @@
 4. Click on `Run Workflow` in the **main** branch.
 5. Go to **Security** tab
 
-- Enable Dependabot Alerts
+-   Enable Dependabot Alerts
 
 1. Wait for the Run Initializer above step to complete.
-2. Go to [**Security**](https://github.com/warmachine028/prisma-ai/security) tab.
+2. Go to [**Security**](https://github.com/SrijaAdhya12/prisma-ai/security) tab.
 3. Click on **Security Overview**.
 4. Click on `Enable Dependabot alerts` button.
 
-- Enable Code Scanning Alerts
+-   Enable Code Scanning Alerts
 
 1. Go to [Code security and analysis](https://github.com/SrijaAdhya12/prisma-ai/settings/security_analysis#code_scanning_settings) section in settings.
 2. Enable subsequent **Graphs**, **updates** and **alerts**.
@@ -69,22 +69,22 @@
 
 ## Developement
 
-- Steps used for development of this project
-- Build processes
-- CI/CD commands
-- Docker commands
+-   Steps used for development of this project
+-   Build processes
+-   CI/CD commands
+-   Docker commands
 
 ![line]
 
 ## Tech Stack Used
 
-- GitHub
-- Markdown
-- Prettier
-- Dependabot
-- GitHub Actions
-- Yaml
-- JavaScript
+-   GitHub
+-   Markdown
+-   Prettier
+-   Dependabot
+-   GitHub Actions
+-   Yaml
+-   JavaScript
 
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![Prettier](https://img.shields.io/badge/prettier-1A2B34?style=for-the-badge&logo=prettier&logoColor=pink) ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
@@ -103,8 +103,8 @@
 ## Best Contributors
 
 <div align="center">
-    <a href="https://github.com/warmachine028/prisma-ai/graphs/contributors">
-        <img src="https://contrib.rocks/image?repo=warmachine028/prisma-ai" alt="contributors"/>
+    <a href="https://github.com/SrijaAdhya12/prisma-ai/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=SrijaAdhya12/prisma-ai" alt="contributors"/>
     </a>
 </div>
 
@@ -112,7 +112,7 @@
 
 ## License
 
-- See [LICENSE]
+-   See [LICENSE]
 
 **Pritam Kundu, 2024**
 
@@ -124,6 +124,6 @@
 [markdown-badges]: https://github.com/Ileriayo/markdown-badges
 [custom-icons]: https://simpleicons.org
 [line]: https://user-images.githubusercontent.com/75939390/137615281-3a875960-92cc-407f-97fe-fd2319bdb252.png
-[License]: https://github.com/warmachine028/prisma-ai/blob/main/LICENSE
+[License]: https://github.com/SrijaAdhya12/prisma-ai/blob/main/LICENSE
 
 <!-- 28/09/24 -->
