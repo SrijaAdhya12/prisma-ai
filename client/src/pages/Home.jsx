@@ -1,4 +1,5 @@
-import { Navbar } from '@/components'
+import { Navbar, Footer } from '@/components'
+import { Hero } from '@/sections'
 import { ChevronDown } from 'lucide-react'
 
 const Home = () => {
@@ -15,7 +16,8 @@ const Home = () => {
 		<div id="home">
 			<Navbar initialBackground="bg-blue-600 border-0" navItems={navItems} />
 			<main className="mb-50 min-h-screen">
-				
+				<Hero />
+				<Footer />
 			</main>
 		</div>
 	)
