@@ -2,7 +2,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 import mongoose from 'mongoose'
-import { userRoutes, chatRoutes } from './routes/index.js'
+import { userRoutes, chatRoutes, botRoutes, moodRoutes } from './routes/index.js'
 
 dotenv.config()
 
@@ -13,6 +13,8 @@ app.get('/', (_, res) => res.send('Welcome to Prisma AI'))
 	.use(cors(), express.json())
 	.use('/user', userRoutes)
 	.use('/chat', chatRoutes)
+	.use('/bot', botRoutes)
+	.use('/mood', moodRoutes)
 
 mongoose
 	.connect(process.env.MONGO_URI)
