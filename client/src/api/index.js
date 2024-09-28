@@ -6,3 +6,21 @@ export const saveUser = async (user) => {
 	const data = await response.json()
 	return data
 }
+
+export const getChatToken = async (userId) => {
+	const response = await API.post('/chat/token', { userId })
+	const { token } = response.data
+	return token
+}
+
+export const getBotResponse = async (prompt, userId) => {
+	const response = await API.post('/bot/response', { prompt, userId })
+	const { content } = response.data
+	return content
+}
+
+export const saveMoodData = async (moodData) => {
+	const response = await API.post('/mood', moodData)
+	const { data } = response.data
+	return data
+}
