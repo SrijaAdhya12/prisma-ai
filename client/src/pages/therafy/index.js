@@ -1,0 +1,1 @@
+export { default as Therafy } from './layout'

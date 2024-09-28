@@ -1,3 +1,4 @@
+import { Therafy } from '@/pages/therafy'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 const AppRouter = () => {
@@ -5,6 +6,7 @@ const AppRouter = () => {
 	return (
 		<Routes location={location}>
 			<Route path="/" element={<div />} />
+			<Route path="/therafy" element={<Therafy />} />
 		</Routes>
 	)
 }
