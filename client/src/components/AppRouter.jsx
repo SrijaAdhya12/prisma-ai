@@ -2,7 +2,7 @@ import { Home, ComingSoon, NotFound, SupportNest } from '@/pages'
 import { Profile, Dashboard, Settings, Goals } from '@/pages/dashboard'
 import { MoodSense, VideoSense, SupportBot, EmoSense } from '@/pages/emosense'
 import { Therafy, MoodMusic } from '@/pages/therafy'
-// import { Chat, ProCare } from '@/pages/procare'
+import { Chat, ProCare } from '@/pages/procare'
 import { PrivateRoute } from '@/routes'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
