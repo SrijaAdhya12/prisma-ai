@@ -22,7 +22,7 @@ const Profile = () => {
 	return (
 		<div className="min-h-screen p-4">
 			<h1 className="mb-8 text-4xl font-bold">Profile</h1>
-			<BentoGrid className="*:border max-w-full grid-cols-1 gap-6 sm:p-0 md:grid-cols-2 lg:grid-cols-4">
+			<BentoGrid className="max-w-full grid-cols-1 gap-6 *:border sm:p-0 md:grid-cols-2 lg:grid-cols-4">
 				<BentoGridItem
 					className="md:col-span-2 lg:col-span-1"
 					title="Avg. Sleep"
