@@ -4,13 +4,46 @@ import { ChevronDown } from 'lucide-react'
 
 const Home = () => {
 	const navItems = [
-		{ label: 'Products', target: '#solutions', icon: ChevronDown },
+		{
+			label: 'Products',
+			target: '#solutions',
+			icon: ChevronDown,
+			items: [
+				{
+					title: 'Emo Sense',
+					src: 'https://assets.aceternity.com/demos/algochurn.webp',
+					href: '/emo-sense',
+					description: 'A platform that uses AI to detect emotions and provide personalized recommendations.'
+				},
+				{
+					title: 'Therafy',
+					src: 'https://assets.aceternity.com/demos/algochurn.webp',
+
+					href: '/therafy',
+					description:
+						'Therafy is a cutting-edge AI platform that provides advanced solutions for businesses.'
+				},
+				{
+					title: 'Pro Care',
+					src: 'https://assets.aceternity.com/demos/algochurn.webp',
+
+					href: '/pro-care',
+					description: 'Get therapist support for your mental health.'
+				},
+				{
+					title: 'Support Nest',
+					src: 'https://assets.aceternity.com/demos/algochurn.webp',
+					href: '/support-nest',
+					description: 'A Prisma AI Initiative for finding support for people with mental health issues.'
+				}
+			]
+		},
 		{ label: 'Solutions', target: '#solutions' },
-		{ label: 'Procare', private: true, to: '/pro-care' },
-		{ label: 'Dashboard', private: true, to: '/dashboard' },
-		{ label: 'Emo Sense', private: true, to: '/emo-sense' },
-		{ label: 'Mood Music', private: true, to: '/mood-music' }
+		{ label: 'Procare', target: '#procare' },
+		{ label: 'Help Center', target: '#helpcenter' },
+		{ label: 'Dashboard', private: true, to: '/dashboard' }
 	]
+
 	return (
 		<div id="home">
 			<Navbar initialBackground="bg-blue-600 border-0" navItems={navItems} />
