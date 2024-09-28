@@ -15,7 +15,16 @@ const moodToGenre = {
 	sad: 'blues',
 	energetic: 'dance',
 	calm: 'ambient',
-	angry: 'rock'
+	angry: 'rock',
+	anxious: 'electronic',
+	depressed: 'classical',
+	excited: 'hip-hop',
+	frustrated: 'country',
+	grateful: 'reggae',
+	lonely: 'jazz',
+	relaxed: 'latin',
+	stressed: 'electronic'
+	
 }
 
 const MoodMusic = () => {
