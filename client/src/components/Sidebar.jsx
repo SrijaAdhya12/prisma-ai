@@ -1,4 +1,4 @@
-import { Brain, CalendarCheck, Goal, Heart, Home, MessageSquare, Settings, User, Video, X, Bot } from 'lucide-react'
+import { Brain, Goal, Home, Settings, User, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib'
 import { Button } from './ui/button'
