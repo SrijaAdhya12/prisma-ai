@@ -1,9 +1,25 @@
-import React from 'react'
+import { Navbar } from '@/components'
+import { ChevronDown } from 'lucide-react'
 
 const Home = () => {
-	return <div>
-
-	</div>
+	const navItems = [
+		{ label: 'Products', target: '#solutions', icon: ChevronDown },
+		{ label: 'Solutions', target: '#solutions' },
+		// { label: 'Procare', target: '#procare' },
+		{ label: 'Help Center', target: '#helpcenter' },
+		{ label: 'Procare', private: true, to: '/pro-care' },
+		{ label: 'Dashboard', private: true, to: '/dashboard' },
+		{ label: 'Emo Sense', private: true, to: '/emo-sense' }
+	]
+	return (
+		<div id="home">
+			<Navbar initialBackground="bg-blue-600 border-0" navItems={navItems} />
+			<main className="mb-50 min-h-screen">
+				
+			</main>
+			<Footer />
+		</div>
+	)
 }
 
 export default Home
