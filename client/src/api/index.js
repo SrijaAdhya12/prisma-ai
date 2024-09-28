@@ -24,3 +24,11 @@ export const saveMoodData = async (moodData) => {
 	const { data } = response.data
 	return data
 }
+
+export const getMoodData = async (start, end, user_id) => {
+	const response = await API.get(`/mood`, {
+		params: { start, end, user_id }
+	})
+	const { data } = response.data
+	return data
+}
