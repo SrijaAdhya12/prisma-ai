@@ -17,7 +17,6 @@ const Home = () => {
 			<main className="mb-50 min-h-screen">
 				
 			</main>
-			<Footer />
 		</div>
 	)
 }

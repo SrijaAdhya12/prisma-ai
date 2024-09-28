@@ -32,12 +32,12 @@ const AppRouter = () => {
 				<Route path="physical-theraphy" element={<SupportBot />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
-			{/* <Route path="/pro-care" element={<PrivateRoute component={<ProCare />} />}>
+			<Route path="/pro-care" element={<PrivateRoute component={<ProCare />} />}>
 				<Route path="" element={<Navigate to="chat" />} />
 				<Route path="chat" element={<Chat />} />
 				<Route path="video" element={<ComingSoon />} />
 				<Route path="*" element={<NotFound />} />
-			</Route> */}
+			</Route>
 			<Route path="/support-nest" element={<SupportNest />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>
