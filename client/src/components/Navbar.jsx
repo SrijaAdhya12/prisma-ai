@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X, Brain } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { cn } from '@/lib'
-import { AvatarButton,  } from '.'
+import { AvatarButton, Loader } from '.'
 import { useAuth0 } from '@auth0/auth0-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -63,6 +63,13 @@ const Navbar = ({ initialBackground, navItems = [] }) => {
 					<div className="hidden items-center space-x-2 lg:flex">
 						<AvatarButton />
 					</div>
+					<Dropdown
+						navItems={navItems}
+						background={initialBackground}
+						isOpen={isOpen}
+						setIsOpen={setIsOpen}
+						smoothScrollTo={smoothScrollTo}
+					/>
 				</div>
 			</nav>
 			<AnimatePresence>
@@ -78,6 +85,71 @@ const Navbar = ({ initialBackground, navItems = [] }) => {
 				)}
 			</AnimatePresence>
 		</>
+	)
+}
+
+const Dropdown = ({ navItems, background, isOpen, setIsOpen, smoothScrollTo }) => {
+	const { isAuthenticated, user, loading } = useAuth0()
+	const location = useLocation()
+
+	useEffect(() => {
+		setIsOpen(false)
+	}, [location, setIsOpen])
+
+	if (loading) {
+		return <Loader />
+	}
+
+	return (
+		<div className="lg:hidden">
+			<button onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
+				{isOpen ? <X className="size-7" /> : <Menu className="size-7" />}
+			</button>
+			<AnimatePresence>
+				{isOpen && (
+					<motion.ul
+						initial={{ opacity: 0, y: -20 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -20 }}
+						transition={{ duration: 0.2 }}
+						className={cn(
+							'absolute right-0 top-10 z-50 ml-14 w-screen flex-col items-center justify-center py-4 text-sm font-medium tracking-wide shadow-xl md:top-14',
+							background
+						)}
+					>
+						{navItems.map((item) =>
+							!isAuthenticated && item.private ? null : (
+								<li
+									key={item.label}
+									className="text-foreground/80 hover:text-foreground hover:bg-secondary flex w-full items-center gap-2 p-3 px-10 transition-colors"
+								>
+									{item.target && (
+										<button
+											className="w-full text-left uppercase"
+											onClick={() => smoothScrollTo(item.target)}
+										>
+											{item.label}
+										</button>
+									)}
+									{item.to && (
+										<NavLink to={item.to} className="flex w-full items-center gap-2 uppercase">
+											{item.label}
+										</NavLink>
+									)}
+									{item.icon && <item.icon className="size-4" />}
+								</li>
+							)
+						)}
+						<li className="flex w-full items-start justify-start px-10">
+							<div className="flex items-center justify-center gap-3 uppercase">
+								<AvatarButton />
+								<span>{user?.name}</span>
+							</div>
+						</li>
+					</motion.ul>
+				)}
+			</AnimatePresence>
+		</div>
 	)
 }
 
