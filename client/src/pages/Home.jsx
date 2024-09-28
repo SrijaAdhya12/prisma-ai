@@ -13,7 +13,7 @@ const Home = () => {
 					title: 'Emo Sense',
 					src: 'https://assets.aceternity.com/demos/algochurn.webp',
 					href: '/emo-sense',
-					description: 'A platform that uses AI to detect emotions and provide personalized recommendations.'
+					description: 'A platform that uses AI to detect emotions and cure.'
 				},
 				{
 					title: 'Therafy',
@@ -21,7 +21,7 @@ const Home = () => {
 
 					href: '/therafy',
 					description:
-						'Therafy is a cutting-edge AI platform that provides advanced solutions for businesses.'
+						'Therafy is a cutting-edge AI content sugesstion platform.'
 				},
 				{
 					title: 'Pro Care',
@@ -34,7 +34,7 @@ const Home = () => {
 					title: 'Support Nest',
 					src: 'https://assets.aceternity.com/demos/algochurn.webp',
 					href: '/support-nest',
-					description: 'A Prisma AI Initiative for finding support for people with mental health issues.'
+					description: 'A Prisma AI Initiative for finding support for people.'
 				}
 			]
 		},
