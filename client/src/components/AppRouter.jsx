@@ -1,4 +1,5 @@
 import { Home, ComingSoon, SupportNest } from '@/pages'
+import { Dashboard } from '@/pages/dashboard'
 import { PrivateRoute } from '@/routes'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
@@ -7,7 +8,7 @@ const AppRouter = () => {
 	return (
 		<Routes location={location}>
 			<Route path="/" element={<Home />} />
-			<Route path="/dashboard" element={<PrivateRoute component={<ComingSoon />} />}>
+			<Route path="/dashboard" element={<PrivateRoute component={<Dashboard />} />}>
 				<Route path="" element={<Navigate to="profile" />} />
 				<Route path="profile" element={<ComingSoon />} />
 				<Route path="settings" element={<ComingSoon />} />
