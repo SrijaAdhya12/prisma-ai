@@ -24,3 +24,55 @@ export const saveMood = async (req, res) => {
 		console.error(error)
 	}
 }
+
+export const getMoodData = async (req, res) => {
+	try {
+		const { start, end, user_id } = req.query
+		const moodData = await Mood.aggregate([
+			{
+				$match: {
+					user_id: user_id,
+					date: { $gte: new Date(start), $lte: new Date(end) }
+				}
+			},
+			{
+				$group: {
+					_id: {
+						date: { $dateToString: { format: '%Y-%m-%d', date: '$date' } },
+						emotion: '$emotion'
+					},
+					maxValue: { $max: '$value' }
+				}
+			},
+			{
+				$sort: { maxValue: -1 }
+			},
+			{
+				$group: {
+					_id: '$_id.date',
+					emotion: { $first: '$_id.emotion' },
+					intensity: { $first: { $divide: ['$maxValue', 100] } }
+				}
+			},
+			{
+				$project: {
+					_id: 0,
+					date: '$_id',
+					emotion: 1,
+					intensity: 1
+				}
+			},
+			{
+				$sort: { date: 1 }
+			}
+		])
+
+		const formattedMoodData = moodData.reduce((acc, item) => {
+			acc[item.date] = { emotion: item.emotion, intensity: item.intensity }
+			return acc
+		}, {})
+		res.status(200).json({data:formattedMoodData})
+	} catch (error) {
+		res.status(500).json({ message: 'Error fetching mood data', error: error.message })
+	}
+}
