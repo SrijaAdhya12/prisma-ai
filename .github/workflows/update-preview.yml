@@ -6,8 +6,7 @@ on:
         branches: [main]
         # enable this for your repository if you want to trigger this workflow to observe specific file/directory changes
         paths:
-            # - 'client/**'
-            - README.md
+            - 'client/**'
 
 permissions:
     contents: write
