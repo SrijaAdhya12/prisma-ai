@@ -28,8 +28,7 @@ const channelsConfig = [
 		id: 'support-group',
 		name: 'Support Group',
 		image: 'https://example.com/support-group.jpg'
-  },
-  
+	}
 ]
 
 const Chat = () => {
@@ -58,7 +57,6 @@ const Chat = () => {
 				const chatClient = StreamChat.getInstance(apiKey)
 
 				const userId = user.sub.replace(/[^a-z0-9_-]+/gi, '_')
-				// Fetch the Stream token from your backend
 				const token = await getChatToken(userId)
 				await chatClient.connectUser(
 					{
