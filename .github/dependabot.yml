@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions #! for github-actions
+    directory: ".github"
+    schedule:
+      interval: daily
+      time: "21:00"
+  # - package-ecosystem: npm #! enable for javascript & typescript
+  #   directory: "/"
+  #   schedule:
+  #     interval: weekly
+  # - package-ecosystem: pip #! enable for python 
+  #   directory: "/"
+  #   schedule:
+  #     interval: weekly
+  # - package-ecosystem: maven #! enable for java
+  #   directory: "/"
+  #   schedule:
+  #     interval: weekly
+  #   ignore:
+  #     - dependency-name: org.apache.maven:* # ignore Maven APIs/SPIs
+  # - package-ecosystem: bundler #! enable for ruby
+  #   directory: "/"
+  #   schedule:
+  #     interval: weekly
+  
+ 
