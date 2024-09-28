@@ -13,7 +13,11 @@ const Hero = () => {
 			<div className="container mx-auto px-4 sm:mt-7 md:px-6">
 				<div className="flex flex-col items-center space-y-4 text-center">
 					<div className="overflow-hidden sm:space-y-2">
-						<TypewriterEffect2 texts={tagLines} baseText="Prisma AI:" className="text-4xl md:text-5xl lg:text-6xl text-white" />
+						<TypewriterEffect2
+							texts={tagLines}
+							baseText="Prisma AI:"
+							className="text-4xl text-white md:text-5xl lg:text-6xl"
+						/>
 						<p className="mx-auto max-w-[700px] py-6 text-lg text-white sm:px-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 							Personalized support tailored to your unique emotional needs, powered by advanced AI.
 						</p>
