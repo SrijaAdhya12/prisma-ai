@@ -20,7 +20,6 @@ export const features = [
 	}
 ]
 
-export { items as gridCards } from './GridCards'
 export { moods, colors as moodColors } from './moods'
 export { sleepData, exerciseData } from './profile'
 export { items as events } from './events'
