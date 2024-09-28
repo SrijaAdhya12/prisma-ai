@@ -1,3 +1,6 @@
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+
+import { isSameWeek as dateFnsIsSameWeek } from 'date-fns'
 import { useState, useEffect } from 'react'
 import {
 	format,
@@ -14,8 +17,7 @@ import {
 	isSameYear,
 	getWeek,
 	getYear,
-	parseISO,
-	addDays
+	parseISO
 } from 'date-fns'
 import { Calendar as CalendarIcon, Frown, Meh, Smile, Angry, Annoyed, ThumbsDown, Zap } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -24,6 +26,8 @@ import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Calendar } from '@/components/ui/calendar'
 import { cn } from '@/lib/utils'
+import { getMoodData } from '@/api'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const moodIcons = {
 	neutral: <Meh className="h-6 w-6" />,
@@ -45,7 +49,7 @@ const moodColors = {
 	surprised: 'bg-pink-500'
 }
 
-function MoodSummary({ moodStats, timeframe, selectedDay }) {
+const MoodSummary = ({ moodStats, timeframe, selectedDay }) => {
 	return (
 		<Card className="col-span-2 sm:col-span-1">
 			<CardHeader>
@@ -78,6 +82,7 @@ function MoodSummary({ moodStats, timeframe, selectedDay }) {
 const MoodSense = () => {
 	const [date, setDate] = useState(new Date())
 	const [selectedTimeframe, setSelectedTimeframe] = useState('month')
+	const { user } = useAuth0()
 	const [moodData, setMoodData] = useState({})
 	const [mounted, setMounted] = useState(false)
 	const [selectedDay, setSelectedDay] = useState(null)
@@ -101,10 +106,8 @@ const MoodSense = () => {
 		}
 
 		try {
-			const response = await fetch(`/api/moods?start=${start.toISOString()}&end=${end.toISOString()}`)
-			console.log(response)
-			const data = await response.json()
-			setMoodData(data)
+			const moodData = await getMoodData(start, end, user.sub)
+			setMoodData(moodData)
 		} catch (error) {
 			console.error('Failed to fetch mood data:', error)
 		}
@@ -172,21 +175,30 @@ const MoodSense = () => {
 				{days.map((day) => {
 					const mood = getMoodForDate(day)
 					return (
-						<button
-							key={day.toString()}
-							onClick={() => {
-								setDate(day)
-								setSelectedTimeframe('week')
-							}}
-							className={cn(
-								'flex aspect-square items-center justify-center rounded-full text-sm',
-								isSameDay(day, new Date()) ? 'ring-primary ring-2' : '',
-								mood ? moodColors[mood.emotion] : 'bg-secondary',
-								isSameMonth(day, date) ? 'text-foreground' : 'text-muted-foreground'
-							)}
-						>
-							{format(day, 'd')}
-						</button>
+						<Tooltip key={day.toString()}>
+							<TooltipTrigger asChild>
+								<button
+									onClick={() => {
+										setDate(day)
+										setSelectedTimeframe('week')
+									}}
+									className={cn(
+										'flex aspect-square items-center justify-center rounded-full text-sm',
+										mood ? moodColors[mood.emotion] : 'bg-secondary',
+										isSameMonth(day, date) ? 'text-foreground' : 'text-muted-foreground',
+										isSameDay(day, new Date()) ? 'bg-primary text-primary-foreground' : ''
+									)}
+								>
+									{format(day, 'd')}
+								</button>
+							</TooltipTrigger>
+							<TooltipContent className="flex items-center flex-col">
+								<p>
+									{mood ? `${mood.emotion} - ${(mood.intensity * 100).toFixed(2)}%` : 'No mood data'}{' '}
+								</p>
+								{isSameDay(day, new Date()) && 'Today'}
+							</TooltipContent>
+						</Tooltip>
 					)
 				})}
 			</div>
@@ -208,19 +220,29 @@ const MoodSense = () => {
 				{days.map((day) => {
 					const mood = getMoodForDate(day)
 					return (
-						<button
-							key={day.toString()}
-							onClick={() => setSelectedDay(day)}
-							className={cn(
-								'flex aspect-square items-center justify-center rounded-full text-sm',
-								mood ? moodColors[mood.emotion] : 'bg-secondary',
-								'text-foreground',
-								isSameDay(day, selectedDay) ? 'bg-muted-foreground text-background' : '',
-								isSameDay(day, new Date()) ? 'ring-primary bg-primary' : ''
-							)}
-						>
-							{format(day, 'd')}
-						</button>
+						<Tooltip key={day.toString()}>
+							<TooltipTrigger asChild>
+								<button
+									key={day.toString()}
+									onClick={() => setSelectedDay(day)}
+									className={cn(
+										'flex aspect-square items-center justify-center rounded-full text-sm',
+										mood ? moodColors[mood.emotion] : 'bg-secondary',
+										'text-foreground',
+										isSameDay(day, selectedDay) ? 'bg-muted-foreground text-background' : '',
+										isSameDay(day, new Date()) ? 'ring-primary bg-primary' : ''
+									)}
+								>
+									{format(day, 'd')}
+								</button>
+							</TooltipTrigger>
+							<TooltipContent className="flex items-center flex-col">
+								<p>
+									{mood ? `${mood.emotion} - ${(mood.intensity * 100).toFixed(2)}%` : 'No mood data'}{' '}
+								</p>
+								{isSameDay(day, new Date()) && 'Today'}
+							</TooltipContent>
+						</Tooltip>
 					)
 				})}
 			</div>
@@ -239,6 +261,7 @@ const MoodSense = () => {
 				return null
 		}
 	}
+	const isSameWeek = (date1, date2) => dateFnsIsSameWeek(date1, date2, { weekStartsOn: 0 }) // 0 for Sunday, 1 for Monday
 
 	const calculateMoodStats = () => {
 		if (selectedDay && selectedTimeframe === 'week') {
@@ -248,7 +271,6 @@ const MoodSense = () => {
 			}
 			return {}
 		}
-
 		const moodCounts = { neutral: 0, happy: 0, sad: 0, angry: 0, fearful: 0, disgusted: 0, surprised: 0 }
 		Object.entries(moodData).forEach(([dateString, mood]) => {
 			if (mood && mood.emotion) {
