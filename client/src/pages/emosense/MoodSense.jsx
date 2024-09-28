@@ -121,7 +121,7 @@ const MoodSense = () => {
 		const months = eachMonthOfInterval({ start: startOfYear(date), end: endOfYear(date) })
 
 		return (
-			<div className="grid grid-cols-4 gap-4">
+			<div className="xs:grid-cols-3 grid grid-cols-1 gap-4 sm:grid-cols-4">
 				{months.map((month) => (
 					<button
 						key={month.toString()}
@@ -130,7 +130,7 @@ const MoodSense = () => {
 							setSelectedTimeframe('month')
 						}}
 						className={cn(
-							'rounded-lg border border-gray-200 p-2 transition-colors hover:border-gray-300',
+							'h-48 rounded-lg border-gray-200 transition-colors hover:border-gray-300 sm:h-auto sm:border sm:p-2',
 							isSameMonth(month, date) && selectedTimeframe !== 'year'
 								? 'bg-primary text-primary-foreground'
 								: 'bg-background'
@@ -144,10 +144,12 @@ const MoodSense = () => {
 									<div
 										key={day.toString()}
 										className={cn(
-											'h-2 w-2 rounded-full',
-											mood ? moodColors[mood.emotion] : 'bg-gray-200'
+											'h-6 w-6 rounded-full sm:h-2 sm:w-2 text-xs flex items-center justify-center',
+											mood ? moodColors[mood.emotion] : 'bg-accent'
 										)}
-									/>
+									>
+										{format(day, 'd')}
+									</div>
 								)
 							})}
 						</div>

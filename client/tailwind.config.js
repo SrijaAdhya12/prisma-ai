@@ -3,6 +3,7 @@
 import svgToDataUri from 'mini-svg-data-uri'
 import tailwindAnimate from 'tailwindcss-animate'
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const addVariablesForColors = ({ addBase, theme }) => {
 	let allColors = flattenColorPalette(theme('colors'))
@@ -17,6 +18,10 @@ export default {
 	darkMode: ['class'],
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
+		screens: {
+			xs: '475px',
+			...defaultTheme.screens
+		},
 		container: {
 			center: true,
 			padding: '2rem',
