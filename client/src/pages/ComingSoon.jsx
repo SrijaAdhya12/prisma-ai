@@ -14,11 +14,11 @@ const ComingSoon = () => {
 					We're working hard to bring you some amazing new features. Stay tuned!
 				</p>
 				<div className="relative mb-8 flex justify-center">
-					<div className="aspect-square w-full max-w-60 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 opacity-60 blur-2xl sm:max-w-sm"/>
+					<div className="aspect-square w-full max-w-60 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 opacity-60 blur-2xl sm:max-w-sm" />
 					<img
 						src={WorkInProgress}
 						alt="Work in Progress"
-						className="absolute left-1/2 top-1/2 z-40 sm:max-w-96 -translate-x-1/2 -translate-y-1/2 transform w-96"
+						className="absolute left-1/2 top-1/2 z-40 w-96 -translate-x-1/2 -translate-y-1/2 transform sm:max-w-96"
 					/>
 				</div>
 				<form className="mb-8 flex flex-col items-center justify-center gap-4 md:flex-row">

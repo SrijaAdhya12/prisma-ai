@@ -14,7 +14,7 @@ const AppRouter = () => {
 			<Route path="/dashboard" element={<PrivateRoute component={<Dashboard />} />}>
 				<Route path="" element={<Navigate to="profile" />} />
 				<Route path="profile" element={<Profile />} />
-				<Route path="settings" element={<ComingSoon />} />
+				<Route path="settings" element={<Settings />} />
 				<Route path="goals" element={<Goals />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
