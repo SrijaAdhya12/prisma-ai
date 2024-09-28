@@ -1,5 +1,4 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-
 import { isSameWeek as dateFnsIsSameWeek } from 'date-fns'
 import { useState, useEffect } from 'react'
 import {
@@ -192,7 +191,7 @@ const MoodSense = () => {
 									{format(day, 'd')}
 								</button>
 							</TooltipTrigger>
-							<TooltipContent className="flex items-center flex-col">
+							<TooltipContent className="flex flex-col items-center">
 								<p>
 									{mood ? `${mood.emotion} - ${(mood.intensity * 100).toFixed(2)}%` : 'No mood data'}{' '}
 								</p>
@@ -236,7 +235,7 @@ const MoodSense = () => {
 									{format(day, 'd')}
 								</button>
 							</TooltipTrigger>
-							<TooltipContent className="flex items-center flex-col">
+							<TooltipContent className="flex flex-col items-center">
 								<p>
 									{mood ? `${mood.emotion} - ${(mood.intensity * 100).toFixed(2)}%` : 'No mood data'}{' '}
 								</p>
@@ -299,7 +298,7 @@ const MoodSense = () => {
 					<h1 className="text-3xl font-bold">Mood Sense</h1>
 				</div>
 
-				<div className="flex items-center justify-between ">
+				<div className="flex items-center justify-between">
 					<Popover>
 						<PopoverTrigger asChild>
 							<Button variant="outline" className="w-[240px] justify-start text-left font-normal">

@@ -58,7 +58,7 @@ const Goals = () => {
 
 	return (
 		<div className="container min-h-screen">
-			<h1 className="mb-8 sm:mt-0 mt-9 text-4xl font-bold">Goals</h1>
+			<h1 className="mb-8 mt-9 text-4xl font-bold sm:mt-0">Goals</h1>
 			<Card className="mx-auto w-full">
 				<CardHeader>
 					<CardTitle>Personal Goal Setting and Tracking</CardTitle>
