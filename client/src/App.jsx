@@ -1,11 +1,13 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/providers'
+import { AppRouter } from '@/components'
+import { Toaster } from '@/components/ui/toaster'
 
 const PrismaAI = () => {
 	return (
 		<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+			<AppRouter />
 			<Toaster />
 		</ThemeProvider>
 	)
