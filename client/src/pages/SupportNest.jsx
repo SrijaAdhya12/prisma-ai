@@ -3,55 +3,28 @@ import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import { motion, AnimatePresence } from 'framer-motion'
 import { events } from '@/data'
-import { Navbar } from '@/components'
+import { Navbar, EventCard } from '@/components'
 import { Search } from '@/components/ui/search'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Calendar, MapPin, Link } from 'lucide-react'
-
-const EventCard = ({ event }) => {
-	const getPriceIndicator = (price) => {
-		return <Badge className="bg-red-500">$$$</Badge>
-	}
-
-	return (
-		<Card className="border-border bg-accent">
-			<CardHeader>
-				<CardTitle>{event.title}</CardTitle>
-				<CardDescription>{event.description}</CardDescription>
-			</CardHeader>
-			<CardContent>
-				<div className="mb-2 flex items-center gap-2">
-					<Calendar className="h-4 w-4" />
-					<span>
-						{event.date} at {event.time}
-					</span>
-				</div>
-				<div className="mb-2 flex items-center gap-2">
-					<MapPin className="h-4 w-4" />
-					<span>{event.venue}</span>
-				</div>
-				<div className="flex items-center gap-2">
-					<Badge variant="outline">{event.type}</Badge>
-					{getPriceIndicator(event.price)}
-				</div>
-			</CardContent>
-			<CardFooter>
-				<Button asChild className="w-full">
-					<a href={event.link} target="_blank" rel="noopener noreferrer">
-						<Link className="mr-2 h-4 w-4" />
-						View Event
-					</a>
-				</Button>
-			</CardFooter>
-		</Card>
-	)
-}
 
 const SupportNest = () => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [maxPrice, setMaxPrice] = useState(100)
 	const [filteredEvents, setFilteredEvents] = useState(events)
+
+	useEffect(() => {
+		const filtered = events.filter(
+			(event) =>
+				(event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+					event.type.toLowerCase().includes(searchTerm.toLowerCase())) &&
+				event.price <= maxPrice
+		)
+		setFilteredEvents(filtered)
+	}, [searchTerm, maxPrice])
+
+	const sortByPrice = () => {
+		const sorted = [...filteredEvents].sort((a, b) => a.price - b.price)
+		setFilteredEvents(sorted)
+	}
 
 	return (
 		<div id="support-nest" className="dark:bg-grid-white/[0.2] bg-grid-black/[0.2] min-h-screen">
