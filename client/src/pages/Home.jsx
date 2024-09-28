@@ -1,5 +1,5 @@
 import { Navbar, Footer } from '@/components'
-import { Hero, Quote, Solutions } from '@/sections'
+import { Hero, Quote, Solutions, Procare } from '@/sections'
 import { ChevronDown } from 'lucide-react'
 
 const Home = () => {
@@ -18,8 +18,9 @@ const Home = () => {
 				<Hero />
 				<Quote />
 				<Solutions />
-				<Footer />
+				<Procare />
 			</main>
+			<Footer />
 		</div>
 	)
 }
