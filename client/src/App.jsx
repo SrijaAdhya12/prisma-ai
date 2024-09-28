@@ -7,12 +7,10 @@ import { TooltipProvider } from '@radix-ui/react-tooltip'
 
 const PrismaAI = () => {
 	return (
-		<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-			<TooltipProvider>
-				<AppRouter />
-				<Toaster />
-			</TooltipProvider>
-		</ThemeProvider>
+		<TooltipProvider>
+			<AppRouter />
+			<Toaster />
+		</TooltipProvider>
 	)
 }
 
@@ -24,7 +22,9 @@ const App = () => {
 			authorizationParams={{ redirect_uri: window.location.origin }}
 		>
 			<BrowserRouter>
-				<PrismaAI />
+				<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+					<PrismaAI />
+				</ThemeProvider>
 			</BrowserRouter>
 		</Auth0Provider>
 	)
