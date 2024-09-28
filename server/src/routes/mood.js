@@ -1,8 +1,11 @@
 import { Router } from 'express'
-import { saveMood } from '../controllers/index.js'
+import { saveMood, getMoodData } from '../controllers/index.js'
 
 const router = Router()
 
-router.post('/', saveMood)
-
+router
+.post('/xxx', getMoodData)
+    .post('/', saveMood)
+    .get('/', getMoodData)
+    
 export default router
