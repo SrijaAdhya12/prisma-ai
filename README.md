@@ -1,36 +1,45 @@
-    updated on: 28th September 2024, Saturday
+    updated on: 29th September 2024, Saturday
 
 <div align=center>
     <a href="https://github.com/SrijaAdhya12/prisma-ai">
         <img width="200" src="https://img.icons8.com/?size=1000&id=46874" alt="prisma-ai">
     </a>
-    <p style="font-family: roboto, calibri; font-size:12pt; font-style:italic"> A good one liner description here </p>
+    <p style="font-family: roboto, calibri; font-size:12pt; font-style:italic"> AI Powered Mental Health Support </p>
     <a src="https://github.com/SrijaAdhya12/prisma-ai/forks">
         <img alt="GitHub forks" src="https://img.shields.io/github/forks/SrijaAdhya12/prisma-ai">
     </a>
 </div>
 
-# [Prisma Ai](https://github.com/SrijaAdhya12/prisma-ai)
+# [Prisma Ai](https://prisma-ai.vercel.app)
 
 ![line]
 
 ## Table of Contents
 
--   [Introduction](#introduction)
--   [Getting Started](#getting-started)
--   [Developement](#developement)
--   [Tech Stack Used](#tech-stack-used)
--   [Preview](#preview)
--   [Best Contributors](#best-contributors)
--   [License](#license)
+- [Problem Statement](#problem-statement)
+- [Domain](#domain)
+- [Proposed Solution](#proposed-solution)
+- [Features](#features)
+- [Future Scope](#future-scope)
+- [Installation](#installation-guide)
+- [Tech Stack Used](#tech-stack-used)
+- [Docs](#docs)
+- [Preview](#preview)
+- [Best Contributors](#best-contributors)
+- [License](#license)
 
 ![line]
 
-## Introduction
+## Problem Statement
 
--   A github template to automate basic initial workflows of a project.
+-  **Limited Access**: Students often face long wait times for mental health services.
+-  **Confidentiality Concerns**: Fear of stigma prevents students from seeking help.
+-  **Lack of Support**: Mental health crises can occur outside of regular office hours.
+-  **Mood Tracking Challenges**: Students struggle to monitor their emotional well-being.
 
-## Getting Started
+## Domain
+
+- AI powered Mental Health Support 
 
 ### Generating a repo from the template
 
