@@ -3,4 +3,8 @@ import SupportBot from './SupportBot.jpeg'
 import VideoSense from './VideoSense.jpeg'
 import WorkInProgress from './work-in-progress.svg'
 import Error404 from './404.svg'
-export { MoodSense, SupportBot, VideoSense, WorkInProgress, Error404 }
+import ProCare from './ProCare.png'
+import SupportNest from './SupportNest.png'
+import Therafy from './Therafy.png'
+import EmoSense from './EmoSense.png'
+export { MoodSense, SupportBot, VideoSense, WorkInProgress, Error404, ProCare, SupportNest, Therafy, EmoSense }

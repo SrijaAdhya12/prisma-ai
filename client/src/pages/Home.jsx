@@ -1,8 +1,8 @@
 import { Navbar, Footer } from '@/components'
 import { Hero, Quote, Solutions, ProCare } from '@/sections'
 import { IconEmpathize, IconLayoutBottombarFilled } from '@tabler/icons-react'
-import { ChevronDown, HeartHandshake, PanelsTopLeft } from 'lucide-react'
-
+import { HeartHandshake, PanelsTopLeft } from 'lucide-react'
+import { EmoSense, ProCare as ProCareImg, SupportNest, Therafy } from '@/assets'
 const Home = () => {
 	const navItems = [
 		{
@@ -10,27 +10,25 @@ const Home = () => {
 			items: [
 				{
 					title: 'Emo Sense',
-					src: 'https://assets.aceternity.com/demos/algochurn.webp',
+					src: EmoSense,
 					href: '/emo-sense',
 					description: 'A platform that uses AI to detect emotions and cure.'
 				},
 				{
 					title: 'Therafy',
-					src: 'https://assets.aceternity.com/demos/algochurn.webp',
-
+					src: Therafy,
 					href: '/therafy',
 					description: 'Therafy is a cutting-edge AI content sugesstion platform.'
 				},
 				{
 					title: 'Pro Care',
-					src: 'https://assets.aceternity.com/demos/algochurn.webp',
-
+					src: ProCareImg,
 					href: '/pro-care',
 					description: 'Get therapist support for your mental health.'
 				},
 				{
 					title: 'Support Nest',
-					src: 'https://assets.aceternity.com/demos/algochurn.webp',
+					src: SupportNest,
 					href: '/support-nest',
 					description: 'A Prisma AI Initiative for finding support for people.'
 				}
