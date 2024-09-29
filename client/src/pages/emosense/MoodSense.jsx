@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { isSameWeek as dateFnsIsSameWeek } from 'date-fns'
 import { useState, useEffect } from 'react'
 import {
@@ -144,7 +144,7 @@ const MoodSense = () => {
 									<div
 										key={day.toString()}
 										className={cn(
-											'h-6 w-6 rounded-full sm:h-2 sm:w-2 text-xs flex items-center justify-center',
+											'flex h-6 w-6 items-center justify-center rounded-full text-xs sm:h-2 sm:w-2',
 											mood ? moodColors[mood.emotion] : 'bg-accent'
 										)}
 									>

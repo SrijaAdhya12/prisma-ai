@@ -1,12 +1,23 @@
+import { useState } from 'react'
 import { Progress } from '@/components/ui/progress'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { Activity, Brain, Heart, Moon } from 'lucide-react'
+import { Activity, Brain, Heart, Moon, Plus } from 'lucide-react'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 import { SkeletonTwo, SkeletonThree } from '@/components/ui/skeletons'
-import { sleepData, exerciseData } from '@/data'
+import { Button } from '@/components/ui/button'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
-const GoalProgress = ({ title, progress }) => {
+function GoalProgress({ title, progress }) {
 	return (
 		<div className="space-y-2">
 			<div className="flex justify-between">
@@ -18,17 +29,140 @@ const GoalProgress = ({ title, progress }) => {
 	)
 }
 
+function DialogForm({ onSubmit, onClose }) {
+	const [sleep, setSleep] = useState('')
+	const [meditation, setMeditation] = useState('')
+	const [exercise, setExercise] = useState('')
+
+	function handleSubmit(e) {
+		e.preventDefault()
+		const stressLevel = calculateStressLevel(Number(sleep), Number(meditation), Number(exercise))
+		onSubmit({ sleep: Number(sleep), meditation: Number(meditation), exercise: Number(exercise), stressLevel })
+		onClose()
+	}
+
+	function calculateStressLevel(sleep, meditation, exercise) {
+		const score = (sleep / 8) * 0.4 + (meditation / 30) * 0.3 + (exercise / 60) * 0.3
+		if (score > 0.8) return 'Low'
+		if (score > 0.5) return 'Medium'
+		return 'High'
+	}
+
+	return (
+		<form onSubmit={handleSubmit} className="space-y-4">
+			<div>
+				<Label htmlFor="sleep">Average Sleep (hours)</Label>
+				<Input
+					id="sleep"
+					value={sleep}
+					onChange={(e) => setSleep(e.target.value)}
+					type="number"
+					step="0.1"
+					min="0"
+					max="24"
+					required
+				/>
+			</div>
+			<div>
+				<Label htmlFor="meditation">Meditation (minutes/day)</Label>
+				<Input
+					id="meditation"
+					value={meditation}
+					onChange={(e) => setMeditation(e.target.value)}
+					type="number"
+					min="0"
+					max="1440"
+					required
+				/>
+			</div>
+			<div>
+				<Label htmlFor="exercise">Exercise (minutes/day)</Label>
+				<Input
+					id="exercise"
+					value={exercise}
+					onChange={(e) => setExercise(e.target.value)}
+					type="number"
+					min="0"
+					max="1440"
+					required
+				/>
+			</div>
+			<Button type="submit">Update Profile</Button>
+		</form>
+	)
+}
+
 const Profile = () => {
+	const [isDialogOpen, setIsDialogOpen] = useState(false)
+	const [profileData, setProfileData] = useState({
+		sleep: 0,
+		meditation: 0,
+		exercise: 0,
+		stressLevel: 'Medium'
+	})
+
+	const [sleepData, setSleepData] = useState([
+		{ day: 'Mon', hours: 0 },
+		{ day: 'Tue', hours: 0 },
+		{ day: 'Wed', hours: 0 },
+		{ day: 'Thu', hours: 0 },
+		{ day: 'Fri', hours: 0 },
+		{ day: 'Sat', hours: 0 },
+		{ day: 'Sun', hours: 0 }
+	])
+
+	const [exerciseData, setExerciseData] = useState([
+		{ day: 'Mon', minutes: 0 },
+		{ day: 'Tue', minutes: 0 },
+		{ day: 'Wed', minutes: 0 },
+		{ day: 'Thu', minutes: 0 },
+		{ day: 'Fri', minutes: 0 },
+		{ day: 'Sat', minutes: 0 },
+		{ day: 'Sun', minutes: 0 }
+	])
+
+	function handleFormSubmit(data) {
+		setProfileData(data)
+		setSleepData((prevData) => {
+			const newData = [...prevData]
+			newData[newData.length - 1].hours = data.sleep
+			return newData
+		})
+		setExerciseData((prevData) => {
+			const newData = [...prevData]
+			newData[newData.length - 1].minutes = data.exercise
+			return newData
+		})
+	}
+
 	return (
 		<div className="min-h-screen p-4">
-			<h1 className="mb-8 text-4xl font-bold">Profile</h1>
+			<div className="mb-8 flex items-center justify-between">
+				<h1 className="text-4xl font-bold">Profile</h1>
+				<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+					<DialogTrigger asChild>
+						<Button variant="outline" size="icon" className="rounded-full">
+							<Plus className="h-4 w-4" />
+						</Button>
+					</DialogTrigger>
+					<DialogContent>
+						<DialogHeader>
+							<DialogTitle>Update Profile Data</DialogTitle>
+							<DialogDescription>
+								Enter your daily wellness data to update your profile.
+							</DialogDescription>
+						</DialogHeader>
+						<DialogForm onSubmit={handleFormSubmit} onClose={() => setIsDialogOpen(false)} />
+					</DialogContent>
+				</Dialog>
+			</div>
 			<BentoGrid className="max-w-full grid-cols-1 gap-6 *:border sm:p-0 md:grid-cols-2 lg:grid-cols-4">
 				<BentoGridItem
 					className="md:col-span-2 lg:col-span-1"
 					title="Avg. Sleep"
 					description={
 						<span className="text-2xl font-bold">
-							{sleepData.reduce((sum, item) => sum + item.hours, 0).toFixed(1) / 7}h
+							{profileData.sleep.toFixed(1)}h
 							<div className="text-muted-foreground text-xs font-normal">Last 7 days</div>
 						</span>
 					}
@@ -44,7 +178,7 @@ const Profile = () => {
 					title="Meditation"
 					description={
 						<span className="text-2xl font-bold">
-							5/7 days
+							{profileData.meditation}/7 days
 							<div className="text-muted-foreground text-xs font-normal">Weekly goal</div>
 						</span>
 					}
@@ -60,8 +194,8 @@ const Profile = () => {
 					title="Exercise"
 					description={
 						<span className="text-2xl font-bold">
-							4h 30m
-							<div className="text-muted-foreground text-xs font-normal">This Week</div>
+							{profileData.exercise} min
+							<div className="text-muted-foreground text-xs font-normal">Today</div>
 						</span>
 					}
 					header={<SkeletonThree />}
@@ -76,7 +210,7 @@ const Profile = () => {
 					title="Stress Level"
 					description={
 						<span className="text-2xl font-bold">
-							Medium
+							{profileData.stressLevel}
 							<div className="text-muted-foreground text-xs font-normal">Based on your inputs</div>
 						</span>
 					}
@@ -112,9 +246,7 @@ const Profile = () => {
 					header={
 						<span className="text-2xl font-bold">
 							Exercise Routine
-							<div className="text-muted-foreground text-xs font-normal">
-								Minuites of exercise per day
-							</div>
+							<div className="text-muted-foreground text-xs font-normal">Minutes of exercise per day</div>
 						</span>
 					}
 					description={
@@ -148,20 +280,38 @@ const Profile = () => {
 							</TabsList>
 							<TabsContent value="daily">
 								<div className="space-y-4">
-									<GoalProgress title="Meditate for 15 minutes" progress={100} />
-									<GoalProgress title="8 hours of sleep" progress={75} />
-									<GoalProgress title="8 hours of sleep" progress={75} />
+									<GoalProgress
+										title="Meditate for 15 minutes"
+										progress={Math.min(100, (profileData.meditation / 15) * 100)}
+									/>
+									<GoalProgress
+										title="8 hours of sleep"
+										progress={Math.min(100, (profileData.sleep / 8) * 100)}
+									/>
+									<GoalProgress
+										title="30 minutes of exercise"
+										progress={Math.min(100, (profileData.exercise / 30) * 100)}
+									/>
 								</div>
 							</TabsContent>
 							<TabsContent value="weekly">
 								<div className="space-y-4">
-									<GoalProgress title="Attend therapy session" progress={100} />
-									<GoalProgress title="Connect with a friend" progress={50} />
+									<GoalProgress
+										title="Meditate 5 times"
+										progress={Math.min(100, (profileData.meditation / 5) * 100)}
+									/>
+									<GoalProgress
+										title="Exercise 3 hours"
+										progress={Math.min(100, ((profileData.exercise * 7) / 180) * 100)}
+									/>
 								</div>
 							</TabsContent>
 							<TabsContent value="monthly">
 								<div className="space-y-4">
-									<GoalProgress title="Read a self-help book" progress={60} />
+									<GoalProgress
+										title="Achieve low stress level"
+										progress={profileData.stressLevel === 'Low' ? 100 : 50}
+									/>
 								</div>
 							</TabsContent>
 						</Tabs>
