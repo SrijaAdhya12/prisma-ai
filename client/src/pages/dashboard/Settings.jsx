@@ -9,11 +9,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Moon, Sun, User } from 'lucide-react'
 import { useTheme } from '@/hooks'
+import { useAuth0 } from '@auth0/auth0-react'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 const Settings = () => {
 	const [notifications, setNotifications] = useState(true)
 	const [language, setLanguage] = useState('en')
 	const { theme, setTheme } = useTheme()
+	const { user } = useAuth0()
+	const [timezone, setTimezone] = useState('ist')
 	return (
 		<div className="min-h-screen p-4">
 			<h1 className="mb-8 text-4xl font-bold">Settings</h1>
@@ -34,28 +38,48 @@ const Settings = () => {
 							<CardContent className="space-y-4">
 								<div className="flex items-center space-x-4">
 									<Avatar className="h-20 w-20">
-										<AvatarImage src="/placeholder-avatar.jpg" alt="Profile picture" />
+										<AvatarImage src={user.picture} alt={user.name} />
 										<AvatarFallback>
-											<User className="h-10 w-10" />
+											<User className="size-10" />
 										</AvatarFallback>
 									</Avatar>
-									<Button>Change Avatar</Button>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<Button>Change Avatar</Button>
+										</TooltipTrigger>
+										<TooltipContent>
+											<p>You can only change your avatar on Auth0</p>
+										</TooltipContent>
+									</Tooltip>
 								</div>
 								<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 									<div className="space-y-2">
 										<Label htmlFor="name">Name</Label>
-										<Input id="name" placeholder="Your name" />
+										<Input id="name" placeholder="Your name" value={user.name} disabled />
 									</div>
 									<div className="space-y-2">
 										<Label htmlFor="email">Email</Label>
-										<Input id="email" type="email" placeholder="Your email" disabled />
+										<Input
+											id="email"
+											type="email"
+											placeholder="Your email"
+											disabled
+											value={user.email}
+										/>
 									</div>
 								</div>
 								<div className="space-y-2">
 									<Label htmlFor="bio">Bio</Label>
-									<Input id="bio" placeholder="Tell us about yourself" />
+									<Input id="bio" placeholder="Tell us about yourself" disabled />
 								</div>
-								<Button>Save Changes</Button>
+								<Tooltip>
+									<TooltipTrigger asChild>
+										<Button>Save Changes</Button>
+									</TooltipTrigger>
+									<TooltipContent>
+										<p>You can only change your avatar on Auth0</p>
+									</TooltipContent>
+								</Tooltip>
 							</CardContent>
 						</Card>
 					</TabsContent>
@@ -74,18 +98,19 @@ const Settings = () => {
 										</SelectTrigger>
 										<SelectContent>
 											<SelectItem value="en">English</SelectItem>
-											<SelectItem value="es">Español</SelectItem>
-											<SelectItem value="fr">Français</SelectItem>
+											<SelectItem value="hi">Hindi</SelectItem>
+											<SelectItem value="bn">Bangla</SelectItem>
 										</SelectContent>
 									</Select>
 								</div>
 								<div className="space-y-2">
 									<Label htmlFor="timezone">Timezone</Label>
-									<Select>
+									<Select value={timezone} onValueChange={setTimezone}>
 										<SelectTrigger>
 											<SelectValue placeholder="Select Timezone" />
 										</SelectTrigger>
 										<SelectContent>
+											<SelectItem value="ist">IST</SelectItem>
 											<SelectItem value="utc">UTC</SelectItem>
 											<SelectItem value="est">Eastern Time</SelectItem>
 											<SelectItem value="pst">Pacific Time</SelectItem>
