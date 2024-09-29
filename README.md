@@ -2,12 +2,9 @@
 
 <div align=center>
     <a href="https://github.com/SrijaAdhya12/prisma-ai">
-        <img width="200" src="https://img.icons8.com/?size=1000&id=46874" alt="prisma-ai">
+        <img width="200" src="client/public/favicon.jpg" alt="prisma-ai">
     </a>
     <p style="font-family: roboto, calibri; font-size:12pt; font-style:italic"> AI Powered Mental Health Support </p>
-    <a src="https://github.com/SrijaAdhya12/prisma-ai/forks">
-        <img alt="GitHub forks" src="https://img.shields.io/github/forks/SrijaAdhya12/prisma-ai">
-    </a>
 </div>
 
 # [Prisma Ai](https://prisma-ai.vercel.app)
@@ -37,65 +34,100 @@
 -  **Lack of Support**: Mental health crises can occur outside of regular office hours.
 -  **Mood Tracking Challenges**: Students struggle to monitor their emotional well-being.
 
+![line]
+
 ## Domain
 
 - AI powered Mental Health Support 
 
-### Generating a repo from the template
+![line]
 
-1. To configure automatic preview generation, replace [`url`](.github/take-snapshot.mjs#L5) with your hosted URL.
-2. Configure the [CodeQL Analysis](.github/workflows/codeql-analysis.yml) according to your tech stack/language.
-3. Configure [Dependabot](https://github.com/dependabot) alerts for package auto-updates and PRs for the package-manager of your choice inside [.github/dependabot.yml](.github/dependabot.yml)
-4. Configure the directories and cron jobs of the package managers _(eg. client/server)_ inside [.github/dependabot.yml](.github/dependabot.yml).
-5. By default **Dependabot Alerts** are enabled for npm only, the ones relevant to your project.
-6. Feel free to add your own sections _(eg. Configuring, Designs, Documents, Diagrams)_ in this readme according to your requirements, make sure to link those sections in the above [**Table of Contents**](#table-of-contents)
-7. You can find some free url-resourses below to find [markdown-badges], [icons] etc.
+## Proposed Solution
 
-### Forking this template
-
--   Run Initializer Action
-
-1. Go to **Actions** tab
-2. Enable workflows by Clicking on **green button** which says `I understand my workflows, go ahead and enable them`.
-3. Click on `🍴 Fork initialize` from Actions Sidebar.
-4. Click on `Run Workflow` in the **main** branch.
-5. Go to **Security** tab
-
--   Enable Dependabot Alerts
-
-1. Wait for the Run Initializer above step to complete.
-2. Go to [**Security**](https://github.com/SrijaAdhya12/prisma-ai/security) tab.
-3. Click on **Security Overview**.
-4. Click on `Enable Dependabot alerts` button.
-
--   Enable Code Scanning Alerts
-
-1. Go to [Code security and analysis](https://github.com/SrijaAdhya12/prisma-ai/settings/security_analysis#code_scanning_settings) section in settings.
-2. Enable subsequent **Graphs**, **updates** and **alerts**.
-3. Scroll down and go to **Tools** section set `CodeQL Analysis` to default.
+-  **AI-Driven Virtual Companion**: Prisma AI serves as a virtual companion that offers personalized mental health support, interacting with users to understand and assist with their emotional well-being.
+-  **Personalized Mental Health Support**: The platform tailors its recommendations to each user's unique emotional needs, ensuring that the support provided is relevant and specific to the individual.
+-  **Advanced Mood Analysis**: Prisma AI uses advanced mood analysis techniques to assess the user's current emotional state, providing accurate insights into their mental well-being.
+-  **Suggested Activities and Coping Strategies**: Based on the user's mood and emotional needs, Prisma AI suggests activities and coping strategies designed to help improve their mental state and overall well-being.
 
 ![line]
 
-## Developement
+## Features
 
--   Steps used for development of this project
--   Build processes
--   CI/CD commands
--   Docker commands
+- **Mood Sense**: Daily mood tracking through a user-friendly calendar interface.
+- **Video Sense**: Visual mood tracking with video feedback and personalized insights.
+- **Support Bot**: Behavioral analysis through chat interactions, identifying patterns and traits. Providing supportive response through chat.
+- **ProCare**: Access to professional therapist
+- **SupportNext**: Coping Environments
+- **Therafy**: Access to a library of GIFs, therapeutic music, jokes, and personalized recommendations.
+
+![line]
+
+## Future Scope
+
+- Dashboard for therapists
+- Event organisers 
+- Offline therapy sessions 
+- Managed user groups
+- integrate with a fitness tracker
+
+![line]
+
+## Installation Guide
+
+  1. Download NodeJS >18.0.1
+  2. Run the following commands for running client (frontEnd)
+  3. set up `.env` with the help of `.env.example` file in both client and server
+```sh
+$> cd client
+$> npm i       # install all packages
+$> npm run dev # run the frontend
+```
+  3. Run the following commands for running server (backEnd)
+```sh
+$> cd server
+$> npm i       # install all packages
+$> npm start   # run the backEnd
+```
+
 
 ![line]
 
 ## Tech Stack Used
 
--   GitHub
--   Markdown
--   Prettier
--   Dependabot
--   GitHub Actions
--   Yaml
--   JavaScript
+Frontend:
+* Vite
+* React
+* JavaScript
+* Tailwind
+* lucide-react
+* tabler-icons
+* Aceternity UI
+* ShadCn
+* Auth0
+* Axios
+* Stream chat
+* Framer motion
+* Face-api.js
+  
+Backend:
+* Express.js
+* Node.js
+* MongoDB
+* Mongoose
+* Gemini 1.5 Flash
+* Nodemon(only dev)
+* Stream Chat
 
-![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![Prettier](https://img.shields.io/badge/prettier-1A2B34?style=for-the-badge&logo=prettier&logoColor=pink) ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Lucide](https://img.shields.io/badge/lucide-%23CC0000.svg?style=for-the-badge&logo=lucid&logoColor=white) ![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white) ![shadcn/ui](https://img.shields.io/badge/Shadcn/ui-black?style=for-the-badge&logo=shadcnui&logoColor=white) ![Aceternity](https://img.shields.io/badge/aceternity-black?style=for-the-badge&logo=aceternity&logoColor=red) ![Auth0](https://img.shields.io/badge/auth0-black?style=for-the-badge&logo=auth0&logoColor=red)   ![Axios](https://img.shields.io/badge/axios-%2320232a.svg?style=for-the-badge&logo=axios&logoColor=%2361DAFB) ![Stream-chat](https://img.shields.io/badge/stream-white?style=for-the-badge&logo=streamlit&logoColor=blue) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue) ![Face-api.js](https://img.shields.io/badge/faceapi.js-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Node JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Gemini](https://img.shields.io/badge/gemini%20-EA2328.svg?style=for-the-badge&logo=googlecloud&logoColor=white)  ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Nodemon](https://img.shields.io/badge/nodemon-%23646CFF.svg?style=for-the-badge&logo=nodemon&logoColor=white)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Lucide](https://img.shields.io/badge/lucide-%23CC0000.svg?style=for-the-badge&logo=lucid&logoColor=white) ![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white) ![shadcn/ui](https://img.shields.io/badge/Shadcn/ui-black?style=for-the-badge&logo=shadcnui&logoColor=white) ![Aceternity](https://img.shields.io/badge/aceternity-black?style=for-the-badge&logo=aceternity&logoColor=red) ![Auth0](https://img.shields.io/badge/auth0-black?style=for-the-badge&logo=auth0&logoColor=red)   ![Axios](https://img.shields.io/badge/axios-%2320232a.svg?style=for-the-badge&logo=axios&logoColor=%2361DAFB) ![Stream-chat](https://img.shields.io/badge/stream-white?style=for-the-badge&logo=streamlit&logoColor=blue) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue) ![Face-api.js](https://img.shields.io/badge/faceapi.js-%2320232a.svg?style=for-the-badge&logo=&logoColor=%2361DAFB) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Node JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Gemini](https://img.shields.io/badge/gemini%20-EA2328.svg?style=for-the-badge&logo=googlecloud&logoColor=white)  ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Nodemon](https://img.shields.io/badge/nodemon-%23646CFF.svg?style=for-the-badge&logo=nodemon&logoColor=white)
+ ![Mongoose](https://img.shields.io/badge/mongoose-%1B5E20?style=for-the-badge&logo=mongoose&logoColor=white) 
+![line]
+
+## Docs
+
+- [Project Presentation](https://drive.google.com/drive/u/0/folders/1yoJKAaeEUcE7E69RSkmYAOfzxho3qITq)
+- [Project Analysis](https://docs.google.com/document/d/1dIcLnmPpMyJcy6Sn61tAYizZJ6sKa7iRT1qhgoezqK0/pub)
 
 ![line]
 
@@ -121,13 +153,18 @@
 
 ## License
 
--   See [LICENSE]
+- See [LICENSE]
 
-**Pritam Kundu, 2024**
+**Srija** & **Pritam, 2024**
+
 
 ![line]
 
 ## Thank you, everyone 💚
+
+![line]
+
+### Project by Team Axios
 
 [icons]: https://icons8.com
 [markdown-badges]: https://github.com/Ileriayo/markdown-badges
