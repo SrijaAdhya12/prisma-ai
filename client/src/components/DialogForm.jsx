@@ -29,7 +29,7 @@ const DialogForm = ({ onSubmit, onClose }) => {
 	return (
 		<form onSubmit={handleSubmit} className="space-y-4">
 			<div>
-				<Label htmlFor="sleep">Average Sleep (hours)</Label>
+				<Label htmlFor="sleep">Average Sleep (hours/week)</Label>
 				<Input
 					id="sleep"
 					value={sleep}
