@@ -15,6 +15,7 @@ import {
 import 'stream-chat-react/dist/css/v2/index.css'
 import { getChatToken } from '@/api'
 import { Menu } from 'lucide-react'
+import { useTheme } from '@/hooks'
 
 const apiKey = import.meta.env.VITE_STREAM_API_KEY
 
@@ -32,6 +33,7 @@ const channelsConfig = [
 ]
 
 const Chat = () => {
+	const { theme } = useTheme()
 	const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 	const [client, setClient] = useState(null)
 	const [channels, setChannels] = useState([])
@@ -49,7 +51,7 @@ const Chat = () => {
 		window.addEventListener('resize', handleResize)
 		return () => window.removeEventListener('resize', handleResize)
 	}, [])
-
+	
 	useEffect(() => {
 		const init = async () => {
 			setLoading(true)
@@ -104,10 +106,10 @@ const Chat = () => {
 	const toggleChannelList = () => {
 		setShowChannelList(!showChannelList)
 	}
-
+	console.log(theme)
 	return (
-		<div className="flex h-screen overflow-hidden bg-gray-100">
-			<StreamChatComponent client={client} theme="str-chat__theme-dark">
+		<div className="flex min-h-[calc(100vh-70px)] overflow-hidden">
+			<StreamChatComponent client={client} theme={`str-chat__theme-${theme}`}>
 				<div
 					className={`${
 						showChannelList ? 'block' : 'hidden'
@@ -115,27 +117,27 @@ const Chat = () => {
 						showChannelList ? 'translate-x-0' : '-translate-x-full'
 					}`}
 				>
-					<div className="h-full overflow-y-auto bg-gray-800">
+					<div className="bg-secondary h-full overflow-y-auto">
 						<ChannelList />
 					</div>
 				</div>
 				<div className="relative flex flex-1 flex-col overflow-hidden">
 					<Channel>
 						<Window>
-							<div className="flex items-center bg-gray-700 p-2">
+							<div className="flex items-center p-2">
 								<button
 									onClick={toggleChannelList}
-									className="mr-2 rounded p-1 text-white focus:outline-none focus:ring-2 focus:ring-white md:hidden"
+									className="mr-2 rounded p-1 focus:outline-none focus:ring-2 focus:ring-white md:hidden"
 									aria-label="Toggle channel list"
 								>
 									<Menu size={24} />
 								</button>
-								<ChannelHeader />
+								<ChannelHeader className="" />
 							</div>
 							<div className="flex-1 overflow-y-auto">
 								<MessageList />
 							</div>
-							<MessageInput />
+							<MessageInput className="bg-secondary" />
 						</Window>
 						<Thread />
 					</Channel>
