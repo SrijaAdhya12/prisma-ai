@@ -1,6 +1,7 @@
 import { Navbar, Footer } from '@/components'
 import { Hero, Quote, Solutions, Procare } from '@/sections'
-import { ChevronDown } from 'lucide-react'
+import { IconEmpathize, IconLayoutBottombarFilled } from '@tabler/icons-react'
+import { ChevronDown, HeartHandshake, PanelsTopLeft } from 'lucide-react'
 
 const Home = () => {
 	const navItems = [
@@ -20,8 +21,7 @@ const Home = () => {
 					src: 'https://assets.aceternity.com/demos/algochurn.webp',
 
 					href: '/therafy',
-					description:
-						'Therafy is a cutting-edge AI content sugesstion platform.'
+					description: 'Therafy is a cutting-edge AI content sugesstion platform.'
 				},
 				{
 					title: 'Pro Care',
@@ -38,10 +38,10 @@ const Home = () => {
 				}
 			]
 		},
-		{ label: 'Solutions', target: '#solutions' },
-		{ label: 'Procare', target: '#procare' },
-		{ label: 'Help Center', target: '#helpcenter' },
-		{ label: 'Dashboard', private: true, to: '/dashboard' }
+		{ label: 'Solutions', target: '#solutions', icon: HeartHandshake },
+		{ label: 'Procare', target: '#procare', icon: IconEmpathize },
+		{ label: 'Help Center', target: '#helpcenter', icon: IconLayoutBottombarFilled },
+		{ label: 'Dashboard', private: true, to: '/dashboard', icon: PanelsTopLeft }
 	]
 
 	return (
