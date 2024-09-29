@@ -55,7 +55,7 @@ const Profile = () => {
 	const [profileData, setProfileData] = useState(initialData.profileData)
 	const [sleepData, setSleepData] = useState(initialData.sleepData)
 	const [exerciseData, setExerciseData] = useState(initialData.exerciseData)
-	
+
 	function handleFormSubmit(data) {
 		setProfileData(data)
 		setSleepData((prevData) => {
@@ -97,7 +97,7 @@ const Profile = () => {
 					title="Avg. Sleep"
 					description={
 						<span className="text-2xl font-bold">
-							{profileData.sleep.toFixed(1)}h
+							{profileData.sleep.toFixed(1)} hrs
 							<div className="text-muted-foreground text-xs font-normal">Last 7 days</div>
 						</span>
 					}
@@ -113,7 +113,7 @@ const Profile = () => {
 					title="Meditation"
 					description={
 						<span className="text-2xl font-bold">
-							{profileData.meditation}/7 days
+							{profileData.meditation} min/7 days
 							<div className="text-muted-foreground text-xs font-normal">Weekly goal</div>
 						</span>
 					}
@@ -196,8 +196,10 @@ const Profile = () => {
 						</ResponsiveContainer>
 					}
 				/>
+			</BentoGrid>
+			<BentoGrid className="mt-5 h-96 max-w-full gap-6 *:border sm:p-0 md:auto-rows-[20rem] md:grid-cols-1">
 				<BentoGridItem
-					className="md:col-span-4"
+					className="col-span-3"
 					header={
 						<span className="text-2xl font-bold">
 							Wellness Goals
