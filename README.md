@@ -37,42 +37,32 @@
 -  **Lack of Support**: Mental health crises can occur outside of regular office hours.
 -  **Mood Tracking Challenges**: Students struggle to monitor their emotional well-being.
 
+![line]
+
 ## Domain
 
 - AI powered Mental Health Support 
 
-### Generating a repo from the template
+![line]
 
-1. To configure automatic preview generation, replace [`url`](.github/take-snapshot.mjs#L5) with your hosted URL.
-2. Configure the [CodeQL Analysis](.github/workflows/codeql-analysis.yml) according to your tech stack/language.
-3. Configure [Dependabot](https://github.com/dependabot) alerts for package auto-updates and PRs for the package-manager of your choice inside [.github/dependabot.yml](.github/dependabot.yml)
-4. Configure the directories and cron jobs of the package managers _(eg. client/server)_ inside [.github/dependabot.yml](.github/dependabot.yml).
-5. By default **Dependabot Alerts** are enabled for npm only, the ones relevant to your project.
-6. Feel free to add your own sections _(eg. Configuring, Designs, Documents, Diagrams)_ in this readme according to your requirements, make sure to link those sections in the above [**Table of Contents**](#table-of-contents)
-7. You can find some free url-resourses below to find [markdown-badges], [icons] etc.
+## Proposed Solution
 
-### Forking this template
+-  **AI-Driven Virtual Companion**: Prisma AI serves as a virtual companion that offers personalized mental health support, interacting with users to understand and assist with their emotional well-being.
+-  **Personalized Mental Health Support**: The platform tailors its recommendations to each user's unique emotional needs, ensuring that the support provided is relevant and specific to the individual.
+-  **Advanced Mood Analysis**: Prisma AI uses advanced mood analysis techniques to assess the user's current emotional state, providing accurate insights into their mental well-being.
+-  **Suggested Activities and Coping Strategies**: Based on the user's mood and emotional needs, Prisma AI suggests activities and coping strategies designed to help improve their mental state and overall well-being.
 
--   Run Initializer Action
+![line]
 
-1. Go to **Actions** tab
-2. Enable workflows by Clicking on **green button** which says `I understand my workflows, go ahead and enable them`.
-3. Click on `🍴 Fork initialize` from Actions Sidebar.
-4. Click on `Run Workflow` in the **main** branch.
-5. Go to **Security** tab
+## Features
 
--   Enable Dependabot Alerts
+- **Mood Sense**: Daily mood tracking through a user-friendly calendar interface.
+- **Video Sense**: Visual mood tracking with video feedback and personalized insights.
+- **Support Bot**: Behavioral analysis through chat interactions, identifying patterns and traits. Providing supportive response through chat.
+- **ProCare**: Access to professional therapist
+- **SupportNext**: Coping Environments
+- **Therafy**: Access to a library of GIFs, therapeutic music, jokes, and personalized recommendations.
 
-1. Wait for the Run Initializer above step to complete.
-2. Go to [**Security**](https://github.com/SrijaAdhya12/prisma-ai/security) tab.
-3. Click on **Security Overview**.
-4. Click on `Enable Dependabot alerts` button.
-
--   Enable Code Scanning Alerts
-
-1. Go to [Code security and analysis](https://github.com/SrijaAdhya12/prisma-ai/settings/security_analysis#code_scanning_settings) section in settings.
-2. Enable subsequent **Graphs**, **updates** and **alerts**.
-3. Scroll down and go to **Tools** section set `CodeQL Analysis` to default.
 
 ![line]
 
