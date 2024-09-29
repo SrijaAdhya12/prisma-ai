@@ -7,11 +7,11 @@ export const saveMood = async (req, res) => {
 	try {
 		const { user_id, moodData } = req.body
 		const currentDate = new Date()
-		const dateWithoutTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+		const dateString = currentDate.toISOString().split('T')[0] + 'T00:00:00.000+00:00'
 
 		Object.entries(moodData).forEach(async ([emotion, value]) => {
 			const mood = { emotion, value: value * 100 }
-			const newMood = await Mood.findOneAndUpdate({ user_id, date: dateWithoutTime, emotion }, mood, {
+			const newMood = await Mood.findOneAndUpdate({ user_id, date: dateString, emotion }, mood, {
 				new: true, // returns the updated document instead of the original.
 				upsert: true, // creates a new document if one isn't found.
 				runValidators: true, // ensures that Mongoose validation runs

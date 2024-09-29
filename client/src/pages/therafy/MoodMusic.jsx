@@ -16,10 +16,14 @@ const spotifyApi = SpotifyApi.withClientCredentials(
 
 const moodToGenre = {
 	happy: 'pop',
+	neutral: 'edm',
 	sad: 'blues',
-	energetic: 'dance',
-	calm: 'ambient',
 	angry: 'calm',
+	energetic: 'dance',
+	fearful: 'electronic',
+	disgusted: 'rock',
+	surprised: 'fun',
+	calm: 'ambient',
 	anxious: 'electronic',
 	depressed: 'classical',
 	excited: 'hip-hop',
