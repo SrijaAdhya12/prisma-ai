@@ -20,6 +20,6 @@ export const features = [
 	}
 ]
 
-export { moods, colors as moodColors } from './moods'
+export { moods, colors as moodColors, textColors as moodTextColors } from './moods'
 export { sleepData, exerciseData } from './profile'
 export { items as events } from './events'

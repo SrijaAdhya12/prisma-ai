@@ -11,6 +11,16 @@ export const colors = {
 	surprised: 'bg-pink-500'
 }
 
+export const textColors = {
+	neutral: 'text-muted-foreground',
+	happy: 'text-success',
+	sad: 'text-info',
+	angry: 'text-red-700',
+	fearful: 'text-primary',
+	disgusted: 'text-warning',
+	surprised: 'text-pink-500'
+}
+
 export const moods = [
 	{
 		name: 'Neutral',
