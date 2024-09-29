@@ -339,7 +339,7 @@ const MoodSense = () => {
 					</Select>
 				</div>
 
-				<div className="grid gap-8 md:grid-cols-3 lg:grid-cols-2">
+				<div className="grid gap-8 grid-cols-3">
 					<Card className="col-span-2">
 						<CardHeader>
 							<CardTitle>Mood Calendar</CardTitle>
