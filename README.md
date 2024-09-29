@@ -58,7 +58,7 @@
 - **Support Bot:** Behavioral analysis through chat interactions, identifying patterns and traits. Providing supportive response through chat.
 - **ProCare:** Access to professional therapist via chat
 - **SupportNext:** Coping Environments 
-- **Therafy*:** Access to a library of GIFs, therapeutic music, jokes, and personalized recommendations.
+- **Therafy**: Access to a library of GIFs, therapeutic music, jokes, and personalized recommendations.
 - **Personalised Dashboard:**  Curated view of user health status and tracking of goal progress.
 
 ![line]
