@@ -30,6 +30,7 @@ const AppRouter = () => {
 				<Route path="mood-music" element={<MoodMusic />} />
 				<Route path="mood-memes" element={<ComingSoon />} />
 				<Route path="mood-gifs" element={<ComingSoon />} />
+				<Route path="cbt-exercises" element={<ComingSoon />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
 			<Route path="/pro-care" element={<PrivateRoute component={<ProCare />} />}>
