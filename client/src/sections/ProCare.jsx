@@ -6,7 +6,7 @@ const ProCare = () => {
 	return (
 		<section
 			id="procare"
-			className="mx-4 rounded-2xl bg-opacity-30 py-12 shadow-xl ring-1 ring-gray-900/10 sm:container sm:mx-auto md:py-24 lg:py-32"
+			className="mx-4 rounded-2xl bg-opacity-30 py-16 xs:py-12 shadow-xl ring-1 ring-gray-900/10 sm:container sm:mx-auto md:py-24 lg:py-32"
 		>
 			<div className="container mx-auto px-4 md:px-6">
 				<div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">

@@ -1,5 +1,5 @@
 import { Navbar, Footer } from '@/components'
-import { Hero, Quote, Solutions, Procare } from '@/sections'
+import { Hero, Quote, Solutions, ProCare } from '@/sections'
 import { IconEmpathize, IconLayoutBottombarFilled } from '@tabler/icons-react'
 import { ChevronDown, HeartHandshake, PanelsTopLeft } from 'lucide-react'
 
@@ -51,7 +51,7 @@ const Home = () => {
 				<Hero />
 				<Quote />
 				<Solutions />
-				<Procare />
+				<ProCare />
 			</main>
 			<Footer />
 		</div>
