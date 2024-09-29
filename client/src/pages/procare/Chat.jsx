@@ -14,7 +14,8 @@ import {
 } from 'stream-chat-react'
 import 'stream-chat-react/dist/css/v2/index.css'
 import { getChatToken } from '@/api'
-import { Menu } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import { useTheme } from '@/hooks'
 
 const apiKey = import.meta.env.VITE_STREAM_API_KEY
 
@@ -32,6 +33,7 @@ const channelsConfig = [
 ]
 
 const Chat = () => {
+	const { theme } = useTheme()
 	const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 	const [client, setClient] = useState(null)
 	const [channels, setChannels] = useState([])
@@ -51,7 +53,7 @@ const Chat = () => {
 	}, [])
 
 	useEffect(() => {
-		const init = async () => {
+		const initialise = async () => {
 			setLoading(true)
 			try {
 				const chatClient = StreamChat.getInstance(apiKey)
@@ -89,7 +91,7 @@ const Chat = () => {
 				setLoading(false)
 			}
 		}
-		init()
+		initialise()
 		return () => {
 			if (client) {
 				client.disconnectUser()
@@ -101,31 +103,44 @@ const Chat = () => {
 		return <LoadingIndicator />
 	}
 
-	const toggleChannelList = () => {
-		setShowChannelList(!showChannelList)
-	}
+	const toggleChannelList = () => setShowChannelList(!showChannelList)
 
 	return (
-		<div className="flex h-screen overflow-hidden bg-gray-100">
-			<StreamChatComponent client={client} theme="str-chat__theme-dark">
+		<div className="relative flex min-h-[calc(100vh-70px)] overflow-hidden">
+			<StreamChatComponent client={client} theme={`str-chat__theme-${theme}`}>
+				{/* Dark overlay */}
 				<div
-					className={`${
-						showChannelList ? 'block' : 'hidden'
-					} absolute inset-y-0 left-0 z-20 w-64 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
+					className={`fixed inset-0 z-10 bg-black bg-opacity-50 transition-opacity duration-300 md:hidden ${
+						showChannelList ? 'opacity-100' : 'pointer-events-none opacity-0'
+					}`}
+					onClick={toggleChannelList}
+				></div>
+
+				{/* Channel list sidebar */}
+				<div
+					className={`absolute inset-y-0 left-0 z-20 w-64 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
 						showChannelList ? 'translate-x-0' : '-translate-x-full'
 					}`}
 				>
-					<div className="h-full overflow-y-auto bg-gray-800">
+					<div className="bg-secondary h-full overflow-y-auto">
+						<div className="flex items-center justify-between p-4 md:hidden">
+							<h2 className="text-lg font-semibold">Channels</h2>
+							<button onClick={toggleChannelList} className="focus:outline-none">
+								<X size={24} />
+							</button>
+						</div>
 						<ChannelList />
 					</div>
 				</div>
+
+				{/* Main chat area */}
 				<div className="relative flex flex-1 flex-col overflow-hidden">
 					<Channel>
 						<Window>
-							<div className="flex items-center bg-gray-700 p-2">
+							<div className="bg-secondary flex items-center p-2">
 								<button
 									onClick={toggleChannelList}
-									className="mr-2 rounded p-1 text-white focus:outline-none focus:ring-2 focus:ring-white md:hidden"
+									className="focus:ring-primary mr-2 rounded p-1 focus:outline-none focus:ring-2 md:hidden"
 									aria-label="Toggle channel list"
 								>
 									<Menu size={24} />
@@ -135,7 +150,7 @@ const Chat = () => {
 							<div className="flex-1 overflow-y-auto">
 								<MessageList />
 							</div>
-							<MessageInput />
+							<MessageInput className="bg-secondary" />
 						</Window>
 						<Thread />
 					</Channel>
