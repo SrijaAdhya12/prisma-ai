@@ -1,10 +1,11 @@
 import { Router } from 'express'
-import { saveMood, getMoodData } from '../controllers/index.js'
+import { saveMood, getMoodByDateRange, getCurrentMood } from '../controllers/index.js'
 
 const router = Router()
 
 router
-    .post('/', saveMood)
-    .get('/', getMoodData)
-    
+    .patch('/', saveMood)
+    .get('/', getMoodByDateRange)
+    .get('/current', getCurrentMood)
+
 export default router

@@ -14,10 +14,9 @@ import {
 	DialogTitle,
 	DialogTrigger
 } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { DialogForm } from '@/components'
 
-function GoalProgress({ title, progress }) {
+const GoalProgress = ({ title, progress }) => {
 	return (
 		<div className="space-y-2">
 			<div className="flex justify-between">
@@ -29,98 +28,34 @@ function GoalProgress({ title, progress }) {
 	)
 }
 
-function DialogForm({ onSubmit, onClose }) {
-	const [sleep, setSleep] = useState('')
-	const [meditation, setMeditation] = useState('')
-	const [exercise, setExercise] = useState('')
-
-	function handleSubmit(e) {
-		e.preventDefault()
-		const stressLevel = calculateStressLevel(Number(sleep), Number(meditation), Number(exercise))
-		onSubmit({ sleep: Number(sleep), meditation: Number(meditation), exercise: Number(exercise), stressLevel })
-		onClose()
-	}
-
-	function calculateStressLevel(sleep, meditation, exercise) {
-		const score = (sleep / 8) * 0.4 + (meditation / 30) * 0.3 + (exercise / 60) * 0.3
-		if (score > 0.8) return 'Low'
-		if (score > 0.5) return 'Medium'
-		return 'High'
-	}
-
-	return (
-		<form onSubmit={handleSubmit} className="space-y-4">
-			<div>
-				<Label htmlFor="sleep">Average Sleep (hours)</Label>
-				<Input
-					id="sleep"
-					value={sleep}
-					onChange={(e) => setSleep(e.target.value)}
-					type="number"
-					step="0.1"
-					min="0"
-					max="24"
-					required
-				/>
-			</div>
-			<div>
-				<Label htmlFor="meditation">Meditation (minutes/day)</Label>
-				<Input
-					id="meditation"
-					value={meditation}
-					onChange={(e) => setMeditation(e.target.value)}
-					type="number"
-					min="0"
-					max="1440"
-					required
-				/>
-			</div>
-			<div>
-				<Label htmlFor="exercise">Exercise (minutes/day)</Label>
-				<Input
-					id="exercise"
-					value={exercise}
-					onChange={(e) => setExercise(e.target.value)}
-					type="number"
-					min="0"
-					max="1440"
-					required
-				/>
-			</div>
-			<Button type="submit">Update Profile</Button>
-		</form>
-	)
-}
-
 const Profile = () => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false)
-	const [profileData, setProfileData] = useState({
-		sleep: 0,
-		meditation: 0,
-		exercise: 0,
-		stressLevel: 'Medium'
-	})
+	const initialData = {
+		profileData: { sleep: 0, meditation: 0, exercise: 0, stressLevel: 'Medium' },
+		sleepData: [
+			{ day: 'Mon', hours: 0 },
+			{ day: 'Tue', hours: 0 },
+			{ day: 'Wed', hours: 0 },
+			{ day: 'Thu', hours: 0 },
+			{ day: 'Fri', hours: 0 },
+			{ day: 'Sat', hours: 0 },
+			{ day: 'Sun', hours: 0 }
+		],
+		exerciseData: [
+			{ day: 'Mon', minutes: 0 },
+			{ day: 'Tue', minutes: 0 },
+			{ day: 'Wed', minutes: 0 },
+			{ day: 'Thu', minutes: 0 },
+			{ day: 'Fri', minutes: 0 },
+			{ day: 'Sat', minutes: 0 },
+			{ day: 'Sun', minutes: 0 }
+		]
+	}
 
-	const [sleepData, setSleepData] = useState([
-		{ day: 'Mon', hours: 0 },
-		{ day: 'Tue', hours: 0 },
-		{ day: 'Wed', hours: 0 },
-		{ day: 'Thu', hours: 0 },
-		{ day: 'Fri', hours: 0 },
-		{ day: 'Sat', hours: 0 },
-		{ day: 'Sun', hours: 0 }
-	])
-
-	const [exerciseData, setExerciseData] = useState([
-		{ day: 'Mon', minutes: 0 },
-		{ day: 'Tue', minutes: 0 },
-		{ day: 'Wed', minutes: 0 },
-		{ day: 'Thu', minutes: 0 },
-		{ day: 'Fri', minutes: 0 },
-		{ day: 'Sat', minutes: 0 },
-		{ day: 'Sun', minutes: 0 }
-	])
-
+	const [profileData, setProfileData] = useState(initialData.profileData)
+	const [sleepData, setSleepData] = useState(initialData.sleepData)
+	const [exerciseData, setExerciseData] = useState(initialData.exerciseData)
+	
 	function handleFormSubmit(data) {
 		setProfileData(data)
 		setSleepData((prevData) => {

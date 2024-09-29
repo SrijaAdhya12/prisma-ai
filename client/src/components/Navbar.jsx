@@ -40,7 +40,7 @@ const ProductItem = React.forwardRef(({ className, title, children, href, src, .
 	)
 })
 
-const Navbar = ({ initialBackground = 'bg-transparent', navItems }) => {
+const Navbar = ({ initialBackground = 'bg-transparent', navItems = [] }) => {
 	const [background, setBackground] = useState(initialBackground)
 	const [isOpen, setIsOpen] = useState(false)
 	const location = useLocation()

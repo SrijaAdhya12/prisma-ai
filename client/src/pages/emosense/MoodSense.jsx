@@ -1,6 +1,16 @@
+import { Calendar as CalendarIcon, Frown, Meh, Smile, Angry, Annoyed, ThumbsDown, Zap } from 'lucide-react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { isSameWeek as dateFnsIsSameWeek } from 'date-fns'
+import { Calendar } from '@/components/ui/calendar'
+import { Button } from '@/components/ui/button'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useState, useEffect } from 'react'
+import { getMoodData } from '@/api'
+import { moodColors } from '@/data'
+import { cn } from '@/lib'
 import {
 	format,
 	startOfWeek,
@@ -18,39 +28,24 @@ import {
 	getYear,
 	parseISO
 } from 'date-fns'
-import { Calendar as CalendarIcon, Frown, Meh, Smile, Angry, Annoyed, ThumbsDown, Zap } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Button } from '@/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Calendar } from '@/components/ui/calendar'
-import { cn } from '@/lib/utils'
-import { getMoodData } from '@/api'
-import { useAuth0 } from '@auth0/auth0-react'
+
+const textColors = Object.fromEntries(
+	Object.entries(moodColors).map(([key, value]) => [key, `text-${value.split('-').slice(1).join('-')}`])
+)
 
 const moodIcons = {
-	neutral: <Meh className="h-6 w-6" />,
-	happy: <Smile className="h-6 w-6" />,
-	sad: <Frown className="h-6 w-6" />,
-	angry: <Angry className="h-6 w-6" />,
-	fearful: <Annoyed className="h-6 w-6" />,
-	disgusted: <ThumbsDown className="h-6 w-6" />,
-	surprised: <Zap className="h-6 w-6" />
-}
-
-const moodColors = {
-	neutral: 'bg-gray-500',
-	happy: 'bg-green-500',
-	sad: 'bg-blue-500',
-	angry: 'bg-red-500',
-	fearful: 'bg-purple-500',
-	disgusted: 'bg-yellow-500',
-	surprised: 'bg-pink-500'
+	neutral: <Meh className={cn('size-6', textColors.neutral)} />,
+	happy: <Smile className={cn('size-6', textColors.happy)} />,
+	sad: <Frown className={cn('size-6', textColors.sad)} />,
+	angry: <Angry className={cn('size-6', textColors.angry)} />,
+	fearful: <Annoyed className={cn('size-6', textColors.fearful)} />,
+	disgusted: <ThumbsDown className={cn('size-6', textColors.disgusted)} />,
+	surprised: <Zap className={cn('size-6', textColors.surprised)} />
 }
 
 const MoodSummary = ({ moodStats, timeframe, selectedDay }) => {
 	return (
-		<Card className="col-span-2 sm:col-span-1">
+		<Card className="col-span-2 lg:col-span-1">
 			<CardHeader>
 				<CardTitle>
 					{selectedDay && timeframe === 'week'
@@ -79,9 +74,9 @@ const MoodSummary = ({ moodStats, timeframe, selectedDay }) => {
 }
 
 const MoodSense = () => {
+	const { user } = useAuth0()
 	const [date, setDate] = useState(new Date())
 	const [selectedTimeframe, setSelectedTimeframe] = useState('month')
-	const { user } = useAuth0()
 	const [moodData, setMoodData] = useState({})
 	const [mounted, setMounted] = useState(false)
 	const [selectedDay, setSelectedDay] = useState(null)
@@ -148,7 +143,7 @@ const MoodSense = () => {
 											mood ? moodColors[mood.emotion] : 'bg-accent'
 										)}
 									>
-										{format(day, 'd')}
+										<div className="block sm:hidden">{format(day, 'd')}</div>
 									</div>
 								)
 							})}
@@ -187,7 +182,8 @@ const MoodSense = () => {
 										'flex aspect-square items-center justify-center rounded-full text-sm',
 										mood ? moodColors[mood.emotion] : 'bg-secondary',
 										isSameMonth(day, date) ? 'text-foreground' : 'text-muted-foreground',
-										isSameDay(day, new Date()) ? 'bg-primary text-primary-foreground' : ''
+										isSameDay(day, new Date()) &&
+											'outline-primary text-primary-foreground outline outline-2 outline-offset-2'
 									)}
 								>
 									{format(day, 'd')}
@@ -230,8 +226,10 @@ const MoodSense = () => {
 										'flex aspect-square items-center justify-center rounded-full text-sm',
 										mood ? moodColors[mood.emotion] : 'bg-secondary',
 										'text-foreground',
-										isSameDay(day, selectedDay) ? 'bg-muted-foreground text-background' : '',
-										isSameDay(day, new Date()) ? 'ring-primary bg-primary' : ''
+										isSameDay(day, selectedDay) &&
+											'outline-foreground outline outline-2 outline-offset-2',
+										isSameDay(day, new Date()) &&
+											'outline-primary outline outline-2 outline-offset-2'
 									)}
 								>
 									{format(day, 'd')}
@@ -341,7 +339,7 @@ const MoodSense = () => {
 					</Select>
 				</div>
 
-				<div className="grid gap-8 md:grid-cols-3">
+				<div className="grid gap-8 md:grid-cols-3 lg:grid-cols-2">
 					<Card className="col-span-2">
 						<CardHeader>
 							<CardTitle>Mood Calendar</CardTitle>

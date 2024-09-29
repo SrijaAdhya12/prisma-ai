@@ -20,15 +20,19 @@ export const getBotResponse = async (prompt, userId) => {
 }
 
 export const saveMoodData = async (moodData) => {
-	const response = await API.post('/mood', moodData)
+	const response = await API.patch('/mood', moodData)
 	const { data } = response.data
 	return data
 }
 
 export const getMoodData = async (start, end, user_id) => {
-	const response = await API.get(`/mood`, {
-		params: { start, end, user_id }
-	})
+	const response = await API.get(`/mood`, { params: { start, end, user_id } })
+	const { data } = response.data
+	return data
+}
+
+export const getCurrentMood = async (user_id) => {
+	const response = await API.get(`/mood/current`, { params: { user_id } })
 	const { data } = response.data
 	return data
 }

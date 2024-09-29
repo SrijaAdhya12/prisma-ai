@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
+import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Play, Pause } from 'lucide-react'
 import { SpotifyApi } from '@spotify/web-api-ts-sdk'
+import { getCurrentMood } from '@/api'
+import { useAuth0 } from '@auth0/auth0-react'
+import { toast as sonnerToast } from 'sonner'
+import { Link, useNavigate } from 'react-router-dom'
+import { useToast } from '@/hooks'
+import { Loader } from '@/components'
 
 const spotifyApi = SpotifyApi.withClientCredentials(
 	import.meta.env.VITE_SPOTIFY_CLIENT_ID,
@@ -15,7 +19,7 @@ const moodToGenre = {
 	sad: 'blues',
 	energetic: 'dance',
 	calm: 'ambient',
-	angry: 'rock',
+	angry: 'calm',
 	anxious: 'electronic',
 	depressed: 'classical',
 	excited: 'hip-hop',
@@ -24,20 +28,18 @@ const moodToGenre = {
 	lonely: 'jazz',
 	relaxed: 'latin',
 	stressed: 'electronic'
-	
 }
 
 const MoodMusic = () => {
+	const { user } = useAuth0()
+	const { toast } = useToast()
 	const [mood, setMood] = useState('happy')
+	const moodFetchedRef = useRef(false)
 	const [playlist, setPlaylist] = useState([])
 	const [loading, setLoading] = useState(false)
-	const [isPlaying, setIsPlaying] = useState(false)
-	const [currentSong, setCurrentSong] = useState(0)
-	const [error, setError] = useState(null)
-
+	const navigate = useNavigate()
 	const fetchPlaylist = async () => {
 		setLoading(true)
-		setError(null)
 		try {
 			const genre = moodToGenre[mood]
 			const response = await spotifyApi.search(`genre:${genre}`, ['track'], 'US', 10)
@@ -45,37 +47,56 @@ const MoodMusic = () => {
 				id: track.id,
 				name: track.name,
 				artist: track.artists[0].name,
-				albumArt: track.album.images[0]?.url || '/placeholder.svg?height=200&width=200'
+				albumArt: track.album.images[0]?.url || '/placeholder.svg?height=200&width=200',
+				url: track.external_urls.spotify
 			}))
 			setPlaylist(tracks)
-			setIsPlaying(true)
-			setCurrentSong(0)
 		} catch (err) {
-			console.error('Error fetching playlist:', err)
-			setError('Failed to fetch playlist. Please try again.')
+			toast({
+				title: 'Error',
+				description: err.message,
+				variant: 'Destructive',
+				action: <TriangleAlert className="mr-2" />
+			})
+			console.error(err.message)
 		} finally {
 			setLoading(false)
 		}
 	}
 
 	useEffect(() => {
-		fetchPlaylist()
-	}, [mood])
+		const fetchMood = async () => {
+			if (moodFetchedRef.current) return
+			moodFetchedRef.current = true
 
-	const togglePlayPause = () => {
-		setIsPlaying(!isPlaying)
-	}
-
-	const nextSong = () => {
-		setCurrentSong((prev) => (prev + 1) % playlist.length)
-	}
+			const fetchedMood = await getCurrentMood(user.sub)
+			if (fetchedMood) {
+				setMood(fetchedMood)
+				sonnerToast(`Your current mood was ${fetchedMood}`, {
+					description: `Suggsting you ${moodToGenre[fetchedMood]} music.`,
+					duration: 5000,
+					action: {
+						label: 'Dismiss',
+						onClick: () => sonnerToast.dismiss()
+					}
+				})
+			} else {
+				sonnerToast('Help us improve your experience.', {
+					description: 'Use Video Sense to log your mood.',
+					duration: 10000,
+					action: {
+						label: 'Video Sense',
+						onClick: () => navigate('/emo-sense')
+					}
+				})
+			}
+		}
+		fetchMood()
+	}, [user])
 
 	useEffect(() => {
-		if (isPlaying) {
-			const timer = setTimeout(nextSong, 30000) // Change song every 30 seconds
-			return () => clearTimeout(timer)
-		}
-	}, [isPlaying, currentSong])
+		fetchPlaylist()
+	}, [mood])
 
 	return (
 		<div className="min-h-screen bg-black p-4 text-white md:p-8">
@@ -99,54 +120,37 @@ const MoodMusic = () => {
 									<SelectValue placeholder="Select your mood" />
 								</SelectTrigger>
 								<SelectContent>
-									<SelectItem value="happy">Happy</SelectItem>
-									<SelectItem value="sad">Sad</SelectItem>
-									<SelectItem value="energetic">Energetic</SelectItem>
-									<SelectItem value="calm">Calm</SelectItem>
-									<SelectItem value="angry">Angry</SelectItem>
+									{Object.keys(moodToGenre).map((mood) => (
+										<SelectItem key={mood} value={mood}>
+											{mood}
+										</SelectItem>
+									))}
 								</SelectContent>
 							</Select>
 						</div>
-
-						{error && <div className="mb-4 text-red-500">{error}</div>}
-
 						{loading ? (
-							<div className="text-center text-xl">Loading playlist...</div>
+							<div className="text-center text-xl">
+								<Loader />
+							</div>
 						) : (
 							<div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-								{playlist.map((song, index) => (
-									<Card key={song.id} className="border-none bg-gray-900">
-										<CardContent className="p-4">
-											<div className="relative">
-												<img
-													src={song.albumArt}
-													alt={song.name}
-													className="mb-4 aspect-square w-full rounded-md object-cover"
-												/>
-												{index === currentSong && (
-													<div className="absolute inset-0 flex items-center justify-center rounded-md bg-black bg-opacity-50">
-														{isPlaying ? (
-															<Pause className="h-12 w-12 text-white" />
-														) : (
-															<Play className="h-12 w-12 text-white" />
-														)}
-													</div>
-												)}
-											</div>
-											<h3 className="truncate font-semibold">{song.name}</h3>
-											<p className="truncate text-sm text-gray-400">{song.artist}</p>
-										</CardContent>
+								{playlist.map((song) => (
+									<Card key={song.id} className="border-none bg-gray-900 hover:scale-105 transition-transform">
+										<Link to={song.url} target="_blank">
+											<CardContent className="p-4">
+												<div className="relative">
+													<img
+														src={song.albumArt}
+														alt={song.name}
+														className="mb-4 aspect-square w-full rounded-md object-cover"
+													/>
+												</div>
+												<h3 className="truncate font-semibold">{song.name}</h3>
+												<p className="truncate text-sm text-gray-400">{song.artist}</p>
+											</CardContent>
+										</Link>
 									</Card>
 								))}
-							</div>
-						)}
-
-						{playlist.length > 0 && (
-							<div className="mt-8 flex justify-center">
-								<Button onClick={togglePlayPause} size="lg" className="px-8 py-6 text-lg">
-									{isPlaying ? <Pause className="mr-2 h-6 w-6" /> : <Play className="mr-2 h-6 w-6" />}
-									{isPlaying ? 'Pause' : 'Play'}
-								</Button>
 							</div>
 						)}
 					</section>
