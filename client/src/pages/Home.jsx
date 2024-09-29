@@ -1,13 +1,12 @@
 import { Navbar, Footer } from '@/components'
-import { Hero, Quote, Solutions, Procare } from '@/sections'
-import { ChevronDown } from 'lucide-react'
+import { Hero, Quote, Solutions, ProCare } from '@/sections'
+import { IconEmpathize, IconLayoutBottombarFilled } from '@tabler/icons-react'
+import { ChevronDown, HeartHandshake, PanelsTopLeft } from 'lucide-react'
 
 const Home = () => {
 	const navItems = [
 		{
 			label: 'Products',
-			target: '#solutions',
-			icon: ChevronDown,
 			items: [
 				{
 					title: 'Emo Sense',
@@ -20,8 +19,7 @@ const Home = () => {
 					src: 'https://assets.aceternity.com/demos/algochurn.webp',
 
 					href: '/therafy',
-					description:
-						'Therafy is a cutting-edge AI content sugesstion platform.'
+					description: 'Therafy is a cutting-edge AI content sugesstion platform.'
 				},
 				{
 					title: 'Pro Care',
@@ -38,10 +36,10 @@ const Home = () => {
 				}
 			]
 		},
-		{ label: 'Solutions', target: '#solutions' },
-		{ label: 'Procare', target: '#procare' },
-		{ label: 'Help Center', target: '#helpcenter' },
-		{ label: 'Dashboard', private: true, to: '/dashboard' }
+		{ label: 'Solutions', target: '#solutions', icon: HeartHandshake, iconOnlyMobile: true },
+		{ label: 'Procare', target: '#procare', icon: IconEmpathize, iconOnlyMobile: true },
+		{ label: 'Help Center', target: '#helpcenter', icon: IconLayoutBottombarFilled, iconOnlyMobile: true },
+		{ label: 'Dashboard', private: true, to: '/dashboard', icon: PanelsTopLeft, iconOnlyMobile: true }
 	]
 
 	return (
@@ -51,7 +49,7 @@ const Home = () => {
 				<Hero />
 				<Quote />
 				<Solutions />
-				<Procare />
+				<ProCare />
 			</main>
 			<Footer />
 		</div>
