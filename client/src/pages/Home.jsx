@@ -38,10 +38,10 @@ const Home = () => {
 				}
 			]
 		},
-		{ label: 'Solutions', target: '#solutions', icon: HeartHandshake },
-		{ label: 'Procare', target: '#procare', icon: IconEmpathize },
-		{ label: 'Help Center', target: '#helpcenter', icon: IconLayoutBottombarFilled },
-		{ label: 'Dashboard', private: true, to: '/dashboard', icon: PanelsTopLeft }
+		{ label: 'Solutions', target: '#solutions', icon: HeartHandshake, iconOnlyMobile: true },
+		{ label: 'Procare', target: '#procare', icon: IconEmpathize, iconOnlyMobile: true },
+		{ label: 'Help Center', target: '#helpcenter', icon: IconLayoutBottombarFilled, iconOnlyMobile: true },
+		{ label: 'Dashboard', private: true, to: '/dashboard', icon: PanelsTopLeft, iconOnlyMobile: true }
 	]
 
 	return (

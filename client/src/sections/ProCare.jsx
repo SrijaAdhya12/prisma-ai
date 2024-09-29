@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { ClipboardPlusIcon } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Button } from '@/components/ui/button'
+import { ClipboardPlusIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
-const Procare = () => {
+const ProCare = () => {
 	return (
 		<section
 			id="procare"
@@ -19,11 +19,11 @@ const Procare = () => {
 							provide more personalized, interactive sessions. Both options are confidential, ensuring
 							privacy and security for every user.
 						</p>
-						<div className="flex py-6 justify-center sm:justify-start">
+						<div className="flex justify-center py-6 sm:justify-start">
 							<Button>
 								<Link to="/pro-care">Connect Instantly</Link>
 								<ClipboardPlusIcon className="ml-2 h-4 w-4" />
-						</Button>
+							</Button>
 						</div>
 					</div>
 					<div className="relative flex justify-center">
@@ -35,4 +35,4 @@ const Procare = () => {
 	)
 }
 
-export default Procare
+export default ProCare

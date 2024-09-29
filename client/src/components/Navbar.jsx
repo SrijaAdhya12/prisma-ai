@@ -28,12 +28,8 @@ const ProductItem = React.forwardRef(({ className, title, children, href, src, .
 					)}
 					{...props}
 				>
-					<div className="flex gap-2 items-center">
-						<img
-							src={src}
-							className="h-28 w-[140px] rounded-md object-cover"
-							alt={title}
-						/>
+					<div className="flex items-center gap-2">
+						<img src={src} className="h-28 w-[140px] rounded-md object-cover" alt={title} />
 						<div className="">
 							<h3 className="text-lg font-medium leading-none">{title}</h3>
 							<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">{children}</p>
@@ -68,9 +64,13 @@ const Navbar = ({ initialBackground = 'bg-transparent', navItems }) => {
 
 	return (
 		<>
-			<nav className={cn('sticky top-0 z-50 w-full backdrop-blur-md transition-colors duration-300', background,
-				isOpen && initialBackground
-			)}>
+			<nav
+				className={cn(
+					'sticky top-0 z-50 w-full backdrop-blur-md transition-colors duration-300',
+					background,
+					isOpen && initialBackground
+				)}
+			>
 				<div className="container mx-auto flex items-center justify-between px-4 py-4">
 					<div className="flex items-center justify-center gap-10">
 						<Link to="/" className="flex items-center text-xl font-semibold">
@@ -104,7 +104,7 @@ const Navbar = ({ initialBackground = 'bg-transparent', navItems }) => {
 															{item.label}
 														</NavLink>
 													)}
-													{item.icon && <item.icon className="size-4" />}
+													{item.icon && <item.icon className={cn('size-4', item.iconOnlyMobile && 'hidden')} />}
 												</div>
 											)}
 											{item.items && (
