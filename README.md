@@ -2,12 +2,9 @@
 
 <div align=center>
     <a href="https://github.com/SrijaAdhya12/prisma-ai">
-        <img width="200" src="https://img.icons8.com/?size=1000&id=46874" alt="prisma-ai">
+        <img width="200" src="client/public/favicon.jpg" alt="prisma-ai">
     </a>
     <p style="font-family: roboto, calibri; font-size:12pt; font-style:italic"> AI Powered Mental Health Support </p>
-    <a src="https://github.com/SrijaAdhya12/prisma-ai/forks">
-        <img alt="GitHub forks" src="https://img.shields.io/github/forks/SrijaAdhya12/prisma-ai">
-    </a>
 </div>
 
 # [Prisma Ai](https://prisma-ai.vercel.app)
@@ -63,29 +60,74 @@
 - **SupportNext**: Coping Environments
 - **Therafy**: Access to a library of GIFs, therapeutic music, jokes, and personalized recommendations.
 
+![line]
+
+## Future Scope
+
+- Dashboard for therapists
+- Event organisers 
+- Offline therapy sessions 
+- Managed user groups
+- integrate with a fitness tracker
 
 ![line]
 
-## Developement
+## Installation Guide
 
--   Steps used for development of this project
--   Build processes
--   CI/CD commands
--   Docker commands
+  1. Download NodeJS >18.0.1
+  2. Run the following commands for running client (frontEnd)
+  3. set up `.env` with the help of `.env.example` file in both client and server
+```sh
+$> cd client
+$> npm i       # install all packages
+$> npm run dev # run the frontend
+```
+  3. Run the following commands for running server (backEnd)
+```sh
+$> cd server
+$> npm i       # install all packages
+$> npm start   # run the backEnd
+```
+
 
 ![line]
 
 ## Tech Stack Used
 
--   GitHub
--   Markdown
--   Prettier
--   Dependabot
--   GitHub Actions
--   Yaml
--   JavaScript
+Frontend:
+* Vite
+* React
+* JavaScript
+* Tailwind
+* lucide-react
+* tabler-icons
+* Aceternity UI
+* ShadCn
+* Auth0
+* Axios
+* Stream chat
+* Framer motion
+* Face-api.js
+  
+Backend:
+* Express.js
+* Node.js
+* MongoDB
+* Mongoose
+* Gemini 1.5 Flash
+* Nodemon(only dev)
+* Stream Chat
 
-![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![Prettier](https://img.shields.io/badge/prettier-1A2B34?style=for-the-badge&logo=prettier&logoColor=pink) ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![YAML](https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Lucide](https://img.shields.io/badge/lucide-%23CC0000.svg?style=for-the-badge&logo=lucid&logoColor=white) ![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white) ![shadcn/ui](https://img.shields.io/badge/Shadcn/ui-black?style=for-the-badge&logo=shadcnui&logoColor=white) ![Aceternity](https://img.shields.io/badge/aceternity-black?style=for-the-badge&logo=aceternity&logoColor=red) ![Auth0](https://img.shields.io/badge/auth0-black?style=for-the-badge&logo=auth0&logoColor=red)   ![Axios](https://img.shields.io/badge/axios-%2320232a.svg?style=for-the-badge&logo=axios&logoColor=%2361DAFB) ![Stream-chat](https://img.shields.io/badge/stream-white?style=for-the-badge&logo=streamlit&logoColor=blue) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue) ![Face-api.js](https://img.shields.io/badge/faceapi.js-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Node JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Gemini](https://img.shields.io/badge/gemini%20-EA2328.svg?style=for-the-badge&logo=googlecloud&logoColor=white)  ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Nodemon](https://img.shields.io/badge/nodemon-%23646CFF.svg?style=for-the-badge&logo=nodemon&logoColor=white)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Lucide](https://img.shields.io/badge/lucide-%23CC0000.svg?style=for-the-badge&logo=lucid&logoColor=white) ![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white) ![shadcn/ui](https://img.shields.io/badge/Shadcn/ui-black?style=for-the-badge&logo=shadcnui&logoColor=white) ![Aceternity](https://img.shields.io/badge/aceternity-black?style=for-the-badge&logo=aceternity&logoColor=red) ![Auth0](https://img.shields.io/badge/auth0-black?style=for-the-badge&logo=auth0&logoColor=red)   ![Axios](https://img.shields.io/badge/axios-%2320232a.svg?style=for-the-badge&logo=axios&logoColor=%2361DAFB) ![Stream-chat](https://img.shields.io/badge/stream-white?style=for-the-badge&logo=streamlit&logoColor=blue) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue) ![Face-api.js](https://img.shields.io/badge/faceapi.js-%2320232a.svg?style=for-the-badge&logo=&logoColor=%2361DAFB) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Node JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Gemini](https://img.shields.io/badge/gemini%20-EA2328.svg?style=for-the-badge&logo=googlecloud&logoColor=white)  ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Nodemon](https://img.shields.io/badge/nodemon-%23646CFF.svg?style=for-the-badge&logo=nodemon&logoColor=white)
+ ![Mongoose](https://img.shields.io/badge/mongoose-%1B5E20?style=for-the-badge&logo=mongoose&logoColor=white) 
+![line]
+
+## Docs
+
+- [Project Presentation](https://drive.google.com/drive/u/0/folders/1yoJKAaeEUcE7E69RSkmYAOfzxho3qITq)
+- [Project Analysis](https://docs.google.com/document/d/1dIcLnmPpMyJcy6Sn61tAYizZJ6sKa7iRT1qhgoezqK0/pub)
 
 ![line]
 
@@ -111,13 +153,18 @@
 
 ## License
 
--   See [LICENSE]
+- See [LICENSE]
 
-**Pritam Kundu, 2024**
+**Srija** & **Pritam, 2024**
+
 
 ![line]
 
 ## Thank you, everyone 💚
+
+![line]
+
+### Project by Team Axios
 
 [icons]: https://icons8.com
 [markdown-badges]: https://github.com/Ileriayo/markdown-badges
