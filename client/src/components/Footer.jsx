@@ -56,7 +56,7 @@ const Footer = () => {
 				<div className="flex flex-col items-center justify-center py-24">
 					<div className="flex gap-4 py-2 text-lg">
 						<Link
-							to="https://github.com/SrijaAdhya12/prisma-ai-temp"
+							to="https://github.com/SrijaAdhya12/prisma-ai"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
