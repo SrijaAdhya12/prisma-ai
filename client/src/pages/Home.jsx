@@ -7,8 +7,6 @@ const Home = () => {
 	const navItems = [
 		{
 			label: 'Products',
-			target: '#solutions',
-			icon: ChevronDown,
 			items: [
 				{
 					title: 'Emo Sense',
