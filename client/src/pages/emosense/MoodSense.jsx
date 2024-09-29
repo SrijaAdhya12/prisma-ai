@@ -1,4 +1,15 @@
-import { Calendar as CalendarIcon, Frown, Meh, Smile, Angry, Annoyed, ThumbsDown, Zap } from 'lucide-react'
+import {
+	Calendar as CalendarIcon,
+	Frown,
+	Meh,
+	Smile,
+	Angry,
+	Annoyed,
+	ThumbsDown,
+	Zap,
+	RefreshCcw,
+	Loader2
+} from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -9,7 +20,7 @@ import { Button } from '@/components/ui/button'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useState, useEffect } from 'react'
 import { getMoodData } from '@/api'
-import { moodColors } from '@/data'
+import { moodColors, moodTextColors } from '@/data'
 import { cn } from '@/lib'
 import {
 	format,
@@ -29,18 +40,14 @@ import {
 	parseISO
 } from 'date-fns'
 
-const textColors = Object.fromEntries(
-	Object.entries(moodColors).map(([key, value]) => [key, `text-${value.split('-').slice(1).join('-')}`])
-)
-
 const moodIcons = {
-	neutral: <Meh className={cn('size-6', textColors.neutral)} />,
-	happy: <Smile className={cn('size-6', textColors.happy)} />,
-	sad: <Frown className={cn('size-6', textColors.sad)} />,
-	angry: <Angry className={cn('size-6', textColors.angry)} />,
-	fearful: <Annoyed className={cn('size-6', textColors.fearful)} />,
-	disgusted: <ThumbsDown className={cn('size-6', textColors.disgusted)} />,
-	surprised: <Zap className={cn('size-6', textColors.surprised)} />
+	neutral: <Meh className={cn('size-6', moodTextColors.neutral)} />,
+	happy: <Smile className={cn('size-6', moodTextColors.happy)} />,
+	sad: <Frown className={cn('size-6', moodTextColors.sad)} />,
+	angry: <Angry className={cn('size-6', moodTextColors.angry)} />,
+	fearful: <Annoyed className={cn('size-6', moodTextColors.fearful)} />,
+	disgusted: <ThumbsDown className={cn('size-6', moodTextColors.disgusted)} />,
+	surprised: <Zap className={cn('size-6', moodTextColors.surprised)} />
 }
 
 const MoodSummary = ({ moodStats, timeframe, selectedDay }) => {
@@ -80,13 +87,14 @@ const MoodSense = () => {
 	const [moodData, setMoodData] = useState({})
 	const [mounted, setMounted] = useState(false)
 	const [selectedDay, setSelectedDay] = useState(null)
-
+	const [loading, setLoading] = useState(false)
 	useEffect(() => {
 		setMounted(true)
 		fetchMoodData()
 	}, [date, selectedTimeframe])
 
 	const fetchMoodData = async () => {
+		setLoading(true)
 		let start, end
 		if (selectedTimeframe === 'week') {
 			start = startOfWeek(date)
@@ -104,6 +112,8 @@ const MoodSense = () => {
 			setMoodData(moodData)
 		} catch (error) {
 			console.error('Failed to fetch mood data:', error)
+		} finally {
+			setLoading(false)
 		}
 	}
 
@@ -321,25 +331,41 @@ const MoodSense = () => {
 						</PopoverContent>
 					</Popover>
 
-					<Select
-						value={selectedTimeframe}
-						onValueChange={(value) => {
-							setSelectedTimeframe(value)
-							setSelectedDay(null)
-						}}
-					>
-						<SelectTrigger className="w-48">
-							<SelectValue placeholder="Select timeframe" />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="week">Week</SelectItem>
-							<SelectItem value="month">Month</SelectItem>
-							<SelectItem value="year">Year</SelectItem>
-						</SelectContent>
-					</Select>
+					<div className="flex gap-2">
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button variant="outline" size="icon" onClick={() => fetchMoodData()}>
+									{loading ? (
+										<Loader2 className="size-5 animate-spin" />
+									) : (
+										<RefreshCcw className="size-5" />
+									)}
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>{
+								loading ? 'Refreshing...' : 'Refresh Mood Data'}
+							</TooltipContent>
+						</Tooltip>
+						<Select
+							value={selectedTimeframe}
+							onValueChange={(value) => {
+								setSelectedTimeframe(value)
+								setSelectedDay(null)
+							}}
+						>
+							<SelectTrigger className="w-48">
+								<SelectValue placeholder="Select timeframe" />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value="week">Week</SelectItem>
+								<SelectItem value="month">Month</SelectItem>
+								<SelectItem value="year">Year</SelectItem>
+							</SelectContent>
+						</Select>
+					</div>
 				</div>
 
-				<div className="grid gap-8 grid-cols-3">
+				<div className="grid grid-cols-3 gap-8">
 					<Card className="col-span-2">
 						<CardHeader>
 							<CardTitle>Mood Calendar</CardTitle>
