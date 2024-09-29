@@ -7,7 +7,7 @@ import { WorkInProgress } from '@/assets'
 const ComingSoon = () => {
 	const navigate = useNavigate()
 	return (
-		<main className="container flex h-full flex-col items-center justify-center" id="coming-soon">
+		<main className="container flex h-full flex-col items-center justify-center min-h-screen" id="coming-soon">
 			<div className="w-full rounded-xl bg-opacity-50 p-6 text-center shadow-lg ring-gray-700 backdrop-blur-lg md:p-10 dark:ring-1">
 				<h1 className="mb-4 text-2xl font-bold sm:text-4xl md:text-6xl">Coming Soon</h1>
 				<p className="mb-8 text-sm md:text-xl">

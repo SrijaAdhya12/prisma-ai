@@ -25,7 +25,7 @@ export const saveMood = async (req, res) => {
 	}
 }
 
-export const getMoodData = async (req, res) => {
+export const getMoodByDateRange = async (req, res) => {
 	try {
 		const { start, end, user_id } = req.query
 		const moodData = await Mood.aggregate([
@@ -71,7 +71,27 @@ export const getMoodData = async (req, res) => {
 			acc[item.date] = { emotion: item.emotion, intensity: item.intensity }
 			return acc
 		}, {})
-		res.status(200).json({data:formattedMoodData})
+		res.status(200).json({ data: formattedMoodData })
+	} catch (error) {
+		res.status(500).json({ message: 'Error fetching mood data', error: error.message })
+	}
+}
+
+export const getCurrentMood = async (req, res) => {
+	try {
+		const { user_id } = req.query
+		// Get current date in UTC
+		const currentDate = new Date()
+
+		// Create date string in desired format
+		const dateString = currentDate.toISOString().split('T')[0] + 'T00:00:00.000+00:00'
+
+		// Parse the formatted date string back to a Date object
+		const formattedDate = new Date(dateString)
+
+		const moods = await Mood.find({ user_id, date: formattedDate })
+
+		res.status(200).json({ data: moods })
 	} catch (error) {
 		res.status(500).json({ message: 'Error fetching mood data', error: error.message })
 	}

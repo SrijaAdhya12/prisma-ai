@@ -1,12 +1,13 @@
 import { Navbar } from '@/components'
+import { IconGif, IconMoodXd } from '@tabler/icons-react'
 import { BotMessageSquare, Video, Music } from 'lucide-react'
 import { Outlet } from 'react-router-dom'
 
 const Therafy = () => {
 	const navItems = [
 		{ label: 'Mood Music', private: true, to: 'mood-music', icon: Music },
-		{ label: 'Video Sense', private: true, to: 'video-sense', icon: Video },
-		{ label: 'Support Bot', private: true, to: 'support-bot', icon: BotMessageSquare }
+		{ label: 'Mood Memes', private: true, to: 'mood-memes', icon: IconMoodXd },
+		{ label: 'Mood GIFs', private: true, to: 'mood-gifs', icon: IconGif }
 	]
 	return (
 		<div id="emosense" className="min-h-screen">
