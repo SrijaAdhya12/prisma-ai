@@ -4,12 +4,14 @@ import { ThemeProvider } from '@/providers'
 import { AppRouter } from '@/components'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@radix-ui/react-tooltip'
+import { Toaster as SonnerToaster } from '@/components/ui/sonner'
 
 const PrismaAI = () => {
 	return (
 		<TooltipProvider>
 			<AppRouter />
 			<Toaster />
+			<SonnerToaster />
 		</TooltipProvider>
 	)
 }
