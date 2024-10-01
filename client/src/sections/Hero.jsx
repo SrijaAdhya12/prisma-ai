@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Link } from 'react-router-dom'
 import { TypewriterEffect2 } from '@/components/ui/typewriter-effect'
 
 const Hero = () => {
@@ -23,7 +24,9 @@ const Hero = () => {
 						</p>
 					</div>
 					<div className="flex gap-5 sm:pb-32">
-						<Button className="bg-white text-black">Get Started</Button>
+						<Button asChild className="bg-white text-black">
+							<Link to="/dashboard">Get Started</Link>
+						</Button>
 						<Button variant="outline" className="border-0 bg-black text-white">
 							Learn More
 						</Button>
