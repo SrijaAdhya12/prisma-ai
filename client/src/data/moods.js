@@ -21,7 +21,7 @@ export const textColors = {
 	surprised: 'text-pink-500'
 }
 
-export const moods = [
+export const items = [
 	{
 		name: 'Neutral',
 		color: colors.neutral,
