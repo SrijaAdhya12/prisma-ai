@@ -1,9 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { AvatarButton, Sidebar } from '@/components'
-import { Menu } from 'lucide-react'
+import { Goal, Menu, Settings, User } from 'lucide-react'
 import { Outlet } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
+import { IconChartHistogram } from '@tabler/icons-react'
 
 const Topbar = ({ setIsOpen }) => {
 	return (
@@ -25,10 +26,15 @@ const Topbar = ({ setIsOpen }) => {
 
 const Dashboard = () => {
 	const [sidebarOpen, setSidebarOpen] = useState(false)
-
+	const sidebarItems = [
+		{ name: 'Profile', icon: User, path: 'profile' },
+		{ name: 'Settings', icon: Settings, path: 'settings' },
+		{ name: 'Goals', icon: Goal, path: 'goals' },
+		{ name: 'Analytics', icon: IconChartHistogram, path: 'analytics' }
+	]
 	return (
 		<div id="dashboard" className="flex h-screen">
-			<Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+			<Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} sidebarLinks={sidebarItems} />
 			<div className="flex flex-1 flex-col overflow-hidden">
 				<Topbar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 				<main className="flex-1 overflow-y-auto sm:p-6">

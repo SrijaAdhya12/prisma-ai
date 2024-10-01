@@ -13,6 +13,7 @@ import {
 	NavigationMenuTrigger
 } from '@/components/ui/navigation-menu'
 import { AvatarButton, Dropdown } from '.'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const ProductItem = forwardRef(({ className, title, children, href, src, ...props }, ref) => {
 	return (
@@ -42,6 +43,7 @@ const ProductItem = forwardRef(({ className, title, children, href, src, ...prop
 
 const Navbar = ({ initialBackground = 'bg-transparent', navItems = [] }) => {
 	const [background, setBackground] = useState(initialBackground)
+	const { isAuthenticated } = useAuth0()
 	const [isOpen, setIsOpen] = useState(false)
 	const location = useLocation()
 
@@ -82,65 +84,70 @@ const Navbar = ({ initialBackground = 'bg-transparent', navItems = [] }) => {
 						<div className="hidden lg:block">
 							<NavigationMenu>
 								<NavigationMenuList className="space-x-7">
-									{navItems.map((item) => (
-										<NavigationMenuItem key={item.label}>
-											{item.items ? (
-												<NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent">
-													{item.label}
-												</NavigationMenuTrigger>
-											) : (
-												<div
-													key={item.label}
-													className="text-foreground/80 hover:text-foreground flex items-center gap-2 rounded-full p-3 font-medium transition-colors"
-												>
-													{item.target && (
-														<button onClick={() => smoothScrollTo(item.target)}>
-															{item.label}
-														</button>
-													)}
-													{item.to && (
-														<NavLink to={item.to} className="flex items-center gap-2">
-															{item.label}
-														</NavLink>
-													)}
-													{item.icon && (
-														<item.icon
-															className={cn('size-4', item.iconOnlyMobile && 'hidden')}
-														/>
-													)}
-												</div>
-											)}
-											{item.items && (
-												<NavigationMenuContent>
-													<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[700px]">
-														{item.items.map((subItem) =>
-															typeof subItem === 'string' ? (
-																<li key={subItem}>
-																	<NavigationMenuLink asChild>
-																		<NavLink
-																			to={`/${subItem.toLowerCase().replace(' ', '-')}`}
-																			className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors"
-																		>
-																			{subItem}
-																		</NavLink>
-																	</NavigationMenuLink>
-																</li>
-															) : (
-																<ProductItem
-																	key={subItem.title}
-																	title={subItem.title}
-																	src={subItem.src}
-																	href={subItem.href}
-																>
-																	{subItem.description}
-																</ProductItem>
-															)
+									{navItems.map((item) =>
+										!isAuthenticated && item.private ? null : (
+											<NavigationMenuItem key={item.label}>
+												{item.items ? (
+													<NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent">
+														{item.label}
+													</NavigationMenuTrigger>
+												) : (
+													<div
+														key={item.label}
+														className="text-foreground/80 hover:text-foreground flex items-center gap-2 rounded-full p-3 font-medium transition-colors"
+													>
+														{item.target && (
+															<button onClick={() => smoothScrollTo(item.target)}>
+																{item.label}
+															</button>
 														)}
-													</ul>
-												</NavigationMenuContent>
-											)}
-										</NavigationMenuItem>
-									))}
+														{item.to && (
+															<NavLink to={item.to} className="flex items-center gap-2">
+																{item.label}
+															</NavLink>
+														)}
+														{item.icon && (
+															<item.icon
+																className={cn(
+																	'size-4',
+																	item.iconOnlyMobile && 'hidden'
+																)}
+															/>
+														)}
+													</div>
+												)}
+												{item.items && (
+													<NavigationMenuContent>
+														<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[700px]">
+															{item.items.map((subItem) =>
+																typeof subItem === 'string' ? (
+																	<li key={subItem}>
+																		<NavigationMenuLink asChild>
+																			<NavLink
+																				to={`/${subItem.toLowerCase().replace(' ', '-')}`}
+																				className="hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors"
+																			>
+																				{subItem}
+																			</NavLink>
+																		</NavigationMenuLink>
+																	</li>
+																) : (
+																	<ProductItem
+																		key={subItem.title}
+																		title={subItem.title}
+																		src={subItem.src}
+																		href={subItem.href}
+																	>
+																		{subItem.description}
+																	</ProductItem>
+																)
+															)}
+														</ul>
+													</NavigationMenuContent>
+												)}
+											</NavigationMenuItem>
+										)
+									)}
 								</NavigationMenuList>
 							</NavigationMenu>
 						</div>

@@ -3,13 +3,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib'
 import { Button } from './ui/button'
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ isOpen, setIsOpen, sidebarLinks }) => {
 	const { pathname } = useLocation()
-	const sidebarLinks = [
-		{ name: 'Profile', icon: User, path: 'profile' },
-		{ name: 'Settings', icon: Settings, path: 'settings' },
-		{ name: 'Goals', icon: Goal, path: 'goals' }
-	]
+	
 	return (
 		<aside className="bg-accent">
 			<div

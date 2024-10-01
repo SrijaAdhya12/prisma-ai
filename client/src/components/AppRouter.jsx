@@ -1,5 +1,5 @@
-import { MoodSense, VideoSense, SupportBot, EmoSense } from '@/pages/emosense'
-import { Profile, Dashboard, Settings, Goals } from '@/pages/dashboard'
+import { VideoSense, SupportBot, EmoSense } from '@/pages/emosense'
+import { Profile, Dashboard, Settings, Goals, Analytics } from '@/pages/dashboard'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Home, ComingSoon, NotFound, SupportNest, Features } from '@/pages'
 import { Therafy, MoodMusic } from '@/pages/therafy'
@@ -17,11 +17,11 @@ const AppRouter = () => {
 				<Route path="profile" element={<Profile />} />
 				<Route path="settings" element={<Settings />} />
 				<Route path="goals" element={<Goals />} />
+				<Route path="analytics" element={<Analytics />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
 			<Route path="/emo-sense" element={<PrivateRoute component={<EmoSense />} />}>
-				<Route path="" element={<Navigate to="mood-sense" />} />
-				<Route path="mood-sense" element={<MoodSense />} />
+				<Route path="" element={<Navigate to="video-sense" />} />
 				<Route path="video-sense" element={<VideoSense />} />
 				<Route path="support-bot" element={<SupportBot />} />
 				<Route path="*" element={<NotFound />} />

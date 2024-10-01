@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom'
 
 const EmoSense = () => {
 	const navItems = [
-		{ label: 'Mood Sense', private: true, to: 'mood-sense', icon: SquareActivity },
 		{ label: 'Video Sense', private: true, to: 'video-sense', icon: Video },
 		{ label: 'Support Bot', private: true, to: 'support-bot', icon: BotMessageSquare }
 	]
