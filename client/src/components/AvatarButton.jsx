@@ -16,15 +16,29 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { ModeToggle } from './ui/mode-toggle'
 import { Link } from 'react-router-dom'
 import { AuthButton, Loader } from '.'
-import { useTheme } from '@/hooks'
+import { useTheme, useToast } from '@/hooks'
 import { cn } from '@/lib'
 
 const Button = ({ className }) => {
 	const { user, logout, isLoading, isAuthenticated } = useAuth0()
 	const { theme, setTheme } = useTheme()
-
+	const toast = useToast()
 	const handleLogOut = () => {
-		logout()
+		try {
+			logout()
+			toast({
+				title: 'Logged out',
+				description: 'You have been logged out',
+				variant: 'success'
+			})
+		} catch (error) {
+			console.error(error)
+			toast({
+				title: 'Error',
+				description: error.message,
+				variant: 'error'
+			})
+		}
 	}
 	if (isLoading) {
 		return <Loader className="h-10 w-10" variant="small" />

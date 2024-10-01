@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Loader } from '@/components'
 import { useToast } from '@/hooks'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Ban } from 'lucide-react'
 
 const PrivateRoute = ({ component }) => {
@@ -19,7 +19,7 @@ const PrivateRoute = ({ component }) => {
 				action: <Ban className="mr-2" />
 			})
 			setShouldRedirect(true)
-		} 
+		}
 	}, [isLoading, isAuthenticated, toast])
 
 	if (isLoading) {
