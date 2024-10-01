@@ -55,5 +55,41 @@ export const items = [
 		hoverImg:
 			'https://media.giphy.com/media/cgW5iwX0e37qg/giphy.gif?cid=790b7611jdkb1k75ohudmg7uikezbyquedz33mgdlkrmc6dk&ep=v1_gifs_search&rid=giphy.gif&ct=g',
 		to: '/therafy/mood-music'
+	},
+	{
+		title: 'Mood Memes',
+		description: 'Curated memes to match every mood and moment.',
+		background:
+			'https://images.unsplash.com/photo-1621739165914-7155e5d4816e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+		hoverImg:
+			'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTFwYjh0bHh5dm51cHhrbHIxM3lnZHNpNHZibThqY3g3bTFteWhrNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bKBM7H63PIykM/giphy.webp',
+		to: '/moodmemes'
+	},
+	{
+		title: 'Mood Gifs',
+		description: 'Express every feeling with the perfect animated gif.',
+		background:
+			'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI3fHxmdW58ZW58MHx8MHx8fDA%3D',
+		hoverImg:
+			'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTJwcTV0aGJlY2s1Y3JlYzRha3QydXRpZDBycWlweW04dXJ5ZXZidyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tsX3YMWYzDPjAARfeg/giphy.webp',
+		to: '/therafy/mood-gifs'
+	},
+	{
+		title: 'CBT Excercises',
+		description: 'Practical activities to build healthier thought patterns and behaviors.',
+		background:
+			'https://plus.unsplash.com/premium_photo-1684820878202-52781d8e0ea9?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+		hoverImg:
+			'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2xyYzdrNXZ1dXg1bjNpMnIwdHM1eTRjZms2cGE5dDEwZGhwazJhbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/O6uRMq8TLHrR9v7max/giphy.webp',
+		to: '/therafy/cbt-exercises'
+	},
+	{
+		title: 'Support Nest',
+		description: 'Coping Environments',
+		background:
+			'https://images.unsplash.com/photo-1475483768296-6163e08872a1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+		hoverImg:
+			'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzdqdzlhdmZvcXNyNWo4cnFqeXJlZHlpdHZ6ZWdkMHA0NjJvaDVqMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WOIGpnJ3ye445BUQl4/giphy.webp',
+		to: '/support-nest'
 	}
 ]
