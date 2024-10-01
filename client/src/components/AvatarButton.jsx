@@ -10,14 +10,14 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger
 } from './ui/dropdown-menu'
+import { Check, LogOutIcon, Monitor, Moon, Sun, UserIcon } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { useAuth0 } from '@auth0/auth0-react'
 import { ModeToggle } from './ui/mode-toggle'
 import { Link } from 'react-router-dom'
-import { Check, LogOutIcon, Monitor, Moon, Sun, UserIcon } from 'lucide-react'
-import { cn } from '@/lib'
-import { useTheme } from '@/hooks'
-import { useAuth0 } from '@auth0/auth0-react'
 import { AuthButton, Loader } from '.'
+import { useTheme } from '@/hooks'
+import { cn } from '@/lib'
 
 const Button = ({ className }) => {
 	const { user, logout, isLoading, isAuthenticated } = useAuth0()

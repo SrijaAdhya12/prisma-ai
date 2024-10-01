@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { forwardRef } from 'react'
 import { Brain } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import { AvatarButton, Dropdown } from '.'
 
-const ProductItem = React.forwardRef(({ className, title, children, href, src, ...props }, ref) => {
+const ProductItem = forwardRef(({ className, title, children, href, src, ...props }, ref) => {
 	return (
 		<li>
 			<NavigationMenuLink asChild>
@@ -63,7 +63,7 @@ const Navbar = ({ initialBackground = 'bg-transparent', navItems = [] }) => {
 
 	return (
 		<>
-			<nav
+			<header
 				className={cn(
 					'sticky top-0 z-50 w-full backdrop-blur-md transition-colors duration-300',
 					background,
@@ -156,7 +156,7 @@ const Navbar = ({ initialBackground = 'bg-transparent', navItems = [] }) => {
 						smoothScrollTo={smoothScrollTo}
 					/>
 				</div>
-			</nav>
+			</header>
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div
