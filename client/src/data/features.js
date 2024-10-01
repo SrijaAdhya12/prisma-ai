@@ -35,7 +35,8 @@ export const items = [
 		description: 'Behavioral analysis through chat interactions. ',
 		background:
 			'https://media.istockphoto.com/id/1494104649/photo/ai-chatbot-artificial-intelligence-digital-concept.jpg?s=612x612&w=0&k=20&c=1Zq2sj3W0tWcpc-n1fVt4dQQOBGhtwcAk1H2eQ5MAbI=',
-		hoverImg: SupportBot
+		hoverImg: SupportBot,
+		to: '/emo-sense/support-bot'
 	},
 	{
 		title: 'Video Sense',
@@ -43,13 +44,16 @@ export const items = [
 		background:
 			'https://images.unsplash.com/photo-1551281306-0d52288970ad?q=80&w=2690&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 		hoverImg:
-			'https://media.istockphoto.com/id/1459063664/photo/artificial-intelligence-or-machine-learning-concept.jpg?s=612x612&w=0&k=20&c=ZYirlwocianVF0uvpEnnKCyTr7j8kujW4P-mktxJn9Q='
+			'https://media.istockphoto.com/id/1459063664/photo/artificial-intelligence-or-machine-learning-concept.jpg?s=612x612&w=0&k=20&c=ZYirlwocianVF0uvpEnnKCyTr7j8kujW4P-mktxJn9Q=',
+		to: '/emo-sense/video-sense'
 	},
 	{
-		title: 'Support Bot',
-		description: 'Behavioral analysis through chat interactions. ',
+		title: 'Mood Music',
+		description: 'Personalized music recommendations based on your mood.',
 		background:
-			'https://media.istockphoto.com/id/1494104649/photo/ai-chatbot-artificial-intelligence-digital-concept.jpg?s=612x612&w=0&k=20&c=1Zq2sj3W0tWcpc-n1fVt4dQQOBGhtwcAk1H2eQ5MAbI=',
-		hoverImg: SupportBot
+			'https://images.unsplash.com/photo-1525362081669-2b476bb628c3?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+		hoverImg:
+			'https://media.giphy.com/media/cgW5iwX0e37qg/giphy.gif?cid=790b7611jdkb1k75ohudmg7uikezbyquedz33mgdlkrmc6dk&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+		to: '/therafy/mood-music'
 	}
 ]

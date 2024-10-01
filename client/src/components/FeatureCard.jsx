@@ -7,7 +7,7 @@ const FeatureCard = ({ feature, className }) => {
 		<div className="w-full max-w-xs">
 			<Link
 				className={cn(
-					'card group relative mx-auto flex h-96 w-full cursor-pointer flex-col justify-end overflow-hidden rounded-md border border-transparent p-4 shadow-xl transition-all duration-500 hover:after:absolute hover:after:inset-0 hover:after:opacity-50 dark:border-neutral-800',
+					'card group relative mx-auto flex h-96 w-full cursor-pointer flex-col justify-end overflow-hidden rounded-md border border-transparent p-4 shadow-xl transition-all duration-500 hover:after:absolute hover:after:inset-0 hover:after:opacity-50 dark:border-border',
 					className
 				)}
 				to={to}
