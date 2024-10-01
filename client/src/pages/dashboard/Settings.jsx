@@ -20,7 +20,9 @@ const Settings = () => {
 	const [timezone, setTimezone] = useState('ist')
 	return (
 		<div className="min-h-screen p-4">
-			<h1 className="mb-8 text-4xl font-bold">Settings</h1>
+			<div className="mb-8 flex items-center justify-between">
+				<h1 className="text-4xl font-bold">Settings</h1>
+			</div>
 			<div className="mx-auto max-w-4xl">
 				<Tabs defaultValue="profile">
 					<TabsList className="mb-8">

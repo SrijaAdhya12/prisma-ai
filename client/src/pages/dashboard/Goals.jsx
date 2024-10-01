@@ -57,9 +57,11 @@ const Goals = () => {
 	}
 
 	return (
-		<div className="container min-h-screen">
-			<h1 className="mb-8 mt-9 text-4xl font-bold sm:mt-0">Goals</h1>
-			<Card className="mx-auto w-full">
+		<div className="min-h-screen p-4">
+			<div className="mb-8 flex items-center justify-between">
+				<h1 className="text-4xl font-bold">Goals</h1>
+			</div>
+			<Card className="mx-auto w-full max-w-4xl">
 				<CardHeader>
 					<CardTitle>Personal Goal Setting and Tracking</CardTitle>
 					<CardDescription>Set, manage, and track your mental health goals</CardDescription>
