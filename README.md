@@ -2,7 +2,7 @@
 
 <div align=center>
     <a href="https://github.com/SrijaAdhya12/prisma-ai">
-        <img width="200" src="client/public/favicon.ico" alt="prisma-ai">
+        <img width="200" src="client/public/favicon.jpg" alt="prisma-ai">
     </a>
     <p style="font-family: roboto, calibri; font-size:12pt; font-style:italic"> When Mental Health meets Artificial Intelligence </p>
 </div>
