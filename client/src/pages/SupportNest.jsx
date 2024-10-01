@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Navbar, EventCard } from '@/components'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
-import { motion, AnimatePresence } from 'framer-motion'
-import { events } from '@/data'
-import { Navbar, EventCard } from '@/components'
 import { Search } from '@/components/ui/search'
+import { useState, useEffect } from 'react'
+import { events } from '@/data'
 
 const SupportNest = () => {
 	const [searchTerm, setSearchTerm] = useState('')
@@ -42,7 +42,7 @@ const SupportNest = () => {
 							placeholder="Search events..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="w-full md:w-1/3"
+							className="w-full max-w-96 transition-all duration-500 ease-in-out md:w-1/3 md:focus:w-full"
 						/>
 						<div className="inline-flex items-center gap-4">
 							<span>Max Price: ${maxPrice}</span>
