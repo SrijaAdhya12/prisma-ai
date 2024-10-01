@@ -1,11 +1,11 @@
-import { differenceInCalendarDays } from 'date-fns'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { DayPicker, labelNext, labelPrevious, useDayPicker } from 'react-day-picker'
-import { cn } from '@/lib'
 import { Button, buttonVariants } from '@/components/ui/button'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useCallback, useMemo, useState } from 'react'
+import { differenceInCalendarDays } from 'date-fns'
+import { cn } from '@/lib'
 
-function Calendar({
+const Calendar = ({
 	className,
 	classNames,
 	showOutsideDays = true,
@@ -13,7 +13,7 @@ function Calendar({
 	showYearSwitcher = false,
 	numberOfMonths,
 	...props
-}) {
+}) => {
 	const [navView, setNavView] = useState('days')
 	const [displayYears, setDisplayYears] = useState(
 		useMemo(() => {

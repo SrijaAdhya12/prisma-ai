@@ -193,7 +193,7 @@ const MoodSense = () => {
 										mood ? moodColors[mood.emotion] : 'bg-secondary',
 										isSameMonth(day, date) ? 'text-foreground' : 'text-muted-foreground',
 										isSameDay(day, new Date()) &&
-											'outline-primary text-primary-foreground outline outline-2 outline-offset-2'
+											'outline-primary outline outline-2 outline-offset-2'
 									)}
 								>
 									{format(day, 'd')}
@@ -308,10 +308,10 @@ const MoodSense = () => {
 					<h1 className="text-3xl font-bold">Mood Sense</h1>
 				</div>
 
-				<div className="flex items-center justify-between">
+				<div className="flex items-center justify-between gap-2 sm:gap-0">
 					<Popover>
 						<PopoverTrigger asChild>
-							<Button variant="outline" className="w-[240px] justify-start text-left font-normal">
+							<Button variant="outline" className="w-60 justify-start text-left font-normal">
 								<CalendarIcon className="mr-2 h-4 w-4" />
 								{selectedTimeframe === 'week'
 									? `Week ${getWeek(date)} - ${getYear(date)}`
@@ -334,7 +334,7 @@ const MoodSense = () => {
 					<div className="flex gap-2">
 						<Tooltip>
 							<TooltipTrigger asChild>
-								<Button variant="outline" size="icon" onClick={() => fetchMoodData()}>
+								<Button variant="outline" size="icon" onClick={fetchMoodData}>
 									{loading ? (
 										<Loader2 className="size-5 animate-spin" />
 									) : (
@@ -342,9 +342,7 @@ const MoodSense = () => {
 									)}
 								</Button>
 							</TooltipTrigger>
-							<TooltipContent>{
-								loading ? 'Refreshing...' : 'Refresh Mood Data'}
-							</TooltipContent>
+							<TooltipContent>{loading ? 'Refreshing...' : 'Refresh Mood Data'}</TooltipContent>
 						</Tooltip>
 						<Select
 							value={selectedTimeframe}
@@ -365,7 +363,7 @@ const MoodSense = () => {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-3 gap-8">
+				<div className="grid gap-8 md:grid-cols-3">
 					<Card className="col-span-2">
 						<CardHeader>
 							<CardTitle>Mood Calendar</CardTitle>

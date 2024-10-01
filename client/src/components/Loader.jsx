@@ -1,5 +1,4 @@
 import { cn } from '@/lib'
-import React from 'react'
 
 const Loader = ({ className, variant }) => {
 	return (

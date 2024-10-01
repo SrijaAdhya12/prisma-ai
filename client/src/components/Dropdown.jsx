@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Link, NavLink } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { cn } from '@/lib'
+import { useState, useEffect } from 'react'
 import { AvatarButton, Loader } from '.'
-import { Link, NavLink } from 'react-router-dom'
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react'
+import { cn } from '@/lib'
 
 const Dropdown = ({ navItems, background, isOpen, setIsOpen, smoothScrollTo }) => {
 	const { isAuthenticated, user, loading } = useAuth0()

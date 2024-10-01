@@ -3,6 +3,7 @@ import { Hero, Quote, Solutions, ProCare } from '@/sections'
 import { IconEmpathize, IconLayoutBottombarFilled } from '@tabler/icons-react'
 import { HeartHandshake, PanelsTopLeft } from 'lucide-react'
 import { EmoSense, ProCare as ProCareImg, SupportNest, Therafy } from '@/assets'
+
 const Home = () => {
 	const navItems = [
 		{
