@@ -37,7 +37,7 @@ const Home = () => {
 		},
 		{ label: 'Solutions', target: '#solutions', icon: HeartHandshake, iconOnlyMobile: true },
 		{ label: 'Procare', target: '#procare', icon: IconEmpathize, iconOnlyMobile: true },
-		{ label: 'Help Center', target: '#helpcenter', icon: IconLayoutBottombarFilled, iconOnlyMobile: true },
+		{ label: 'Features', to: '/features', icon: IconLayoutBottombarFilled, iconOnlyMobile: true },
 		{ label: 'Dashboard', private: true, to: '/dashboard', icon: PanelsTopLeft, iconOnlyMobile: true }
 	]
 
@@ -47,7 +47,7 @@ const Home = () => {
 			<main className="mb-50 min-h-screen">
 				<Hero />
 				<Quote />
-				<Solutions />
+				{/* <Solutions /> */}
 				<ProCare />
 			</main>
 			<Footer />
