@@ -2,11 +2,11 @@ import { Search as SearchIcon } from 'lucide-react'
 import { cn } from '@/lib'
 import { Input } from './input'
 
-const Search = ({ className, ...props }) => {
+const Search = ({ className, iconClassName, ...props }) => {
 	return (
 		<div className="relative w-full">
 			<div className="absolute left-1.5 top-1/2 -translate-y-1/2 transform">
-				<SearchIcon size={18} className="text-muted-foreground" />
+				<SearchIcon size={18} className={cn("text-muted-foreground", iconClassName)} />
 			</div>
 			<Input
 				className={cn(
