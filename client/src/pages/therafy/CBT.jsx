@@ -35,7 +35,7 @@ const CBTExercise = () => {
   
 
   return (
-    <div className={`min-h-screen p-4 sm:p-6 lg:p-8 ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen p-4 sm:p-6 lg:p-8`}>
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
           <div className="flex justify-between items-center">
