@@ -1,11 +1,16 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar, FeatureCard } from '@/components'
 import { features } from '@/data'
+import { Home, PanelsTopLeft } from 'lucide-react'
 
 const Features = () => {
+	const navItems = [
+		{ label: 'Home', to: '/', icon: Home },
+		{ label: 'Dashboard', private: true, to: '/dashboard', icon: PanelsTopLeft }
+	]
 	return (
 		<div id="features" className="dark:bg-grid-white/[0.2] bg-grid-black/[0.2] min-h-screen">
-			<Navbar />
+			<Navbar navItems={navItems} />
 			{/* Radial gradient for the container to give a faded look */}
 			<div className="pointer-events-none fixed inset-0 flex h-full min-h-screen flex-col items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
 			<main className="overflow-none relative z-10">
