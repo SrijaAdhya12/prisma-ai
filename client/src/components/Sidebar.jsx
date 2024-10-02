@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 
 const Sidebar = ({ isOpen, setIsOpen, sidebarLinks }) => {
 	const { pathname } = useLocation()
-	
+
 	return (
 		<aside className="bg-accent">
 			<div
@@ -29,25 +29,16 @@ const Sidebar = ({ isOpen, setIsOpen, sidebarLinks }) => {
 					{sidebarLinks.map((link) => (
 						<Link
 							key={link.name}
-							to={`/dashboard/${link.path}`}
+							to={link.path}
 							className={cn(
-								'hover:bg-info flex items-center space-x-3 rounded-lg p-2 text-lg transition-colors duration-200',
-								pathname === `/dashboard/${link.path}` && 'bg-info bg-opacity-50 shadow-md'
+								'hover:bg-info/50 flex items-center space-x-3 rounded-lg p-2 text-lg transition-colors duration-200',
+								pathname === link.path && 'bg-info bg-opacity-50 shadow-md'
 							)}
 						>
 							<link.icon className="h-5 w-5" />
 							<span>{link.name}</span>
 						</Link>
 					))}
-					<Link
-						to={`/`}
-						className={cn(
-							'hover:bg-info flex items-center space-x-3 rounded-lg p-2 text-lg transition-colors duration-200'
-						)}
-					>
-						<Home className="h-5 w-5" />
-						<span>Home</span>
-					</Link>
 				</nav>
 			</div>
 			<div
