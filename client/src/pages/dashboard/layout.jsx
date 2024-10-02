@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { AvatarButton, Sidebar } from '@/components'
-import { Goal, Menu, Settings, User } from 'lucide-react'
+import { Goal, Home, Menu, Settings, User } from 'lucide-react'
 import { Outlet } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import { IconChartHistogram } from '@tabler/icons-react'
+import { Search } from '@/components/ui/search'
 
 const Topbar = ({ setIsOpen }) => {
 	return (
@@ -17,7 +18,11 @@ const Topbar = ({ setIsOpen }) => {
 				<h1 className="text-xl font-semibold">Dashboard</h1>
 			</div>
 			<div className="flex items-center space-x-4">
-				<Input type="search" placeholder="Search..." className={`hidden w-64 md:block`} />
+				<Search
+					placeholder="Search..."
+					className="hidden w-full transition-all duration-500 ease-in-out focus:w-64 md:block"
+					type="search"
+				/>
 				<AvatarButton />
 			</div>
 		</header>
@@ -27,10 +32,11 @@ const Topbar = ({ setIsOpen }) => {
 const Dashboard = () => {
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 	const sidebarItems = [
-		{ name: 'Profile', icon: User, path: 'profile' },
-		{ name: 'Settings', icon: Settings, path: 'settings' },
-		{ name: 'Goals', icon: Goal, path: 'goals' },
-		{ name: 'Analytics', icon: IconChartHistogram, path: 'analytics' }
+		{ name: 'Profile', icon: User, path: '/dashboard/profile' },
+		{ name: 'Goals', icon: Goal, path: '/dashboard/goals' },
+		{ name: 'Analytics', icon: IconChartHistogram, path: '/dashboard/analytics' },
+		{ name: 'Settings', icon: Settings, path: '/dashboard/settings' },
+		{ name: 'Home', icon: Home, path: '/' }
 	]
 	return (
 		<div id="dashboard" className="flex h-screen">

@@ -47,7 +47,7 @@ const Settings = () => {
 									</Avatar>
 									<Tooltip>
 										<TooltipTrigger asChild>
-											<Button>Change Avatar</Button>
+											<Button className="opacity-50">Change Avatar</Button>
 										</TooltipTrigger>
 										<TooltipContent>
 											<p>You can only change your avatar on Auth0</p>
@@ -76,10 +76,10 @@ const Settings = () => {
 								</div>
 								<Tooltip>
 									<TooltipTrigger asChild>
-										<Button>Save Changes</Button>
+										<Button className="opacity-50">Save Changes</Button>
 									</TooltipTrigger>
 									<TooltipContent>
-										<p>You can only change your avatar on Auth0</p>
+										<p>You can only change your details on Auth0</p>
 									</TooltipContent>
 								</Tooltip>
 							</CardContent>
