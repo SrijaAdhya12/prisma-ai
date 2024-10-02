@@ -1,194 +1,85 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { SmilePlus, Frown, Meh, CheckCircle2 } from 'lucide-react'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { useState, useEffect } from 'react'
+import { useAuth0 } from '@auth0/auth0-react' 
+import axios from 'axios' 
 import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { useState } from 'react'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { CheckCircle2 } from 'lucide-react'
+import { Loader } from '@/components'
+const CBTExercise = () => {
+	const { user, isAuthenticated, isLoading } = useAuth0()
+	const [exercises, setExercises] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState(null)
 
-const moodExercises = {
-	happy: [
-		{
-			title: 'Gratitude Journal',
-			description: "Cultivate a positive mindset by focusing on things you're grateful for.",
-			steps: [
-				'Find a quiet, comfortable space',
-				'Reflect on your day or recent experiences',
-				"Write down three things you're genuinely grateful for",
-				"Describe why you're grateful for each item",
-				'Take a moment to feel the positive emotions associated with gratitude'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/gratitude-journal.jpg'
-		},
-		{
-			title: 'Positive Affirmations',
-			description: 'Reinforce positive thoughts and beliefs to maintain and enhance your good mood.',
-			steps: [
-				'Choose 3-5 positive statements about yourself',
-				'Stand in front of a mirror',
-				'Look yourself in the eye and say each affirmation out loud',
-				'Repeat each affirmation 3-5 times',
-				'Notice how you feel after the exercise'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/positive-affirmations.jpg'
-		},
-		{
-			title: 'Mindful Appreciation',
-			description: 'Practice mindfulness to fully appreciate the positive aspects of your surroundings.',
-			steps: [
-				'Choose a location for a short walk (indoors or outdoors)',
-				'As you walk, focus on your senses - what you see, hear, smell, and feel',
-				'Identify 5 things you appreciate in your environment',
-				'For each thing, pause and fully acknowledge its positive qualities',
-				'Reflect on how this exercise affects your mood'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/mindful-appreciation.jpg'
+	useEffect(() => {
+		if (isAuthenticated) {
+			fetchExercises()
 		}
-	],
-	sad: [
-		{
-			title: 'Thought Challenge',
-			description: 'Identify and challenge negative thoughts to improve your mood.',
-			steps: [
-				"Identify a negative thought you're experiencing",
-				'Write down evidence that supports this thought',
-				'Write down evidence that contradicts this thought',
-				'Create a more balanced, realistic thought',
-				'Reflect on how this new perspective affects your mood'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/thought-challenge.jpg'
-		},
-		{
-			title: 'Pleasant Activity Scheduling',
-			description: 'Plan and engage in activities that typically bring you joy to improve your mood.',
-			steps: [
-				'Make a list of activities you usually enjoy',
-				'Choose one activity from your list',
-				'Schedule a specific time to do this activity today',
-				'Engage in the activity, focusing on the present moment',
-				'After the activity, note how it affected your mood'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/pleasant-activity.jpg'
-		},
-		{
-			title: 'Self-Compassion Exercise',
-			description: 'Practice self-compassion to counter negative self-talk and improve your mood.',
-			steps: [
-				"Identify a situation that's causing you distress",
-				'Acknowledge that suffering is a part of the human experience',
-				'Write a letter to yourself from the perspective of a compassionate friend',
-				'Read the letter aloud to yourself',
-				'Reflect on how showing yourself kindness affects your mood'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/self-compassion.jpg'
-		}
-	],
-	neutral: [
-		{
-			title: 'Mindfulness Meditation',
-			description: 'Practice a short mindfulness meditation to center yourself and improve awareness.',
-			steps: [
-				'Find a quiet, comfortable place to sit',
-				'Set a timer for 5-10 minutes',
-				'Close your eyes and focus on your breath',
-				'When your mind wanders, gently bring your attention back to your breath',
-				'After the timer ends, slowly open your eyes and notice how you feel'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/mindfulness-meditation.jpg'
-		},
-		{
-			title: 'Goal Setting',
-			description: 'Set small, achievable goals for the day to create a sense of purpose and accomplishment.',
-			steps: [
-				"Reflect on what you'd like to achieve today",
-				'Write down 2-3 small, specific, and achievable goals',
-				'Break down each goal into actionable steps',
-				'Prioritize your goals and allocate time for each',
-				'At the end of the day, review your progress and celebrate your achievements'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/goal-setting.jpg'
-		},
-		{
-			title: 'Cognitive Restructuring',
-			description: 'Examine your thoughts and reframe them in a more balanced way to improve your perspective.',
-			steps: [
-				"Identify a situation that's causing you stress or anxiety",
-				'Write down your automatic thoughts about the situation',
-				'Identify any cognitive distortions in these thoughts',
-				'Create alternative, more balanced thoughts',
-				'Reflect on how these new thoughts affect your emotions and behavior'
-			],
-			image: 'https://kcqfxhgxgxhxjjxjkwuc.supabase.co/storage/v1/object/public/images/cognitive-restructuring.jpg'
-		}
-	]
-}
+	}, [isAuthenticated])
 
-const CBT = () => {
-	const [mood, setMood] = useState(null)
+	const fetchExercises = async () => {
+		setLoading(true)
+		setError(null)
+		try {
+			const userId = user.sub
+			const response = await axios.post(`${import.meta.env.VITE_API_URL}/excercise/mood-exercises`, {
+				userId
+			})
+
+			setExercises(response.data.exercises)
+		} catch (err) {
+			setError(err.message)
+		} finally {
+			setLoading(false)
+		}
+	}
+
+	if (isLoading) {
+		return <Loader />
+	}
 
 	return (
 		<div className="bg-background text-foreground container mx-auto min-h-screen max-w-4xl p-4">
-			<div className="mb-8">
+			<Card className="mb-8">
 				<CardHeader>
-					<CardTitle className="text-center text-3xl font-bold">
-						Cognitive Behavioral Therapy (CBT) Exercises
-					</CardTitle>
+					<CardTitle className="text-center text-3xl font-bold">CBT Exercise Suggester</CardTitle>
 					<CardDescription className="text-center text-lg">
-						Select your current mood to get personalized CBT exercises
+						Personalized CBT exercises based on your current mood
 					</CardDescription>
 				</CardHeader>
-				<CardContent>
-					<RadioGroup
-						onValueChange={(value) => setMood(value)}
-						className="flex flex-col justify-center gap-4 sm:flex-row"
-					>
-						<div className="flex items-center space-x-2">
-							<RadioGroupItem value="happy" id="happy" />
-							<Label htmlFor="happy" className="flex cursor-pointer items-center space-x-2">
-								<SmilePlus className="h-6 w-6 text-green-500" />
-								<span>Happy</span>
-							</Label>
-						</div>
-						<div className="flex items-center space-x-2">
-							<RadioGroupItem value="sad" id="sad" />
-							<Label htmlFor="sad" className="flex cursor-pointer items-center space-x-2">
-								<Frown className="h-6 w-6 text-blue-500" />
-								<span>Sad</span>
-							</Label>
-						</div>
-						<div className="flex items-center space-x-2">
-							<RadioGroupItem value="neutral" id="neutral" />
-							<Label htmlFor="neutral" className="flex cursor-pointer items-center space-x-2">
-								<Meh className="h-6 w-6 text-yellow-500" />
-								<span>Neutral</span>
-							</Label>
-						</div>
-					</RadioGroup>
-				</CardContent>
-			</div>
+			</Card>
 
-			{mood && (
+			{loading && (
+				<Card>
+					<CardContent className="p-6 text-center">
+						<Loader />
+					</CardContent>
+				</Card>
+			)}
+
+			{error && (
+				<Card>
+					<CardContent className="p-6 text-center">
+						<p className="text-red-500">Error: {error}</p>
+						<Button onClick={fetchExercises} className="mt-4">
+							Retry
+						</Button>
+					</CardContent>
+				</Card>
+			)}
+
+			{!loading && !error && exercises.length > 0 && (
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-center text-2xl font-semibold">
-							Suggested CBT Exercises for {mood.charAt(0).toUpperCase() + mood.slice(1)} Mood
-						</CardTitle>
+						<CardTitle className="text-center text-2xl font-semibold">Suggested CBT Exercises</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<ScrollArea className="h-[600px] w-full rounded-md p-4">
-							{moodExercises[mood].map((exercise, index) => (
+						<ScrollArea className="h-[600px] w-full rounded-md border p-4">
+							{exercises.map((exercise, index) => (
 								<Card key={index} className="mb-8 overflow-hidden">
-									<div className="relative h-48">
-										<img
-											src={exercise.image}
-											alt={exercise.title}
-											className="h-full w-full object-cover"
-										/>
-										<div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-											<h3 className="text-2xl font-bold text-white">{exercise.title}</h3>
-										</div>
-									</div>
 									<CardContent className="p-6">
+										<h3 className="mb-2 text-2xl font-bold">{exercise.title}</h3>
 										<p className="text-muted-foreground mb-4">{exercise.description}</p>
 										<h4 className="mb-2 text-xl font-semibold">Steps:</h4>
 										<ol className="list-inside list-decimal space-y-2">
@@ -207,18 +98,13 @@ const CBT = () => {
 				</Card>
 			)}
 
-			{mood && (
-				<div className="mt-8 text-center">
-					<Button
-						onClick={() => setMood(null)}
-						className="bg-primary text-primary-foreground hover:bg-primary/90"
-					>
-						Reset Mood
-					</Button>
-				</div>
-			)}
+			<div className="mt-8 text-center">
+				<Button onClick={fetchExercises} className="bg-primary text-primary-foreground hover:bg-primary/90">
+					Refresh Exercises
+				</Button>
+			</div>
 		</div>
 	)
 }
 
-export default CBT
+export default CBTExercise
