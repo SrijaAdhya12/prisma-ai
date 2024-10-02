@@ -130,7 +130,6 @@ const Profile = () => {
 
 	const renderYearView = () => {
 		const months = eachMonthOfInterval({ start: startOfYear(date), end: endOfYear(date) })
-
 		return (
 			<div className="xs:grid-cols-3 grid grid-cols-1 gap-4 sm:grid-cols-4">
 				{months.map((month) => (
@@ -141,7 +140,7 @@ const Profile = () => {
 							setSelectedTimeframe('month')
 						}}
 						className={cn(
-							'h-48 rounded-lg border-gray-200 transition-colors hover:border-gray-300 sm:h-auto sm:border sm:p-2',
+							'rounded-lg border-gray-200 transition-colors hover:border-gray-300 sm:h-auto sm:border sm:p-2',
 							isSameMonth(month, date) && selectedTimeframe !== 'year'
 								? 'bg-primary text-primary-foreground'
 								: 'bg-background'
@@ -149,13 +148,16 @@ const Profile = () => {
 					>
 						<div className="mb-2 text-sm font-medium">{format(month, 'MMM yyyy')}</div>
 						<div className="grid grid-cols-7 gap-1">
+							{Array.from({ length: startOfMonth(month).getDay() }).map((_, index) => (
+								<div key={`empty-${index}`} />
+							))}
 							{eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }).map((day) => {
 								const mood = getMoodForDate(day)
 								return (
 									<div
 										key={day.toString()}
 										className={cn(
-											'flex h-6 w-6 items-center justify-center rounded-full text-xs sm:h-2 sm:w-2',
+											'flex aspect-square size-9 items-center justify-center rounded-full text-xs sm:size-2',
 											mood ? moodColors[mood.emotion] : 'bg-accent'
 										)}
 									>
@@ -313,10 +315,10 @@ const Profile = () => {
 				<h1 className="text-4xl font-bold">Profile</h1>
 			</div>
 			<div className="mx-auto max-w-4xl space-y-8">
-				<div className="flex items-center justify-between gap-2 sm:gap-0">
+				<div className="flex flex-col items-center justify-between gap-2 sm:flex-row sm:gap-0">
 					<Popover>
 						<PopoverTrigger asChild>
-							<Button variant="outline" className="w-60 justify-start text-left font-normal">
+							<Button variant="outline" className="w-full justify-start text-left font-normal sm:w-60">
 								<CalendarIcon className="mr-2 h-4 w-4" />
 								{selectedTimeframe === 'week'
 									? `Week ${getWeek(date)} - ${getYear(date)}`
@@ -336,7 +338,7 @@ const Profile = () => {
 						</PopoverContent>
 					</Popover>
 
-					<div className="flex gap-2">
+					<div className="sm:w-auto flex w-full gap-2">
 						<Tooltip>
 							<TooltipTrigger asChild>
 								<Button variant="outline" size="icon" onClick={fetchMoodData}>
@@ -356,7 +358,7 @@ const Profile = () => {
 								setSelectedDay(null)
 							}}
 						>
-							<SelectTrigger className="w-48">
+							<SelectTrigger className="sm:w-48 w-full">
 								<SelectValue placeholder="Select timeframe" />
 							</SelectTrigger>
 							<SelectContent>
