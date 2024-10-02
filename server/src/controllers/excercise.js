@@ -10,7 +10,6 @@ export const getMoodExercises = async (req, res) => {
 	try {
 		const { userId } = req.body
 
-		// Get today's date in the desired format
 		const currentDate = new Date()
 		const dateString = currentDate.toISOString().split('T')[0] + 'T00:00:00.000+00:00'
 		const formattedDate = new Date(dateString)
@@ -25,8 +24,6 @@ export const getMoodExercises = async (req, res) => {
 			(highest, current) => (current.value > highest.value ? current : highest),
 			moods[0]
 		)
-
-		console.log('Latest Mood Retrieved:', latestMood)
 
 		const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
 
