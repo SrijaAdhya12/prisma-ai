@@ -42,7 +42,7 @@ const SupportNest = () => {
 							placeholder="Search events..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="w-full max-w-96 transition-all duration-500 ease-in-out md:w-1/3 md:focus:w-full"
+							className="w-full sm:max-w-96 transition-all duration-500 ease-in-out lg:w-1/3 md:focus:w-full"
 						/>
 						<div className="inline-flex items-center gap-4">
 							<span>Max Price: ${maxPrice}</span>
