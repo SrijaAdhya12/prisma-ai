@@ -38,8 +38,7 @@ export const getCurrentMood = async (user_id) => {
 }
 
 export const getMoodExercises = async (user_id) => {
-	const response = await API.post(`/excercise/mood-exercises`, { params: { user_id } }) 
-	const { data } = response.data 
-	return data
+	const response = await API.post(`/bot/exercises`, { user_id })
+	const { exercises } = response.data
+	return exercises
 }
-

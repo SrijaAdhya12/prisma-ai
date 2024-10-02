@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useAuth0 } from '@auth0/auth0-react' 
-import axios from 'axios' 
+import { useAuth0 } from '@auth0/auth0-react'
+import { getMoodExercises } from '@/api'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -22,12 +22,10 @@ const CBTExercise = () => {
 		setLoading(true)
 		setError(null)
 		try {
-			const userId = user.sub
-			const response = await axios.post(`${import.meta.env.VITE_API_URL}/excercise/mood-exercises`, {
-				userId
-			})
-
-			setExercises(response.data.exercises)
+			const user_id = user.sub
+			const response = await getMoodExercises(user_id)
+			console.log(response)
+			setExercises(response)
 		} catch (err) {
 			setError(err.message)
 		} finally {

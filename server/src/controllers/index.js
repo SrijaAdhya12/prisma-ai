@@ -1,5 +1,4 @@
 export { saveUser } from './user.js'
 export { getStreamToken } from './chat.js'
-export { generateResponse } from './bot.js'
+export { getResponse, getExercisesByMood } from './bot.js'
 export { saveMood, getMoodByDateRange, getCurrentMood } from './mood.js'
-export { getMoodExercises } from './excercise.js'

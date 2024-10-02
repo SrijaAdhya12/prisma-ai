@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { generateResponse } from '../controllers/index.js'
+import { getResponse, getExercisesByMood } from '../controllers/index.js'
 
 const router = Router()
 
-router.post('/response', generateResponse)
+router.post('/response', getResponse).post('/exercises', getExercisesByMood)
 
 export default router
