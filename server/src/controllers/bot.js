@@ -78,7 +78,6 @@ export const getExercisesByMood = async (req, res) => {
 			moods[0]
 		)
 
-		const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
 
 		const prompt = `Generate 5 CBT exercises for someone feeling ${latestMood.emotion}. 
 		For each exercise, provide:
