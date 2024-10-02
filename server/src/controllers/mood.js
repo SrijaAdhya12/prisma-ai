@@ -84,7 +84,15 @@ export const getCurrentMood = async (req, res) => {
 		const dateString = currentDate.toISOString().split('T')[0] + 'T00:00:00.000+00:00'
 		const formattedDate = new Date(dateString)
 		const moods = await Mood.find({ user_id, date: formattedDate })
-		const highestMood = moods.reduce((highest, current) => (current.value > highest.value ? current : highest), moods[0])
+
+		if (!moods.length) {
+			return res.status(404).json({ data: null })
+		}
+		const highestMood = moods.reduce(
+			(highest, current) => (current.value > highest.value ? current : highest),
+			moods[0]
+		)
+
 		res.status(200).json({ data: highestMood.emotion })
 	} catch (error) {
 		res.status(500).json({ message: 'Error fetching mood data', error: error.message })
