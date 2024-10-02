@@ -70,11 +70,12 @@ const MoodMusic = () => {
 
 	useEffect(() => {
 		const fetchMood = async () => {
-			if (moodFetchedRef.current) return
-			moodFetchedRef.current = true
+			if (moodFetchedRef.current) {
+				return
+			} moodFetchedRef.current = true
 
-			const fetchedMood = await getCurrentMood(user.sub)
-			if (fetchedMood) {
+			try {
+				const fetchedMood = await getCurrentMood(user.sub)
 				setMood(fetchedMood)
 				sonnerToast(`Your current mood was ${fetchedMood}`, {
 					description: `Suggsting you ${moodToGenre[fetchedMood]} music.`,
@@ -84,7 +85,8 @@ const MoodMusic = () => {
 						onClick: () => sonnerToast.dismiss()
 					}
 				})
-			} else {
+			} catch (error) {
+				console.error(error)
 				sonnerToast('Help us improve your experience.', {
 					description: 'Use Video Sense to log your mood.',
 					duration: 10000,
@@ -139,7 +141,10 @@ const MoodMusic = () => {
 						) : (
 							<div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 								{playlist.map((song) => (
-									<Card key={song.id} className="border-none bg-gray-900 hover:scale-105 transition-transform">
+									<Card
+										key={song.id}
+										className="border-none bg-gray-900 transition-transform hover:scale-105"
+									>
 										<Link to={song.url} target="_blank">
 											<CardContent className="p-4">
 												<div className="relative">

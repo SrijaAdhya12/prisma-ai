@@ -15,7 +15,7 @@ const FeatureCard = ({ feature, className }) => {
 				<img
 					src={hoverImg}
 					alt={`${title} hover`}
-					className="absolute left-0 top-0 h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+					className="absolute left-0 top-0 h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 w-full"
 				/>
 				<img
 					src={background}
@@ -25,6 +25,9 @@ const FeatureCard = ({ feature, className }) => {
 				<div className="text relative z-50 text-white group-hover:opacity-0">
 					<h1 className="relative text-xl font-bold md:text-3xl">{title}</h1>
 					<p className="relative my-4 text-base font-normal text-white/70">{description}</p>
+                </div>
+				<div className="absolute bottom-0 left-0 right-0 top-0">
+					<div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-black opacity-30"/>
 				</div>
 			</Link>
 		</div>
