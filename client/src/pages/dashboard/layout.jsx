@@ -21,6 +21,7 @@ const Topbar = ({ setIsOpen }) => {
 				<Search
 					placeholder="Search..."
 					className="hidden w-full transition-all duration-500 ease-in-out focus:w-64 md:block"
+					iconClassName="hidden md:block"
 					type="search"
 				/>
 				<AvatarButton />
