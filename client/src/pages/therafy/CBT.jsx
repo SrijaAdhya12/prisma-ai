@@ -24,7 +24,6 @@ const CBTExercise = () => {
 		try {
 			const user_id = user.sub
 			const response = await getMoodExercises(user_id)
-			console.log(response)
 			setExercises(response)
 		} catch (err) {
 			setError(err.message)
@@ -38,7 +37,7 @@ const CBTExercise = () => {
 	}
 
 	return (
-		<div className="bg-background text-foreground container mx-auto min-h-screen max-w-4xl p-4">
+		<div className="bg-background text-foreground container mx-auto min-h-screen p-4">
 			<Card className="mb-8">
 				<CardHeader>
 					<CardTitle className="text-center text-3xl font-bold">CBT Exercise Suggester</CardTitle>
@@ -73,7 +72,7 @@ const CBTExercise = () => {
 						<CardTitle className="text-center text-2xl font-semibold">Suggested CBT Exercises</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<ScrollArea className="h-[600px] w-full rounded-md border p-4">
+						<ScrollArea className="h-[600px] w-full  p-4">
 							{exercises.map((exercise, index) => (
 								<Card key={index} className="mb-8 overflow-hidden">
 									<CardContent className="p-6">
