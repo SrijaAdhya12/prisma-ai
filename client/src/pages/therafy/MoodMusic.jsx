@@ -105,20 +105,20 @@ const MoodMusic = () => {
 	}, [mood])
 
 	return (
-		<div className="min-h-screen bg-black p-4 text-white md:p-8">
+		<div className="min-h-screen p-4 md:p-8">
 			<div className="mx-auto max-w-7xl">
 				<header className="mb-8 flex items-center justify-between">
 					<nav className="flex space-x-4">
 						<button className="font-bold">Music</button>
-						<button className="text-gray-400">Podcasts</button>
-						<button className="text-gray-400">Live</button>
+						<button className="text-muted-foreground">Podcasts</button>
+						<button className="text-muted-foreground">Live</button>
 					</nav>
 				</header>
 
 				<main>
 					<section className="mb-12">
 						<h2 className="mb-4 text-3xl font-bold">Mood-Based Playlist</h2>
-						<p className="mb-6 text-gray-400">Music that matches your mood. Updated daily.</p>
+						<p className="text-muted-foreground mb-6">Music that matches your mood. Updated daily.</p>
 
 						<div className="mb-8">
 							<Select value={mood} onValueChange={(value) => setMood(value)}>
@@ -141,10 +141,7 @@ const MoodMusic = () => {
 						) : (
 							<div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 								{playlist.map((song) => (
-									<Card
-										key={song.id}
-										className="border-none bg-gray-900 transition-transform hover:scale-105"
-									>
+									<Card key={song.id} className="border-none transition-transform hover:scale-105">
 										<Link to={song.url} target="_blank">
 											<CardContent className="p-4">
 												<div className="relative">
@@ -155,7 +152,7 @@ const MoodMusic = () => {
 													/>
 												</div>
 												<h3 className="truncate font-semibold">{song.name}</h3>
-												<p className="truncate text-sm text-gray-400">{song.artist}</p>
+												<p className="text-muted-foreground truncate text-sm">{song.artist}</p>
 											</CardContent>
 										</Link>
 									</Card>
