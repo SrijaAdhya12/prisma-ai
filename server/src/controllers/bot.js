@@ -78,7 +78,6 @@ export const getExercisesByMood = async (req, res) => {
 			moods[0]
 		)
 
-
 		const prompt = `Generate 5 CBT exercises for someone feeling ${latestMood.emotion}. 
 		For each exercise, provide:
 		1. A title
@@ -89,20 +88,20 @@ export const getExercisesByMood = async (req, res) => {
 		const result = await model.generateContent(prompt)
 		const responseText = result.response.text()
 
+
 		const cleanResponse = responseText
 			.replace(/```json/g, '')
 			.replace(/```/g, '')
+			.replace(/^\s+|\s+$/g, '') 
 			.trim()
 
-		let exercises
 		try {
-			exercises = JSON.parse(cleanResponse)
+			const data = JSON.parse(cleanResponse)
+			res.status(200).json({ data })
 		} catch (parseError) {
-			console.error('Error parsing JSON:', parseError)
 			return res.status(500).json({ message: 'Failed to parse AI response' })
 		}
 
-		res.status(200).json({ exercises })
 	} catch (error) {
 		console.error('Error fetching mood exercises:', error)
 		res.status(500).json({ message: error.message })
