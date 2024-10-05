@@ -88,22 +88,21 @@ export const getExercisesByMood = async (req, res) => {
 		const result = await model.generateContent(prompt)
 		const responseText = result.response.text()
 
-
 		const cleanResponse = responseText
 			.replace(/```json/g, '')
 			.replace(/```/g, '')
-			.replace(/^\s+|\s+$/g, '') 
+			.replace(/^\s+|\s+$/g, '')
 			.trim()
 
+		let data
 		try {
-			const data = JSON.parse(cleanResponse)
-			res.status(200).json({ data })
+			data = JSON.parse(cleanResponse)
+			return res.status(200).json({ data })
 		} catch (parseError) {
+			console.error('Error parsing AI response:', parseError)
 			return res.status(500).json({ message: 'Failed to parse AI response' })
 		}
-
 	} catch (error) {
-		console.error('Error fetching mood exercises:', error)
-		res.status(500).json({ message: error.message })
+		return res.status(500).json({ message: error.message })
 	}
 }

@@ -26,7 +26,7 @@ const CBTExercise = () => {
 			const response = await getMoodExercises(user_id)
 			setExercises(response)
 		} catch (err) {
-			setError(err.message)
+			setError("Mood not found for the day")
 		} finally {
 			setLoading(false)
 		}
