@@ -7,7 +7,6 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { CheckCircle2 } from 'lucide-react'
 import { Loader } from '@/components'
 import { images } from '@/data'
-import { useToast } from '@/hooks'
 import { toast as sonnerToast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 
@@ -64,64 +63,60 @@ const CBTExercise = () => {
 	}
 
 	return (
-		<div className="bg-background text-foreground container mx-auto min-h-screen sm:px-16">
-			<div className="my-10 flex flex-col items-start">
+		<div className="bg-background text-foreground min-h-screen px-4 sm:container sm:mx-auto sm:px-16">
+			<div className="my-5 flex flex-col items-start sm:my-10">
 				<h1 className="mb-4 text-3xl font-bold">CBT Exercises</h1>
 				<p className="text-muted-foreground mb-6">Personalized CBT exercises based on your current mood</p>
 			</div>
 
-			{loading && (
-				<Card>
-					<CardContent className="p-6 text-center">
-						<Loader />
-					</CardContent>
-				</Card>
-			)}
-
-			{error && (
-				<Card>
-					<CardContent className="p-6 text-center">
-						<p className="text-red-500">Error: {error}</p>
-						<Button onClick={fetchExercises} className="mt-4">
-							Retry
-						</Button>
-					</CardContent>
-				</Card>
-			)}
-
-			{!loading && !error && exercises.length > 0 && (
-				<Card>
-					<CardHeader>
-						<CardTitle className="text-center text-2xl font-semibold">Suggested CBT Exercises</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<ScrollArea className="h-[600px] w-full p-4">
-							{exercises.map((exercise, index) => (
-								<Card key={index} className="mb-8 overflow-hidden">
-									<CardContent className="p-6">
-										<img
-											src={images[index]}
-											alt="excersise image"
-											className="mb-4 h-48 w-full rounded object-cover"
-										/>
-										<h3 className="mb-2 text-2xl font-bold">{exercise.title}</h3>
-										<p className="text-muted-foreground mb-4">{exercise.description}</p>
-										<h4 className="mb-2 text-xl font-semibold">Steps:</h4>
-										<ol className="list-inside list-decimal space-y-2">
-											{exercise.steps.map((step, stepIndex) => (
-												<li key={stepIndex} className="flex items-start">
-													<CheckCircle2 className="mr-2 mt-1 h-5 w-5 flex-shrink-0 text-green-500" />
-													<span>{step}</span>
-												</li>
-											))}
-										</ol>
-									</CardContent>
-								</Card>
-							))}
-						</ScrollArea>
-					</CardContent>
-				</Card>
-			)}
+			<div className="border-0 sm:border">
+				<h3 className="pb-10 sm:p-10 text-2xl font-semibold sm:text-center">Suggested CBT Exercises</h3>
+				<div>
+					<ScrollArea className="h-[600px] w-full p-0 border-0 px-5">
+						{loading
+							? [1, 2, 3].map((index) => (
+									<Card className="mb-8 overflow-hidden">
+										<CardContent className="p-6">
+											<div className="mb-4 h-48 w-full animate-pulse rounded bg-gray-200" />
+											<div className="mb-2 h-8 w-3/4 animate-pulse bg-gray-200" />
+											<div className="mb-4 h-4 w-full animate-pulse bg-gray-200" />
+											<div className="mb-2 h-6 w-1/4 animate-pulse bg-gray-200" />
+											<div className="space-y-2">
+												{[...Array(3)].map((_, index) => (
+													<div key={index} className="flex items-start">
+														<div className="mr-2 h-5 w-5 animate-pulse rounded-full bg-gray-200" />
+														<div className="h-5 w-full animate-pulse bg-gray-200" />
+													</div>
+												))}
+											</div>
+										</CardContent>
+									</Card>
+								))
+							: exercises.map((exercise, index) => (
+									<Card key={index} className="mb-8 overflow-hidden">
+										<CardContent className="p-6">
+											<img
+												src={images[index]}
+												alt="excersise image"
+												className="mb-4 h-48 w-full rounded object-cover"
+											/>
+											<h3 className="mb-2 text-2xl font-bold">{exercise.title}</h3>
+											<p className="text-muted-foreground mb-4">{exercise.description}</p>
+											<h4 className="mb-2 text-xl font-semibold">Steps:</h4>
+											<ol className="list-inside list-decimal space-y-2">
+												{exercise.steps.map((step, stepIndex) => (
+													<li key={stepIndex} className="flex items-start">
+														<CheckCircle2 className="mr-2 mt-1 h-5 w-5 flex-shrink-0 text-green-500" />
+														<span>{step}</span>
+													</li>
+												))}
+											</ol>
+										</CardContent>
+									</Card>
+								))}
+					</ScrollArea>
+				</div>
+			</div>
 		</div>
 	)
 }
