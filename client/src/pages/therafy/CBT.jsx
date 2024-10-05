@@ -1,17 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { getMoodExercises } from '@/api'
+import { getMoodExercises, getCurrentMood } from '@/api'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { CheckCircle2 } from 'lucide-react'
 import { Loader } from '@/components'
+import { images } from '@/data'
+import { useToast } from '@/hooks'
+import { toast as sonnerToast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
+
 const CBTExercise = () => {
 	const { user, isAuthenticated, isLoading } = useAuth0()
 	const [exercises, setExercises] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
-
+	const excersiseFetchedRef = useRef(false)
+	const navigate = useNavigate()
 	useEffect(() => {
 		if (isAuthenticated) {
 			fetchExercises()
@@ -19,14 +25,35 @@ const CBTExercise = () => {
 	}, [isAuthenticated])
 
 	const fetchExercises = async () => {
+		if (excersiseFetchedRef.current) {
+			return
+		}
+		excersiseFetchedRef.current = true
 		setLoading(true)
 		setError(null)
 		try {
 			const user_id = user.sub
 			const response = await getMoodExercises(user_id)
 			setExercises(response)
-		} catch (err) {
-			setError("Mood not found for the day")
+			const fetchedMood = await getCurrentMood(user.sub)
+			sonnerToast(`Your current mood was ${fetchedMood}`, {
+				description: `Suggsting you excersises for ${fetchedMood} mood .`,
+				duration: 5000,
+				action: {
+					label: 'Dismiss',
+					onClick: () => sonnerToast.dismiss()
+				}
+			})
+		} catch (error) {
+			console.error(error)
+			sonnerToast('No mood for the day', {
+				description: 'Go record your mood',
+				duration: 10000,
+				action: {
+					label: 'Video Sense',
+					onClick: () => navigate('/emo-sense')
+				}
+			})
 		} finally {
 			setLoading(false)
 		}
@@ -37,15 +64,11 @@ const CBTExercise = () => {
 	}
 
 	return (
-		<div className="bg-background text-foreground container mx-auto min-h-screen p-4">
-			<Card className="mb-8">
-				<CardHeader>
-					<CardTitle className="text-center text-3xl font-bold">CBT Exercise Suggester</CardTitle>
-					<CardDescription className="text-center text-lg">
-						Personalized CBT exercises based on your current mood
-					</CardDescription>
-				</CardHeader>
-			</Card>
+		<div className="bg-background text-foreground container mx-auto min-h-screen sm:px-16">
+			<div className="my-10 flex flex-col items-start">
+				<h1 className="mb-4 text-3xl font-bold">CBT Exercises</h1>
+				<p className="text-muted-foreground mb-6">Personalized CBT exercises based on your current mood</p>
+			</div>
 
 			{loading && (
 				<Card>
@@ -72,10 +95,15 @@ const CBTExercise = () => {
 						<CardTitle className="text-center text-2xl font-semibold">Suggested CBT Exercises</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<ScrollArea className="h-[600px] w-full  p-4">
+						<ScrollArea className="h-[600px] w-full p-4">
 							{exercises.map((exercise, index) => (
 								<Card key={index} className="mb-8 overflow-hidden">
 									<CardContent className="p-6">
+										<img
+											src={images[index]}
+											alt="excersise image"
+											className="mb-4 h-48 w-full rounded object-cover"
+										/>
 										<h3 className="mb-2 text-2xl font-bold">{exercise.title}</h3>
 										<p className="text-muted-foreground mb-4">{exercise.description}</p>
 										<h4 className="mb-2 text-xl font-semibold">Steps:</h4>
@@ -94,12 +122,6 @@ const CBTExercise = () => {
 					</CardContent>
 				</Card>
 			)}
-
-			<div className="mt-8 text-center">
-				<Button onClick={fetchExercises} className="bg-primary text-primary-foreground hover:bg-primary/90">
-					Refresh Exercises
-				</Button>
-			</div>
 		</div>
 	)
 }

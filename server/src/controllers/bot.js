@@ -93,16 +93,10 @@ export const getExercisesByMood = async (req, res) => {
 			.replace(/```/g, '')
 			.replace(/^\s+|\s+$/g, '')
 			.trim()
-
-		let data
-		try {
-			data = JSON.parse(cleanResponse)
-			return res.status(200).json({ data })
-		} catch (parseError) {
-			console.error('Error parsing AI response:', parseError)
-			return res.status(500).json({ message: 'Failed to parse AI response' })
-		}
+		const data = JSON.parse(cleanResponse)
+		return res.status(200).json({ data })
 	} catch (error) {
+		console.error('Error parsing AI response:', error)
 		return res.status(500).json({ message: error.message })
 	}
 }
