@@ -53,7 +53,7 @@
         "recharts": "^2.13.0-alpha.5",
         "sonner": "^1.5.0",
         "stream-chat": "^8.40.9",
-        "stream-chat-react": "^12.1.0",
+        "stream-chat-react": "^12.2.0",
         "tailwind-merge": "^2.5.3",
         "tailwindcss-animate": "^1.0.7"
     },
