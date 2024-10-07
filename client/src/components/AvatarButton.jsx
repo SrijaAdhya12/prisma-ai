@@ -16,30 +16,13 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { ModeToggle } from './ui/mode-toggle'
 import { Link } from 'react-router-dom'
 import { AuthButton, Loader } from '.'
-import { useTheme, useToast } from '@/hooks'
+import { useTheme } from '@/hooks'
 import { cn } from '@/lib'
 
 const Button = ({ className }) => {
 	const { user, logout, isLoading, isAuthenticated } = useAuth0()
 	const { theme, setTheme } = useTheme()
-	const toast = useToast()
-	const handleLogOut = () => {
-		try {
-			logout()
-			toast({
-				title: 'Logged out',
-				description: 'You have been logged out',
-				variant: 'success'
-			})
-		} catch (error) {
-			console.error(error)
-			toast({
-				title: 'Error',
-				description: error.message,
-				variant: 'error'
-			})
-		}
-	}
+
 	if (isLoading) {
 		return <Loader className="h-10 w-10" variant="small" />
 	}
@@ -101,7 +84,10 @@ const Button = ({ className }) => {
 					</DropdownMenuPortal>
 				</DropdownMenuSub>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem className="hover:bg-destructive cursor-pointer" onClick={handleLogOut}>
+				<DropdownMenuItem
+					className="hover:bg-destructive cursor-pointer"
+					onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+				>
 					<LogOutIcon className="size-ring-1 mr-2" /> <span>Logout</span>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
