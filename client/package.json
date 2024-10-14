@@ -61,7 +61,8 @@
         "stream-chat-react": "^12.2.0",
         "tailwind-merge": "^2.5.3",
         "tailwindcss-animate": "^1.0.7",
-        "three": "^0.169.0"
+        "three": "^0.169.0",
+        "three-stdlib": "^2.33.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.0",
