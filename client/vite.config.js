@@ -4,6 +4,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
 	plugins: [react()],
+	optimizeDeps: {
+    include: ['three', '@react-three/fiber', '@react-three/xr']
+  },
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, 'src'),

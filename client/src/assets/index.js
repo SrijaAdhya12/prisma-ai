@@ -7,4 +7,5 @@ import ProCare from './ProCare.png'
 import SupportNest from './SupportNest.png'
 import Therafy from './Therafy.png'
 import EmoSense from './EmoSense.png'
-export { MoodSense, SupportBot, VideoSense, WorkInProgress, Error404, ProCare, SupportNest, Therafy, EmoSense }
+import Mountain from './Mountain.jpeg'
+export { MoodSense, SupportBot, VideoSense, WorkInProgress, Error404, ProCare, SupportNest, Therafy, EmoSense, Mountain }

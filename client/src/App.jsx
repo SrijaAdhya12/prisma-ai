@@ -1,3 +1,4 @@
+
 import { BrowserRouter } from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
 import { ThemeProvider } from '@/providers'
@@ -6,13 +7,15 @@ import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@radix-ui/react-tooltip'
 import { Toaster as SonnerToaster } from '@/components/ui/sonner'
 
+
+
 const PrismaAI = () => {
 	return (
-		<TooltipProvider>
-			<AppRouter />
-			<Toaster />
-			<SonnerToaster />
-		</TooltipProvider>
+				<TooltipProvider>
+					<AppRouter />
+					<Toaster />
+					<SonnerToaster />
+				</TooltipProvider>
 	)
 }
 
