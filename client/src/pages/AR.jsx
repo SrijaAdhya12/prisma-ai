@@ -4,7 +4,6 @@ import { OrbitControls, Sky, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import { createNoise2D } from 'simplex-noise'
 
-// Mood configurations
 const moodConfigs = {
 	happy: {
 		terrainColor: '#7cfc00',
