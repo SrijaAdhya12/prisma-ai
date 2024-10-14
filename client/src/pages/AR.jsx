@@ -82,7 +82,7 @@ const Terrain = ({ mood }) => {
 		<mesh
 			ref={mesh}
 			rotation={[-Math.PI / 2, 0, 0]}
-			position={[0, -10, 0]} // Lowered position
+			position={[0, -10, 0]} 
 			receiveShadow
 			castShadow
 		>
@@ -101,7 +101,6 @@ const Water = ({ mood }) => {
 	return (
 		<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -9, 0]}>
 			{' '}
-			// Adjusted position
 			<planeGeometry args={[400, 400]} /> 
 			<meshStandardMaterial color={moodConfigs[mood].waterColor} transparent opacity={0.6} />
 		</mesh>
@@ -117,7 +116,7 @@ const Sun = ({ position }) => {
 
 	return (
 		<mesh ref={mesh} position={position}>
-			<sphereGeometry args={[5, 32, 32]} /> // Increased sun size
+			<sphereGeometry args={[5, 32, 32]} /> 
 			<meshBasicMaterial color="#FDB813" />
 			<pointLight color="#FDB813" intensity={1.5} distance={1000} castShadow />
 		</mesh>
