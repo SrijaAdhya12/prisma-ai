@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Sky, Cloud, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import { createNoise2D } from 'simplex-noise'
@@ -148,7 +148,7 @@ const DynamicClouds = ({ count = 20 }) => {
 					width={20}
 					depth={1.5}
 					segments={20}
-					color="#ffffff" 
+					color="#ffffff"
 				/>
 			))}
 		</group>
@@ -198,7 +198,7 @@ const Particles = ({ mood }) => {
 
 const MoodSelector = ({ setMood }) => {
 	return (
-		<div className="mood-selector">
+		<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 			{Object.keys(moodConfigs).map((mood) => (
 				<button
 					key={mood}
@@ -206,7 +206,18 @@ const MoodSelector = ({ setMood }) => {
 					style={{
 						margin: '5px',
 						padding: '10px',
-						cursor: 'pointer'
+						cursor: 'pointer',
+						background: '#ffffff',
+						border: '1px solid #cccccc',
+						borderRadius: '5px',
+						transition: 'background 0.3s',
+						width: '150px'
+					}}
+					onMouseEnter={(e) => {
+						e.currentTarget.style.background = '#f0f0f0'
+					}}
+					onMouseLeave={(e) => {
+						e.currentTarget.style.background = '#ffffff'
 					}}
 				>
 					{mood.charAt(0).toUpperCase() + mood.slice(1)}
@@ -232,7 +243,7 @@ class ErrorBoundary extends React.Component {
 
 	render() {
 		if (this.state.hasError) {
-			return <h1>Something went wrong.</h1>
+			return <h1 style={{ color: 'red' }}>Something went wrong.</h1>
 		}
 
 		return this.props.children
@@ -244,7 +255,7 @@ const FullscreenMoodLandscape = () => {
 
 	return (
 		<ErrorBoundary>
-			<div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+			<div style={{ width: '100vw', height: '100vh', position: 'relative', background: '#e6f3ff' }}>
 				<Canvas camera={{ position: [0, 50, 100], fov: 75 }} shadows>
 					<ambientLight intensity={0.5} />
 					<fog attach="fog" args={[moodConfigs[mood].fogColor, 0, 1000]} />
