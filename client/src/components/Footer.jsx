@@ -22,11 +22,11 @@ const Footer = () => {
 							/>
 							<h3 className="text-2xl font-semibold">Prisma AI</h3>
 						</Link>
-						<p className="text-muted-foreground text-sm">Your Mental Health Companion</p>
+						<p className="text-muted-foreground text-sm font-semibold">Your Mental Health Companion</p>
 					</div>
 					<div className="flex flex-col gap-2">
 						<h3 className="text-lg font-semibold">Quick Links</h3>
-						<ul className="text-muted-foreground/70 hover:*:text-muted-foreground flex flex-col gap-2 transition-colors">
+						<ul className="text-muted-foreground/70 hover:*:text-muted-foreground flex flex-col gap-2 font-semibold transition-colors">
 							<li>
 								<Link to="/" className="text-sm">
 									Home
@@ -51,12 +51,13 @@ const Footer = () => {
 					</div>
 					<div className="flex flex-col gap-2">
 						<h3 className="text-lg font-semibold">Contact Us</h3>
-						<div className="text-muted-foreground/70 hover:*:text-muted-foreground flex flex-col gap-2 text-sm transition-colors">
+						<div className="text-muted-foreground/70 hover:*:text-muted-foreground flex flex-col gap-2 text-sm font-semibold transition-colors">
 							<Link to="to:support@prismaai.com">support@prismaai.com</Link>
 							<Link to="tel: +1 (123) 456-7890">+1 (123) 456-7890</Link>
 						</div>
 					</div>
 				</div>
+				<hr className="text-muted-foreground mx-auto mt-10 w-1/2" />
 				<div className="flex flex-col items-center justify-center py-24">
 					<div className="flex gap-4 py-2 text-lg">
 						<Link to="https://github.com/SrijaAdhya12/prisma-ai" target="_blank" rel="noopener noreferrer">
