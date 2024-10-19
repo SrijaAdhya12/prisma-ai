@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { VRButton } from 'three/addons/webxr/VRButton.js'
 
-const ThreeJSVRPanorama = () => {
+const Panorama = () => {
 	const containerRef = useRef(null)
 	const infoRef = useRef(null)
 
@@ -124,4 +124,4 @@ const ThreeJSVRPanorama = () => {
 	)
 }
 
-export default ThreeJSVRPanorama
+export default Panorama
