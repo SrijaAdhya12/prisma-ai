@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js'
-
+import { House } from 'lucide-react'
+import { Link } from 'react-router-dom'
 const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/textures/kandao3_depthmap.jpg' }) => {
 	const containerRef = useRef(null)
 	const infoRef = useRef(null)
@@ -200,6 +201,11 @@ const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/
 				</div>
 			)}
 			<div ref={containerRef} className="h-full w-full" />
+			<button className="absolute right-4 top-4 flex items-center gap-2 rounded bg-gray-800 px-4 py-2 text-white">
+				<Link to="/features">
+					<House />
+				</Link>
+			</button>
 		</div>
 	)
 }
