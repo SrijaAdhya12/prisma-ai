@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js'
 import { House } from 'lucide-react'
 import { Link } from 'react-router-dom'
+
 const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/textures/kandao3_depthmap.jpg' }) => {
 	const containerRef = useRef(null)
 	const infoRef = useRef(null)
@@ -11,6 +12,7 @@ const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/
 	const cameraRef = useRef(null)
 	const sphereRef = useRef(null)
 	const clockRef = useRef(null)
+	const vrButtonRef = useRef(null) // New ref for VR button
 	const [error, setError] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 
@@ -116,8 +118,16 @@ const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/
 					containerRef.current.appendChild(rendererRef.current.domElement)
 
 					try {
-						const vrButton = VRButton.createButton(rendererRef.current)
-						document.body.appendChild(vrButton)
+						// Create VR button and store reference
+						vrButtonRef.current = VRButton.createButton(rendererRef.current)
+						// Append to container instead of body
+						containerRef.current.appendChild(vrButtonRef.current)
+						// Position the VR button
+						vrButtonRef.current.style.position = 'absolute'
+						vrButtonRef.current.style.bottom = '20px'
+						vrButtonRef.current.style.left = '50%'
+						vrButtonRef.current.style.transform = 'translateX(-50%)'
+						vrButtonRef.current.style.zIndex = '100'
 					} catch (err) {
 						console.warn('VR button creation failed:', err)
 					}
@@ -171,10 +181,12 @@ const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/
 				containerRef.current.removeChild(rendererRef.current.domElement)
 			}
 
-			const vrButton = document.querySelector('.VRButton')
-			if (vrButton) {
-				vrButton.remove()
+			if (vrButtonRef.current && vrButtonRef.current.parentNode) {
+				vrButtonRef.current.parentNode.removeChild(vrButtonRef.current)
 			}
+
+			const vrButtons = document.querySelectorAll('.VRButton')
+			vrButtons.forEach((button) => button.remove())
 
 			if (sphereRef.current) {
 				if (sphereRef.current.geometry) {
