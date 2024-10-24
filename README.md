@@ -1,4 +1,4 @@
-    updated on: 23rd October 2024, Wednesday
+    updated on: 24th October 2024, Thursday
 
 <div align=center>
     <a href="https://github.com/SrijaAdhya12/prisma-ai">
@@ -172,4 +172,4 @@ Backend:
 [License]: https://github.com/SrijaAdhya12/prisma-ai/blob/main/LICENSE
 
 <!-- 01/10/24 -->
-<!-- 23/10/24 -->
+<!-- 24/10/24 -->
