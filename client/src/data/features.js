@@ -91,5 +91,14 @@ export const items = [
 		hoverImg:
 			'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzdqdzlhdmZvcXNyNWo4cnFqeXJlZHlpdHZ6ZWdkMHA0NjJvaDVqMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WOIGpnJ3ye445BUQl4/giphy.webp',
 		to: '/support-nest'
+	},
+	{
+		title: 'Virtual Therapy',
+		description: 'Virtual therapy sessions with scenic views.',
+		background:
+			'https://images.unsplash.com/photo-1729731321955-6316b2fe17f0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+		hoverImg:
+			'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnEyM3dkbno3eHR3ZGxncnI2MzE5dWs5MWU1dnZ4MHN4YmtrYjV2NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PBzs0lcPW1vLU5aV3T/giphy.gif',
+		to: '/ar'
 	}
 ]
