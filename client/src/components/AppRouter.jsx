@@ -1,7 +1,7 @@
 import { VideoSense, SupportBot, EmoSense } from '@/pages/emosense'
 import { Profile, Dashboard, Settings, Goals, Analytics } from '@/pages/dashboard'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
-import { Home, ComingSoon, NotFound, SupportNest, Features, FullscreenMoodLandscape, Panorama } from '@/pages'
+import { Home, ComingSoon, NotFound, SupportNest, Features, Panorama } from '@/pages'
 import { Therafy, MoodMusic, CBTExercises } from '@/pages/therafy'
 import { Chat, ProCare } from '@/pages/procare'
 import { PrivateRoute } from '@/routes'
@@ -11,7 +11,6 @@ const AppRouter = () => {
 	return (
 		<Routes location={location}>
 			<Route path="/" element={<Home />} />
-			<Route path="/ar" element={<FullscreenMoodLandscape />} />
 			<Route path="/panorama" element={<Panorama />} />
 			<Route path="/features" element={<Features />} />
 			<Route path="/dashboard" element={<PrivateRoute component={<Dashboard />} />}>

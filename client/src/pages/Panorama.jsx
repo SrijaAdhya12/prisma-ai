@@ -12,7 +12,7 @@ const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/
 	const cameraRef = useRef(null)
 	const sphereRef = useRef(null)
 	const clockRef = useRef(null)
-	const vrButtonRef = useRef(null) // New ref for VR button
+	const vrButtonRef = useRef(null)
 	const [error, setError] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 
