@@ -61,7 +61,7 @@
 		"stream-chat-react": "^12.6.0",
 		"tailwind-merge": "^2.5.5",
 		"tailwindcss-animate": "^1.0.7",
-		"three": "^0.170.0",
+		"three": "^0.171.0",
 		"three-stdlib": "^2.34.0"
 	},
 	"devDependencies": {
