@@ -40,7 +40,7 @@
 		"@react-three/xr": "^6.4.12",
 		"@spotify/web-api-ts-sdk": "^1.2.0",
 		"@tabler/icons-react": "^3.24.0",
-		"axios": "^1.7.8",
+		"axios": "^1.7.9",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"date-fns": "^4.1.0",
