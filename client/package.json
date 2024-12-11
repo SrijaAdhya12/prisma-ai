@@ -57,7 +57,7 @@
 		"recharts": "^2.13.3",
 		"simplex-noise": "^4.0.3",
 		"sonner": "^1.7.0",
-		"stream-chat": "^8.46.0",
+		"stream-chat": "^8.46.1",
 		"stream-chat-react": "^12.6.0",
 		"tailwind-merge": "^2.5.5",
 		"tailwindcss-animate": "^1.0.7",
