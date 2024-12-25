@@ -59,7 +59,7 @@
 		"sonner": "^1.7.1",
 		"stream-chat": "^8.49.0",
 		"stream-chat-react": "^12.8.1",
-		"tailwind-merge": "^2.5.5",
+		"tailwind-merge": "^2.6.0",
 		"tailwindcss-animate": "^1.0.7",
 		"three": "^0.171.0",
 		"three-stdlib": "^2.35.2"
