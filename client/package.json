@@ -62,7 +62,7 @@
 		"tailwind-merge": "^2.6.0",
 		"tailwindcss-animate": "^1.0.7",
 		"three": "^0.172.0",
-		"three-stdlib": "^2.35.12"
+		"three-stdlib": "^2.35.13"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.19.0",
