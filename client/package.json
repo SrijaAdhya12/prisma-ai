@@ -37,7 +37,7 @@
 		"@radix-ui/react-tooltip": "^1.1.8",
 		"@react-three/drei": "^10.0.2",
 		"@react-three/fiber": "^9.0.4",
-		"@react-three/xr": "^6.6.6",
+		"@react-three/xr": "^6.6.8",
 		"@spotify/web-api-ts-sdk": "^1.2.0",
 		"@tabler/icons-react": "^3.30.0",
 		"axios": "^1.7.9",
