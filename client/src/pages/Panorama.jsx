@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js'
 import { House } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const Panorama = ({ panoramaTexture = '/textures/kandao3.jpg', depthTexture = '/textures/kandao3_depthmap.jpg' }) => {
 	const containerRef = useRef(null)

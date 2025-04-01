@@ -39,7 +39,7 @@ import {
 	getYear,
 	parseISO
 } from 'date-fns'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const moodIcons = {
 	neutral: <Meh className={cn('size-6', moodTextColors.neutral)} />,

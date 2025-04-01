@@ -5,7 +5,7 @@ import { SpotifyApi } from '@spotify/web-api-ts-sdk'
 import { getCurrentMood } from '@/api'
 import { useAuth0 } from '@auth0/auth0-react'
 import { toast as sonnerToast } from 'sonner'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router'
 import { useToast } from '@/hooks'
 import { Loader } from '@/components'
 

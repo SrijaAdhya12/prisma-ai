@@ -6,7 +6,7 @@ import {
 	IconMail
 } from '@tabler/icons-react'
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const Footer = () => {
 	return (

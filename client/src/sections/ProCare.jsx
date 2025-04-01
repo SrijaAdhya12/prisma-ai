@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ClipboardPlusIcon } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const ProCare = () => {
 	return (

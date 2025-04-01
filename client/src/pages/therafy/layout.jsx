@@ -1,7 +1,7 @@
 import { Navbar } from '@/components'
 import { IconGif, IconMoodXd, IconStretching2 } from '@tabler/icons-react'
 import { BotMessageSquare, Video, Music } from 'lucide-react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 const Therafy = () => {
 	const navItems = [

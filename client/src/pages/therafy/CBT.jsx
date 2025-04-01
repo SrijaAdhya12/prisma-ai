@@ -8,7 +8,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { Loader } from '@/components'
 import { images } from '@/data'
 import { toast as sonnerToast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 const CBTExercise = () => {
 	const { user, isAuthenticated, isLoading } = useAuth0()

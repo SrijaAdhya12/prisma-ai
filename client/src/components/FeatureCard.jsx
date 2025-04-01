@@ -1,5 +1,5 @@
 import { cn } from '@/lib'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const FeatureCard = ({ feature, className }) => {
 	const { title, background, hoverImg, description, to } = feature

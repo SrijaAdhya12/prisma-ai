@@ -1,6 +1,6 @@
 import { Navbar } from '@/components'
 import { BotMessageSquare, SquareActivity, Video } from 'lucide-react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 const EmoSense = () => {
 	const navItems = [

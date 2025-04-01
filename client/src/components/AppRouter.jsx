@@ -1,6 +1,6 @@
 import { VideoSense, SupportBot, EmoSense } from '@/pages/emosense'
 import { Profile, Dashboard, Settings, Goals, Analytics } from '@/pages/dashboard'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { Home, ComingSoon, NotFound, SupportNest, Features, Panorama } from '@/pages'
 import { Therafy, MoodMusic, CBTExercises } from '@/pages/therafy'
 import { Chat, ProCare } from '@/pages/procare'

@@ -1,6 +1,6 @@
 import { Navbar } from '@/components'
 import { MessageSquare, Video } from 'lucide-react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 
 const ProCare = () => {
 	const navItems = [

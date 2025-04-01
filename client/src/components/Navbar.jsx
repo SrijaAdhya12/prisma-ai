@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { forwardRef } from 'react'
 import { Brain } from 'lucide-react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import {

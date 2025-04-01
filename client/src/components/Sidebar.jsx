@@ -1,5 +1,5 @@
 import { Brain, Goal, Home, Settings, User, X } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router'
 import { cn } from '@/lib'
 import { Button } from './ui/button'
 

@@ -1,6 +1,6 @@
 import { AlertCircle } from 'lucide-react'
 import { Error404 } from '../assets'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const Error404Page = () => {
 	return (

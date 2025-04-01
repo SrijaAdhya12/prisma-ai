@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { AvatarButton, Sidebar } from '@/components'
 import { Goal, Home, Menu, Settings, User } from 'lucide-react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import { IconChartHistogram } from '@tabler/icons-react'

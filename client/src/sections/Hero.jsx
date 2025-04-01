@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { TypewriterEffect2 } from '@/components/ui/typewriter-effect'
 
 const Hero = () => {
