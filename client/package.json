@@ -55,7 +55,7 @@
  	 	"react-day-picker": "^9.6.4",
  	 	"react-dom": "^19.1.0",
  	 	"react-router": "^7.4.1",
- 	 	"recharts": "^2.15.1",
+ 	 	"recharts": "^2.15.2",
  	 	"simplex-noise": "^4.0.3",
  	 	"sonner": "^2.0.2",
  	 	"stream-chat": "^8.57.6",
