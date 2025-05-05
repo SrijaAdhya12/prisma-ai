@@ -40,7 +40,7 @@
  	 	"@react-three/xr": "^6.6.14",
  	 	"@spotify/web-api-ts-sdk": "^1.2.0",
  	 	"@tabler/icons-react": "^3.31.0",
- 	 	"@tailwindcss/vite": "^4.1.4",
+ 	 	"@tailwindcss/vite": "^4.1.5",
  	 	"axios": "^1.9.0",
  	 	"class-variance-authority": "^0.7.1",
  	 	"clsx": "^2.1.1",
