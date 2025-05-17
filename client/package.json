@@ -39,7 +39,7 @@
  	 	"@react-three/fiber": "^9.1.2",
  	 	"@react-three/xr": "^6.6.16",
  	 	"@spotify/web-api-ts-sdk": "^1.2.0",
- 	 	"@tabler/icons-react": "^3.31.0",
+ 	 	"@tabler/icons-react": "^3.33.0",
  	 	"@tailwindcss/vite": "^4.1.7",
  	 	"axios": "^1.9.0",
  	 	"class-variance-authority": "^0.7.1",
