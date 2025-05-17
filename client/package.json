@@ -48,7 +48,7 @@
  	 	"eslint-plugin": "^1.0.1",
  	 	"face-api.js": "^0.22.2",
  	 	"framer-motion": "^12.12.1",
- 	 	"lucide-react": "^0.510.0",
+ 	 	"lucide-react": "^0.511.0",
  	 	"mini-svg-data-uri": "^1.4.4",
  	 	"next-themes": "^0.4.6",
  	 	"react": "^19.1.0",
