@@ -59,7 +59,7 @@
  	 	"simplex-noise": "^4.0.3",
  	 	"sonner": "^2.0.2",
  	 	"stream-chat": "^9.3.0",
- 	 	"stream-chat-react": "^13.0.4",
+ 	 	"stream-chat-react": "^13.0.5",
  	 	"tailwind-merge": "^3.3.0",
  	 	"tailwindcss-animate": "^1.0.7",
  	 	"three": "^0.176.0",
