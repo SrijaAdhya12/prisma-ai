@@ -35,7 +35,7 @@
  	 	"@radix-ui/react-tabs": "^1.1.13",
  	 	"@radix-ui/react-toast": "^1.2.14",
  	 	"@radix-ui/react-tooltip": "^1.2.8",
- 	 	"@react-three/drei": "^10.7.4",
+ 	 	"@react-three/drei": "^10.7.6",
  	 	"@react-three/fiber": "^9.3.0",
  	 	"@react-three/xr": "^6.6.25",
  	 	"@spotify/web-api-ts-sdk": "^1.2.0",
